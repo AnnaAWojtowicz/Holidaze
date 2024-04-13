@@ -17,8 +17,38 @@ html,
   margin: 3rem 3rem;
 }
 
+.container {
+  margin: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: space-around !important;
+  }
+}
+
+.navFont {
+  font-family: "Montserrat", sans-serif;
+}
+
 .logo {
   font-family: "Advent Pro", sans-serif;
   font-size: 2rem;
   font-weight: 500;
+}
+
+.form-control {
+  border-radius: 0 !important;
+}
+
+.btn {
+  border-radius: 3px !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+
+.btn-outline-success {
+  --bs-btn-hover-bg: #a9a59a !important;
+  --bs-btn-hover-border-color: #a9a59a !important;
 }
