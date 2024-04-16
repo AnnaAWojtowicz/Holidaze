@@ -1,3 +1,18 @@
+/* palette 1:
+--eerie-black: #1c1c1cff;
+--platinum: #daddd8ff;
+--alabaster: #ecebe4ff;
+--antiflash-white: #eef0f2ff;
+--ghost-white: #fafaffff;
+
+
+palette2: 
+--eerie-black: #242424ff;
+--white: #ffffffff;
+--seasalt: #f7f7f5ff;
+--platinum: #e9e8e4ff;
+--khaki: #a9a59aff; */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -42,6 +57,10 @@ html,
   border-radius: 0 !important;
 }
 
+.whereForm {
+  border-radius: 3px 0 0 3px !important;
+}
+
 .btn {
   border-radius: 3px !important;
   color: black !important;
@@ -51,4 +70,40 @@ html,
 .btn-outline-success {
   --bs-btn-hover-bg: #a9a59a !important;
   --bs-btn-hover-border-color: #a9a59a !important;
+}
+
+@media (max-width: 992px) {
+  .py-md {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .form-control-sm {
+    max-width: 150px;
+  }
+  .btnSearch {
+    font-size: 0.6rem !important;
+    /* border-radius: 0 3px 3px 0 !important; */
+  }
+
+  .loop {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (min-width: 993px) {
+  .form-control {
+    max-width: 200px;
+    font-size: 1rem !important;
+  }
+  .btnSearch,
+  .loop {
+    font-size: 0.8rem !important;
+  }
+}
+
+.btnSearch {
+  border-radius: 0 3px 3px 0 !important;
 }
