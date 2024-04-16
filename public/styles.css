@@ -117,6 +117,7 @@ html,
 
 .react-datepicker__day--today,
 .react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
 .react-datepicker__day:hover,
 .react-datepicker__day--in-selecting-range {
   background-color: #e9e8e4ff !important;

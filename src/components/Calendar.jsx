@@ -8,6 +8,7 @@ function Calendar() {
     return (
         <>
             <DatePicker
+                calendarStartDay={1}
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 selectsStart
@@ -18,6 +19,7 @@ function Calendar() {
                 className="mr-sm-2 form-control-sm form-control"
             />
             <DatePicker
+                calendarStartDay={1}
                 selected={endDate}
                 onChange={date => setEndDate(date)}
                 selectsEnd
