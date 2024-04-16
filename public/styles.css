@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
 /* palette 1:
 --eerie-black: #1c1c1cff;
 --platinum: #daddd8ff;
@@ -22,6 +24,7 @@ palette2:
 html,
 .background {
   background-color: #daddd8;
+  color: #1c1c1cff;
 }
 
 .site {
@@ -106,4 +109,16 @@ html,
 
 .btnSearch {
   border-radius: 0 3px 3px 0 !important;
+}
+
+.react-datepicker {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.react-datepicker__day--today,
+.react-datepicker__day--selected,
+.react-datepicker__day:hover,
+.react-datepicker__day--in-selecting-range {
+  background-color: #e9e8e4ff !important;
+  color: #1c1c1cff !important;
 }
