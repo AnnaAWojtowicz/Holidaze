@@ -66,20 +66,20 @@ html,
 
 .btn {
   border-radius: 3px !important;
-  color: black !important;
-  border: 1px solid black !important;
+  color: #1c1c1cff !important;
+  border: 1px solid #1c1c1cff !important;
 }
 
 .btn-outline-success {
   --bs-btn-color: #a9a59a !important;
-  --bs-btn-border-color: var(--bs-btn-color);
-  --bs-btn-hover-color: var(--bs-btn-color);
-  --bs-btn-hover-bg: var(--bs-btn-color);
-  --bs-btn-hover-border-color: var(--bs-btn-color);
-  --bs-btn-active-bg: var(--bs-btn-color);
-  --bs-btn-active-border-color: var(--bs-btn-color);
-  --bs-btn-disabled-color: var(--bs-btn-color);
-  --bs-btn-disabled-border-color: var(--bs-btn-color);
+  --bs-btn-border-color: #a9a59a !important;
+  --bs-btn-hover-color: #a9a59a !important;
+  --bs-btn-hover-bg: #a9a59a !important;
+  --bs-btn-hover-border-color: #a9a59a !important;
+  --bs-btn-active-bg: #a9a59a !important;
+  --bs-btn-active-border-color: #a9a59a !important;
+  --bs-btn-disabled-color: #a9a59a !important;
+  --bs-btn-disabled-border-color: #a9a59a !important;
 }
 
 @media (max-width: 992px) {
@@ -129,4 +129,26 @@ html,
 .react-datepicker__day--in-selecting-range {
   background-color: #e9e8e4ff !important;
   color: #1c1c1cff !important;
+}
+
+/* card */
+.cardBorder {
+  border: 0.5px solid #1c1c1cff !important;
+  border-radius: 0 !important;
+  background-color: #1c1c1cff !important;
+}
+
+.imgCardBorder,
+.bodyCardBorder,
+.footerCardBorder {
+  border: 0.5px solid #1c1c1cff !important;
+  background-color: #eef0f2 !important;
+}
+
+.imgCardBorder {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+.footerCardBorder {
+  border-radius: 0 0 10px 10px !important;
 }
