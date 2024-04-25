@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 function Home() {
     return (
         <Row xs={1} md={2} lg={4} className="g-4 my-5 mx-2">
-            {Array.from({ length: 6 }).map((_, idx) => (
+            {Array.from({ length: 12 }).map((_, idx) => (
                 <Col key={idx}>
                     <Card className='cardBorder'>
                         <Card.Img variant="top" src="holder.js/100px160" className='imgCardBorder' />
@@ -21,7 +22,7 @@ function Home() {
                         </Card.Body>
                         <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
                             <span>Price</span>
-                            <Button variant="outline-success">More</Button>
+                            <Link to="/cardPage"><Button variant="outline-success">More</Button></Link>
                         </Card.Footer>
                     </Card>
                 </Col>

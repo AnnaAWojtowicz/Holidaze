@@ -35,6 +35,18 @@ html,
   margin: 3rem 3rem;
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+  .site {
+    margin: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .site {
+    margin: 1rem;
+  }
+}
+
 .container {
   margin: 0 !important;
 }
@@ -131,18 +143,18 @@ html,
   color: #1c1c1cff !important;
 }
 
-/* card */
+/* card & cardPage */
 .cardBorder {
-  border: 0.5px solid #1c1c1cff !important;
+  border: 0.5px solid #3a3835 !important;
   border-radius: 0 !important;
-  background-color: #1c1c1cff !important;
+  background-color: #3a3835 !important;
 }
 
 .imgCardBorder,
 .bodyCardBorder,
 .footerCardBorder {
-  border: 0.5px solid #1c1c1cff !important;
-  background-color: #eef0f2 !important;
+  border: 0.5px solid #3a3835 !important;
+  background-color: #fff !important;
 }
 
 .imgCardBorder {
@@ -151,4 +163,16 @@ html,
 
 .footerCardBorder {
   border-radius: 0 0 10px 10px !important;
+}
+
+.cardPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.cardWidth {
+  max-width: 70%;
 }
