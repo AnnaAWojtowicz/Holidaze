@@ -180,6 +180,12 @@ body {
   color: #1c1c1cff !important;
 }
 
+.btnToModalsNav {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
 /* card & cardPage */
 .cardBorder {
   border: 0.5px solid #3a3835 !important;

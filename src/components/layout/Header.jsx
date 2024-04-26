@@ -7,9 +7,14 @@ import Button from 'react-bootstrap/Button';
 import Calendar from "./Calendar";
 import "react-datepicker/dist/react-datepicker.css";
 
+import ModalMain from "./Modal";
+import ButtonPrimary from "../Button";
 
 
-function Header() {
+
+function Header({ handleShow }) {
+
+
     return (
         <Navbar collapseOnSelect expand="lg" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
 
@@ -36,10 +41,10 @@ function Header() {
                 </div>
 
                 <Nav className="ml-auto">
-                    <Nav.Link href="#deets">Login</Nav.Link>
-                    <Nav.Link eventKey={2} href="#memes">
-                        Sign-up
-                    </Nav.Link>
+                    <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShow} type="button" />
+                    <ButtonPrimary name="Sign-up" onClick={handleShow} type="button" />
+                    {/* <ModalMain showModal={props.showModal} handleClose={props.handleClose} handleShow={props.handleShow} /> */}
+
                 </Nav>
 
             </Navbar.Collapse>
