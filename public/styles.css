@@ -51,9 +51,6 @@ body {
   color: #1c1c1cff;
 }
 
-.background {
-}
-
 .site {
   margin: 3rem;
   background-color: #eef0f2;
@@ -227,6 +224,14 @@ body {
   position: relative;
   width: 100%;
   padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.imgContainer2 {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 }
 
 .imgResponsive {
@@ -250,10 +255,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
 }
 
 .cardWidth {
   max-width: 70%;
+}
+
+@media (max-width: 992px) {
+  .cardWidth {
+    max-width: 90%;
+  }
 }
