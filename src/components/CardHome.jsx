@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button';
 import ExampleImage from "../img/clement-proust-bDGgOlguqJA-unsplash.jpg";
 
 function CardHome() {
-    return (<Card className='cardBorder flex-grow-1 d-flex flex-column overflow--hidden'>
+    return (<Card className='cardBorder mx-3'>
+        {/* <Card className='cardBorder flex-grow-1 d-flex flex-column overflow--hidden'> */}
         <div className='imgContainer'>
             <Card.Img variant="top" src={ExampleImage} className='imgCardBorder imgResponsive' />
         </div>
