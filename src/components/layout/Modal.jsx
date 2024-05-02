@@ -5,31 +5,36 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import ButtonPrimary from '../Button';
 
-function ModalMain({ showModal, handleClose, handleShow }) {
+function ModalMain({ showModal, handleClose, isSignIn }) {
 
 
     return (
         <>
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton className='modalHeader'>
-                    <Modal.Title>Create an account</Modal.Title>
-                    <Modal.Title>Login</Modal.Title>
+                    {!isSignIn ? (
+                        <Modal.Title>Create an account</Modal.Title>
+                    ) : (
+                        <Modal.Title>Login</Modal.Title>
+                    )}
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
-                                type="name"
-                                id="inputName"
-                                aria-describedby="nameHelpBlock"
-                                className='formControlModal'
-                                autoFocus
-                            />
-                            <Form.Text id="emailHelpBlock" muted>
-                                Please enter your name
-                            </Form.Text>
-                        </Form.Group>
+                        {!isSignIn && (
+                            <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control
+                                    type="name"
+                                    id="inputName"
+                                    aria-describedby="nameHelpBlock"
+                                    className='formControlModal'
+                                    autoFocus
+                                />
+                                <Form.Text id="emailHelpBlock" muted>
+                                    Please enter your name
+                                </Form.Text>
+                            </Form.Group>
+                        )}
 
                         <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput2">
                             <Form.Label>Email address</Form.Label>
@@ -40,9 +45,14 @@ function ModalMain({ showModal, handleClose, handleShow }) {
                                 className='formControlModal'
                                 autoFocus
                             />
-                            <Form.Text id="emailHelpBlock" muted>
-                                Your email must the following format: name@example.com
-                            </Form.Text>
+                            {!isSignIn && (
+                                <Form.Text id="emailHelpBlock" muted>
+                                    Your email address must have the following format: name@example.com
+                                </Form.Text>
+                            )}
+                            {/* <Form.Text id="passwordHelpBlock" muted>
+                                Incorrect email. Please try again.
+                            </Form.Text> */}
                         </Form.Group>
 
                         <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput3">
@@ -54,18 +64,23 @@ function ModalMain({ showModal, handleClose, handleShow }) {
                                 className='formControlModal'
                                 autoFocus
                             />
-                            <Form.Text id="passwordHelpBlock" muted>
-                                Your password must be 8-20 characters long, contain letters and numbers,
-                                and must not contain spaces, special characters, or emoji.
-                            </Form.Text>
+                            {!isSignIn && (
+                                <Form.Text id="passwordHelpBlock" muted>
+                                    Your password must be 8-20 characters long, contain letters and numbers,
+                                    and must not contain spaces, special characters, or emoji.
+                                </Form.Text>
+                            )}
+                            {/* <Form.Text id="passwordHelpBlock" muted>
+                                Incorrect password. Please try again.
+                            </Form.Text> */}
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">
-                    <Button variant="btn-outline-success" onClick={handleClose}>
+                    <Button variant="btn btn-outline-success" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="btn-outline-success" onClick={handleClose}>
+                    <Button variant="btn btn-outline-success" onClick={handleClose}>
                         Submit
                     </Button>
                 </Modal.Footer>

@@ -15,9 +15,18 @@ import ButtonPrimary from "../Button";
 function Header() {
     const [showModalLogin, setShowModalLogin] = useState(false);
     const [showModalSignup, setShowModalSignup] = useState(false);
-    const handleShowLogin = () => setShowModalLogin(true);
+    const [isSignIn, setIsSignIn] = useState(false);
+
+    const handleShowLogin = () => {
+        setIsSignIn(true);
+        setShowModalLogin(true)
+    };
     const handleCloseLogin = () => setShowModalLogin(false);
-    const handleShowSignup = () => setShowModalLogin(true);
+
+    const handleShowSignup = () => {
+        setIsSignIn(false);
+        setShowModalLogin(true)
+    };
     const handleCloseSignup = () => setShowModalLogin(false);
 
     return (
@@ -44,9 +53,9 @@ function Header() {
                 </div>
                 <Nav className="ml-auto">
                     <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
-                    <ModalMain showModal={showModalLogin} handleClose={handleCloseLogin} />
+                    <ModalMain showModal={showModalLogin} handleClose={handleCloseLogin} isSignIn={isSignIn} />
                     <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
-                    <ModalMain showModal={showModalSignup} handleClose={handleCloseSignup} />
+                    <ModalMain showModal={showModalSignup} handleClose={handleCloseSignup} isSignIn={isSignIn} />
                 </Nav>
             </Navbar.Collapse>
 
