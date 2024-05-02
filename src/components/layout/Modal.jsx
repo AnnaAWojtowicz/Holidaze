@@ -10,42 +10,63 @@ function ModalMain({ showModal, handleClose, handleShow }) {
 
     return (
         <>
-            <ButtonPrimary name="Login" onClick={handleShow} type="button">
-                Login
-            </ButtonPrimary>
-            <ButtonPrimary name="Sign-up" onClick={handleShow} type="button">
-                Sign-up
-            </ButtonPrimary>
-
             <Modal show={showModal} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Header closeButton className='modalHeader'>
+                    <Modal.Title>Create an account</Modal.Title>
+                    <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control
+                                type="name"
+                                id="inputName"
+                                aria-describedby="nameHelpBlock"
+                                className='formControlModal'
+                                autoFocus
+                            />
+                            <Form.Text id="emailHelpBlock" muted>
+                                Please enter your name
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput2">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 type="email"
-                                placeholder="name@example.com"
+                                id="inputEmail"
+                                aria-describedby="emailHelpBlock"
+                                className='formControlModal'
                                 autoFocus
                             />
+                            <Form.Text id="emailHelpBlock" muted>
+                                Your email must the following format: name@example.com
+                            </Form.Text>
                         </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+
+                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput3">
+                            <Form.Label>Enter your password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                id="inputPassword"
+                                aria-describedby="passwordHelpBlock"
+                                className='formControlModal'
+                                autoFocus
+                            />
+                            <Form.Text id="passwordHelpBlock" muted>
+                                Your password must be 8-20 characters long, contain letters and numbers,
+                                and must not contain spaces, special characters, or emoji.
+                            </Form.Text>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                <Modal.Footer className="d-flex justify-content-between align-items-center">
+                    <Button variant="btn-outline-success" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="btn-outline-success" onClick={handleClose}>
+                        Submit
                     </Button>
                 </Modal.Footer>
             </Modal>

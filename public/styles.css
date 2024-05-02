@@ -186,6 +186,47 @@ body {
   cursor: pointer !important;
 }
 
+/* modals */
+
+.modal-content {
+  background-color: #daddd8ff !important;
+  color: #1c1c1cff !important;
+  border: 1px solid #1c1c1cff !important;
+  border-radius: 0 !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.modal-header {
+  margin: 1rem 1rem 0 1rem !important;
+  background-color: #eef0f2 !important;
+  border-radius: 0 !important;
+}
+
+.modal-body {
+  margin: 0 1rem 0 1rem !important;
+  background-color: #eef0f2 !important;
+}
+
+.modal-footer {
+  margin: 0 1rem 1rem 1rem !important;
+  background-color: #eef0f2 !important;
+  border-radius: 0 !important;
+}
+
+.formGroup {
+  margin: 0 1rem !important;
+}
+
+.formControlModal {
+  border-radius: 3px !important;
+  max-width: 100% !important;
+}
+
+.form-control:focus {
+  border-color: #a9a59a !important;
+  box-shadow: 0 0 0 0.25rem rgba(169, 165, 154, 0.25) !important;
+}
+
 /* carousel Home */
 
 .containerCarouselHome {

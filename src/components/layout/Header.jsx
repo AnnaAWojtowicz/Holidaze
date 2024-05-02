@@ -12,8 +12,13 @@ import ButtonPrimary from "../Button";
 
 
 
-function Header({ handleShow }) {
-
+function Header() {
+    const [showModalLogin, setShowModalLogin] = useState(false);
+    const [showModalSignup, setShowModalSignup] = useState(false);
+    const handleShowLogin = () => setShowModalLogin(true);
+    const handleCloseLogin = () => setShowModalLogin(false);
+    const handleShowSignup = () => setShowModalLogin(true);
+    const handleCloseSignup = () => setShowModalLogin(false);
 
     return (
         <Navbar collapseOnSelect expand="lg" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
@@ -22,8 +27,6 @@ function Header({ handleShow }) {
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" />
             <Navbar.Collapse id="responsive-navbar-nav">
-
-
 
                 <div className="mx-auto py-md">
                     <Form className="d-flex justify-content-center align-items-center">
@@ -39,14 +42,12 @@ function Header({ handleShow }) {
                         </Button>
                     </Form>
                 </div>
-
                 <Nav className="ml-auto">
-                    <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShow} type="button" />
-                    <ButtonPrimary name="Sign-up" onClick={handleShow} type="button" />
-                    {/* <ModalMain showModal={props.showModal} handleClose={props.handleClose} handleShow={props.handleShow} /> */}
-
+                    <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
+                    <ModalMain showModal={showModalLogin} handleClose={handleCloseLogin} />
+                    <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
+                    <ModalMain showModal={showModalSignup} handleClose={handleCloseSignup} />
                 </Nav>
-
             </Navbar.Collapse>
 
         </Navbar>

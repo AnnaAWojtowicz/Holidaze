@@ -9,25 +9,6 @@ import CardHome from './CardHome';
 import CarouselHome from './CarouselHome';
 
 function Home() {
-    // return (
-    //     <Container fluid className='cardHomeWidth'>
-    //         <Row className='h-100'>
-    //             <Col lg={8} className="d-flex flex-column flex-grow-1"><CardHome className="flex-grow-1" /></Col>
-    //             <Col lg={4} className="d-flex flex-column flex-grow-1">
-    //                 <Row className='h-100'><CardHome className="flex-grow-1 imgCustomSize" /></Row>
-    //                 <Row className='h-100'><CardHome className="flex-grow-1 imgCustomSize" /></Row>
-    //             </Col>
-    //         </Row>
-    //         <Row>
-    //             <Col lg={4} className="d-flex flex-column flex-grow-1">
-    //                 <Row className='h-100'><CardHome className="flex-grow-1 imgCustomSize" /></Row>
-    //                 <Row className='h-100'><CardHome className="flex-grow-1 imgCustomSize" /></Row>
-    //             </Col>
-    //             <Col lg={8} className="d-flex flex-column flex-grow-1"><CardHome className="flex-grow-1" /></Col>
-    //         </Row>
-    //     </Container>
-    // );
-
     return (
         <div>
             <CarouselHome />
