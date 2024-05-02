@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import ExampleImage1 from "../img/luke-stackpoole-eWqOgJ-lfiI-unsplash3.jpg";
+import ExampleImage1 from "../img/luke-stackpoole-eWqOgJ-lfiI-unsplash4.jpg";
 import ExampleImage2 from "../img/nachelle-nocom-51adhgg5KkE-unsplash.jpg";
-import ExampleImage3 from "../img/roberto-nickson-bwIqQ5qQhXs-unsplash.jpg";
+import ExampleImage3 from "../img/roberto-nickson-bwIqQ5qQhXs-unsplash5.jpg";
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -25,6 +25,7 @@ function CarouselHome() {
                             </Col>
                         </Row>
                     </Container>
+                    <div className="phrase">Holidaze will help you find the perfect place for whatever reason</div>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item className="carouselItemHome">
@@ -40,6 +41,7 @@ function CarouselHome() {
                             </Col>
                         </Row>
                     </Container>
+                    <div className="phrase">Holidaze will help you find the perfect place for whatever reason</div>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item className="carouselItemHome">
@@ -55,6 +57,7 @@ function CarouselHome() {
                             </Col>
                         </Row>
                     </Container>
+                    <div className="phrase">Holidaze will help you find the perfect place for whatever reason</div>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

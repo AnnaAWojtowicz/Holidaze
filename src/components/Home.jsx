@@ -31,7 +31,7 @@ function Home() {
     return (
         <div>
             <CarouselHome />
-            <Row xs={1} md={2} lg={4} className="g-4 my-5 mx-2">
+            <Row xs={1} md={2} lg={3} className="g-4 my-5 mx-2">
                 {Array.from({ length: 12 }).map((_, idx) => (
                     <Col key={idx}>
                         <CardHome />

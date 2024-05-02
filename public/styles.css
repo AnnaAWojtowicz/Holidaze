@@ -186,7 +186,7 @@ body {
   cursor: pointer !important;
 }
 
-/* card & cardPage */
+/* carousel Home */
 
 .containerCarouselHome {
   display: flex;
@@ -203,7 +203,13 @@ body {
   height: 500px;
   overflow: hidden;
   border: 1px solid #1c1c1cff;
-  border-radius: 20px;
+  border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .carouselItemHome {
+    border-radius: 10px;
+  }
 }
 
 .carouselItemHome img {
@@ -221,7 +227,6 @@ body {
   font-family: "Advent Pro", sans-serif;
   color: #e9e8e4ff;
   font-size: 4rem;
-
   text-align: right;
   font-weight: 500;
   display: flex;
@@ -252,6 +257,43 @@ body {
   font-style: italic;
 }
 
+.phrase {
+  font-family: "Advent Pro", sans-serif;
+  color: #fafaffff;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 992px) {
+  .phrase {
+    font-size: 1.5rem;
+    margin: 0.25rem 0;
+  }
+  .word {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .phrase {
+    font-size: 1.5rem;
+    margin: 0.15rem 0;
+  }
+  .word {
+    font-size: 2rem;
+    text-align: left;
+    justify-content: start;
+    margin-left: 2rem;
+  }
+}
+
+/* cardHome & cardPage */
+
+.card {
+  --bs-card-border-color: none !important;
+}
 /* .row {
   margin: 0 !important;
 }
@@ -278,12 +320,12 @@ body {
 }
 
 .imgCardBorder {
-  border-radius: 20px 20px 0 0 !important;
+  border-radius: 10px 10px 0 0 !important;
 }
 
 @media (max-width: 992px) {
   .imgCardBorder {
-    border-radius: 15px 15px 0 0 !important;
+    border-radius: 5px 5px 0 0 !important;
   }
 }
 
@@ -309,12 +351,12 @@ body {
 }
 
 .footerCardBorder {
-  border-radius: 0 0 20px 20px !important;
+  border-radius: 0 0 10px 10px !important;
 }
 
 @media (max-width: 992px) {
   .footerCardBorder {
-    border-radius: 0 0 15px 15px !important;
+    border-radius: 0 0 5px 5px !important;
   }
 }
 
