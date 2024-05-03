@@ -21,3 +21,5 @@ Spacejoy (12.04.2021). _No title (An Apartment)._ Retrieved 30.04.2024 from: htt
 Rensburg van, D.J. (02.03.2019). _New Livingroom_ Retrieved 30.04.2024 from: https://unsplash.com/photos/brown-leather-padded-sofa-with-throw-pillows-inside-house-Ff1EIg5xJ9s
 
 Nickson, R. (09.08.2018). _No title (Casita)._ Retrieved 30.04.2024 from: https://unsplash.com/photos/white-wooden-table-bwIqQ5qQhXs
+
+Berger, S. (27.09.2017). _No title (Wooden planks)._ Retrieved 02.05.2024 from: https://unsplash.com/photos/photo-of-gray-wood-plank-2JONUbTfN38
