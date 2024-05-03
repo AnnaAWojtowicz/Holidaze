@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import NoImage from "../img/simon-berger-2JONUbTfN38-unsplash.jpg";
+import NumberOfGuests from "./icons/NumberOfGuests";
+import StarsRating from "./icons/StarsRating";
 
-function CardHome({ img, alt, name, price }) {
+function CardHome({ img, alt, name, price, guests, rating }) {
     return (<Card className='cardBorder mx-3'>
         <div className='imgContainer'>
             {img ? (<Card.Img variant="top" src={img} alt={alt} className='imgCardBorder imgResponsive' />
@@ -17,11 +19,12 @@ function CardHome({ img, alt, name, price }) {
         </div>
         <Card.Body className='bodyCardBorder'>
             <Card.Title>{name}</Card.Title>
-            {/* <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-            </Card.Text> */}
+            <Card.Text>
+                <NumberOfGuests guests={guests} />
+            </Card.Text>
+            <Card.Text>
+                <StarsRating rating={rating} />
+            </Card.Text>
         </Card.Body>
         <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
             <span>${price} / night</span>

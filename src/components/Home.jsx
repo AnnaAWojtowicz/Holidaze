@@ -41,7 +41,7 @@ function Home() {
 
                     return (
                         <Col key={item.id}>
-                            <CardHome img={img} alt={alt} name={item.name} price={item.price} />
+                            <CardHome img={img} alt={alt} name={item.name} price={item.price} guests={item.maxGuests} rating={item.rating} />
                         </Col>
                     );
                 })}

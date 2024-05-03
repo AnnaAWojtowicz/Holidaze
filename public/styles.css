@@ -387,6 +387,34 @@ body {
   align-items: center;
 }
 
+.bi {
+  color: #1c1c1cff;
+}
+
+.maximumGuests,
+.starsRating {
+  font-family: "Montserrat", sans-serif;
+  color: #1c1c1cff;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.bi-plus {
+  font-family: "Montserrat", sans-serif;
+  color: #1c1c1cff;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+
 .footerCardBorder {
   border-radius: 0 0 10px 10px !important;
 }
