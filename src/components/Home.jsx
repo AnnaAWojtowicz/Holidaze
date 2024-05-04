@@ -9,18 +9,17 @@ import CardHome from './CardHome';
 import CarouselHome from './CarouselHome';
 
 function Home() {
-    const [data, setData] = useState([]);
+    const [items, setData] = useState([]);
 
     useEffect(() => {
         fetch("https://v2.api.noroff.dev/holidaze/venues")
             .then((response) => response.json())
             .then((response) => {
-                console.log(response.data);
                 setData(response.data);
             })
             .catch((error) => {
                 console.error('API request failed:', error);
-                console.error('Current data:', data);
+                console.error('Current data:', items);
             });
     }
         , []);
@@ -35,13 +34,12 @@ function Home() {
                         <CardHome img={item.media[0].url} alt={item.media[0].alt} name={item.name} price={item.price} />
                     </Col>
                 ))} */}
-                {data.map(item => {
+                {items.map((item, index) => {
                     const img = item.media && item.media.length > 0 ? item.media[0].url : '';
                     const alt = item.media && item.media.length > 0 ? item.media[0].alt : '';
-
                     return (
-                        <Col key={item.id}>
-                            <CardHome img={img} alt={alt} name={item.name} price={item.price} guests={item.maxGuests} rating={item.rating} />
+                        <Col>
+                            <CardHome key={index} card={item} />
                         </Col>
                     );
                 })}

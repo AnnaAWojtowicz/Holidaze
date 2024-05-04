@@ -392,7 +392,11 @@ body {
 }
 
 .maximumGuests,
-.starsRating {
+.starsRating,
+.breakfast,
+.parking,
+.pets,
+.wifi {
   font-family: "Montserrat", sans-serif;
   color: #1c1c1cff;
   font-size: 1rem;
@@ -403,8 +407,23 @@ body {
   align-items: center;
 }
 
+.addressDetails,
+.breakfastDetails,
+.parkingDetails,
+.petsDetails,
+.wifiDetails {
+  margin: 0 1rem !important;
+}
+
+.media {
+  font-weight: 300 !important;
+}
+
 p {
   margin-bottom: 0 !important;
+  font-family: "Montserrat", sans-serif;
+  color: #1c1c1cff;
+  font-size: 1rem;
 }
 
 .bi-plus {

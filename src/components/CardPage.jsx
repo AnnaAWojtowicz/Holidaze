@@ -1,38 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { ListGroup } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Carousel from './Carousel';
+import NumberOfGuests from "./icons/NumberOfGuests";
+import StarsRating from "./icons/StarsRating";
+import Breakfast from "./icons/Breakfast";
+import Parking from "./icons/Parking";
+import Pets from "./icons/Pets";
+import Wifi from "./icons/Wifi";
 
 function CardPage() {
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`)
+            .then((response) => response.json())
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [id]);
+
+
     return (
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
                 <Carousel />
                 {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" className='imgCardBorder' /> */}
                 <Card.Body className='bodyCardBorder'>
-                    <Card.Title>Name</Card.Title>
-                    <Card.Text>
-                        Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vulputate metus placerat egestas luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec felis quam, vehicula vel enim ac, rutrum fringilla dui.
-                    </Card.Text>
+                    <Card.Title>{data.name}</Card.Title>
+                    <Card.Text>{data.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush bodyCardBorder">
                     <ListGroup.Item>
-                        <div>Price</div>
-                        <div>maxGuests</div>
-                        <div>rating</div></ListGroup.Item>
+                        <p>Price: ${data.price} night / person</p>
+                        <NumberOfGuests guests={data.maxGuests} />
+                        <StarsRating rating={data.rating} /></ListGroup.Item>
                     <ListGroup.Item>
-                        <div>Location:</div>
-                        <div>address</div>
-                        <div>city</div>
-                        <div>country</div>
+                        <p>Location:</p>
+                        {data.location && (data.location.address || data.location.city || data.location.country) ? (
+                            <>
+                                <p className="breakfastDetails">{data.location.address}</p>
+                                <p className="breakfastDetails">{data.location.city}</p>
+                                <p className="breakfastDetails">{data.location.country}</p>
+                            </>
+                        ) : (
+                            <p className="breakfastDetails">Sorry, no location was provided</p>
+                        )}
                     </ListGroup.Item>
-                    <ListGroup.Item><div>meta</div>
-                        <div>wifi</div>
-                        <div>parking</div>
-                        <div>breakfast</div>
-                        <div>pets</div>
+                    <ListGroup.Item><p>This place offers:</p>
+                        {data.meta && data.meta.wifi && <Wifi />}
+                        {data.meta && data.meta.breakfast && <Breakfast />}
+                        {data.meta && data.meta.parking && <Parking />}
+                        {data.meta && data.meta.pets && <Pets />}
                     </ListGroup.Item>
                     <ListGroup.Item><div>About owner:</div>
                         <div>name</div>
