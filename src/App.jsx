@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/layout/Layout';
 import Home from './components/Home';
-import CardPage from './components/CardPage';
+import CardPage from './components/cardPage/CardPage';
 
 
 

@@ -396,7 +396,8 @@ body {
 .breakfast,
 .parking,
 .pets,
-.wifi {
+.wifi,
+.host {
   font-family: "Montserrat", sans-serif;
   color: #1c1c1cff;
   font-size: 1rem;
@@ -411,7 +412,8 @@ body {
 .breakfastDetails,
 .parkingDetails,
 .petsDetails,
-.wifiDetails {
+.wifiDetails,
+.hostDetails {
   margin: 0 1rem !important;
 }
 

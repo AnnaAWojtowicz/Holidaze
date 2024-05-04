@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import ExampleImage from "../img/clement-proust-bDGgOlguqJA-unsplash.jpg";
+import ExampleImage from "../../img/clement-proust-bDGgOlguqJA-unsplash.jpg";
 
 function ControlledCarousel() {
     const [index, setIndex] = useState(0);

@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Carousel from './Carousel';
-import NumberOfGuests from "./icons/NumberOfGuests";
-import StarsRating from "./icons/StarsRating";
-import Breakfast from "./icons/Breakfast";
-import Parking from "./icons/Parking";
-import Pets from "./icons/Pets";
-import Wifi from "./icons/Wifi";
+import Carousel from "./Carousel";
+import NumberOfGuests from "../icons/NumberOfGuests";
+import StarsRating from "../icons/StarsRating";
+import Breakfast from "../icons/Breakfast";
+import Parking from "../icons/Parking";
+import Pets from "../icons/Pets";
+import Wifi from "../icons/Wifi";
+import Host from "./Host";
 
 function CardPage() {
     const { id } = useParams();
@@ -26,7 +27,11 @@ function CardPage() {
             });
     }, [id]);
 
-
+    let hostData;
+    if (data && data.owner) {
+        const { name, email, avatar, bio } = data.owner;
+        const hostData = { name, email, avatar, bio };
+    }
     return (
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
@@ -50,7 +55,7 @@ function CardPage() {
                                 <p className="breakfastDetails">{data.location.country}</p>
                             </>
                         ) : (
-                            <p className="breakfastDetails">Sorry, no location was provided</p>
+                            <p className="breakfastDetails">Sorry, no information about the location has been provided</p>
                         )}
                     </ListGroup.Item>
                     <ListGroup.Item><p>This place offers:</p>
@@ -59,11 +64,14 @@ function CardPage() {
                         {data.meta && data.meta.parking && <Parking />}
                         {data.meta && data.meta.pets && <Pets />}
                     </ListGroup.Item>
-                    <ListGroup.Item><div>About owner:</div>
-                        <div>name</div>
-                        <div>email</div>
-                        <div>bio</div>
-                        <div>avatar</div>
+                    <ListGroup.Item>{hostData ? <Host data={hostData} />
+                        : (<div>
+                            <p>About host:</p>
+                            <div className="host">
+                                <p className="hostDetails">Sorry, no information about the host has been provided</p>
+                            </div>
+                        </div>
+                        )}
                     </ListGroup.Item>
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
