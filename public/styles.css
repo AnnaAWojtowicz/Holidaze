@@ -393,6 +393,7 @@ body {
 
 .maximumGuests,
 .starsRating,
+.location,
 .breakfast,
 .parking,
 .pets,
@@ -410,6 +411,7 @@ body {
 
 .addressDetails,
 .breakfastDetails,
+.locationDetails,
 .parkingDetails,
 .petsDetails,
 .wifiDetails,

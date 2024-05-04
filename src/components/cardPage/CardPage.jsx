@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Carousel from "./Carousel";
 import NumberOfGuests from "../icons/NumberOfGuests";
 import StarsRating from "../icons/StarsRating";
+import Location from "./Location";
 import Breakfast from "../icons/Breakfast";
 import Parking from "../icons/Parking";
 import Pets from "../icons/Pets";
@@ -47,15 +48,13 @@ function CardPage() {
                         <NumberOfGuests guests={data.maxGuests} />
                         <StarsRating rating={data.rating} /></ListGroup.Item>
                     <ListGroup.Item>
-                        <p>Location:</p>
+
                         {data.location && (data.location.address || data.location.city || data.location.country) ? (
-                            <>
-                                <p className="breakfastDetails">{data.location.address}</p>
-                                <p className="breakfastDetails">{data.location.city}</p>
-                                <p className="breakfastDetails">{data.location.country}</p>
-                            </>
-                        ) : (
-                            <p className="breakfastDetails">Sorry, no information about the location has been provided</p>
+                            <Location data={data} />
+                        ) : (<div>
+                            <p className="location">Location:</p>
+                            <p className="locationDetails">Sorry, no information about the location has been provided</p>
+                        </div>
                         )}
                     </ListGroup.Item>
                     <ListGroup.Item><p>This place offers:</p>
