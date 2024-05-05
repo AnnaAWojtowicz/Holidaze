@@ -12,13 +12,15 @@ import Parking from "../icons/Parking";
 import Pets from "../icons/Pets";
 import Wifi from "../icons/Wifi";
 import Host from "./Host";
+import CalendarAvailability from "./CalendarAvailability";
 
 function CardPage() {
     const { id } = useParams();
     const [data, setData] = useState([]);
+    const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
 
     useEffect(() => {
-        fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`)
+        fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
                 setData(response.data);
@@ -28,11 +30,18 @@ function CardPage() {
             });
     }, [id]);
 
+
+    const handleExcludeDatesChange = (isEmpty) => {
+        setIsExcludeDatesEmpty(isEmpty);
+    };
+
     let hostData;
     if (data && data.owner) {
         const { name, email, avatar, bio } = data.owner;
         const hostData = { name, email, avatar, bio };
     }
+
+
     return (
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
@@ -70,6 +79,13 @@ function CardPage() {
                                 <p className="hostDetails">Sorry, no information about the host has been provided</p>
                             </div>
                         </div>
+                        )}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        <p className="availability">Availability:</p>
+                        <CalendarAvailability data={data} onExcludeDatesChange={handleExcludeDatesChange} />
+                        {isExcludeDatesEmpty && (
+                            <p className="availabilityDetails">Sorry, no information about the availability has been provided</p>
                         )}
                     </ListGroup.Item>
                 </ListGroup>

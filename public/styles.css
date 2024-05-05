@@ -409,14 +409,31 @@ body {
   align-items: center;
 }
 
+.availability {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.availabilityCalendar {
+  margin: auto;
+  width: 50%;
+}
+
 .addressDetails,
 .breakfastDetails,
 .locationDetails,
 .parkingDetails,
 .petsDetails,
 .wifiDetails,
-.hostDetails {
+.hostDetails,
+.availabilityDetails {
   margin: 0 1rem !important;
+}
+
+.availabilityDetails {
+  margin: 0;
+  width: 100%;
 }
 
 .media {
