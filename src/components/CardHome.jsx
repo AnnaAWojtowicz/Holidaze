@@ -10,22 +10,22 @@ function CardHome({ card }) {
     const { id, name, price, maxGuests, rating, media } = card;
 
     let img, alt;
+    let isImgMissing = false;
     if (media && media.length > 0) {
         img = media[0].url;
         alt = media[0].alt;
     } else {
         img = NoImage;
         alt = "No image available";
+        isImgMissing = true;
     }
+
 
     return (<Card className='cardBorder mx-3'>
         <div className='imgContainer'>
-            {img ? (<Card.Img variant="top" src={img} alt={alt} className='imgCardBorder imgResponsive' />
-            ) : (
-                <div>
-                    <Card.Img variant="top" src={NoImage} alt="No image available" className='imgCardBorder imgResponsive' />
-                    <Card.ImgOverlay> <Card.Text>Sorry, no image was provided</Card.Text></Card.ImgOverlay>
-                </div>
+            <Card.Img variant="top" src={img} alt={alt} className='imgCardBorder imgResponsive' />
+            {isImgMissing && (
+                <div className="card-img-overlay"> <Card.Text className="noImgText">Sorry, no image was provided</Card.Text></div>
             )}
         </div>
         <Card.Body className='bodyCardBorder'>
