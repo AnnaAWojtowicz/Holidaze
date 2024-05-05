@@ -14,16 +14,18 @@ import Wifi from "../icons/Wifi";
 import Host from "./Host";
 import CalendarAvailability from "./CalendarAvailability";
 
-function CardPage() {
+
+
+function CardPage({ data }) {
     const { id } = useParams();
-    const [data, setData] = useState([]);
+    const [cardData, setCardData] = useState([]);
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
 
     useEffect(() => {
         fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
-                setData(response.data);
+                setCardData(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -36,30 +38,31 @@ function CardPage() {
     };
 
     let hostData;
-    if (data && data.owner) {
+    if (data?.owner) {
         const { name, email, avatar, bio } = data.owner;
-        const hostData = { name, email, avatar, bio };
+        hostData = { name, email, avatar, bio };
     }
 
 
     return (
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
-                <Carousel />
+                {cardData ? <Carousel data={cardData} /> : <p>Loading...</p>}
+
                 {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" className='imgCardBorder' /> */}
                 <Card.Body className='bodyCardBorder'>
-                    <Card.Title>{data.name}</Card.Title>
-                    <Card.Text>{data.description}</Card.Text>
+                    <Card.Title>{cardData?.name}</Card.Title>
+                    <Card.Text>{cardData?.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush bodyCardBorder">
                     <ListGroup.Item>
-                        <p>Price: ${data.price} night / person</p>
-                        <NumberOfGuests guests={data.maxGuests} />
-                        <StarsRating rating={data.rating} /></ListGroup.Item>
+                        <p>Price: ${cardData?.price} night / person</p>
+                        <NumberOfGuests guests={cardData?.maxGuests} />
+                        <StarsRating rating={cardData?.rating} /></ListGroup.Item>
                     <ListGroup.Item>
 
-                        {data.location && (data.location.address || data.location.city || data.location.country) ? (
-                            <Location data={data} />
+                        {cardData?.location && (cardData.location?.address || cardData.location?.city || cardData.location?.country) ? (
+                            <Location data={cardData} />
                         ) : (<div>
                             <p className="location">Location:</p>
                             <p className="locationDetails">Sorry, no information about the location has been provided</p>
@@ -67,10 +70,10 @@ function CardPage() {
                         )}
                     </ListGroup.Item>
                     <ListGroup.Item><p>This place offers:</p>
-                        {data.meta && data.meta.wifi && <Wifi />}
-                        {data.meta && data.meta.breakfast && <Breakfast />}
-                        {data.meta && data.meta.parking && <Parking />}
-                        {data.meta && data.meta.pets && <Pets />}
+                        {cardData?.meta && cardData.meta?.wifi && <Wifi />}
+                        {cardData?.meta && cardData.meta?.breakfast && <Breakfast />}
+                        {cardData?.meta && cardData.meta?.parking && <Parking />}
+                        {cardData?.meta && cardData.meta?.pets && <Pets />}
                     </ListGroup.Item>
                     <ListGroup.Item>{hostData ? <Host data={hostData} />
                         : (<div>
