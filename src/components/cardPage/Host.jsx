@@ -3,14 +3,14 @@ import React from "react";
 function Host({ data }) {
     return (
         <div>
-            <p className="hostDetails">About host:</p>
+            <div className="hostDetails">About host:</div>
             <div className="host">
                 <div>
-                    <p className="hostDetails">Name: {data.name}</p>
-                    <p className="hostDetails">Email: {data.email}</p>
+                    <div className="hostDetails">Name: {data.name}</div>
+                    <div className="hostDetails">Email: {data.email}</div>
                 </div>
                 <img className="hostAvatar" src={data.avatar.url} alt={data.avatar.alt} />
-                <p className="hostDetails">{data.bio}</p>
+                <div className="hostDetails">{data.bio}</div>
             </div>
         </div>
     );

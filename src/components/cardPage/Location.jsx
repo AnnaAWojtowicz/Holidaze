@@ -4,9 +4,9 @@ function Location({ data }) {
     return (
         <div>
             <div className="location">Location:</div>
-            <p className="locationDetails">{data.location.address}</p>
-            <p className="locationDetails">{data.location.city}</p>
-            <p className="locationDetails">{data.location.country}</p>
+            <div className="locationDetails">{data.location.address}</div>
+            <div className="locationDetails">{data.location.city}</div>
+            <div className="locationDetails">{data.location.country}</div>
         </div>
     );
 }

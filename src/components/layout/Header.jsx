@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import ModalMain from "./Modal";
 import ButtonPrimary from "../Button";
+import SearchForm from "./SearchForm";
 
 
 
@@ -37,20 +38,7 @@ function Header() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" />
             <Navbar.Collapse id="responsive-navbar-nav">
 
-                <div className="mx-auto py-md">
-                    <Form className="d-flex justify-content-center align-items-center">
-                        <Form.Control
-                            type="search"
-                            placeholder="Where?"
-                            className="mr-sm-2 form-control-sm form-control whereForm"
-                            aria-label="Where?"
-                        />
-                        <Calendar />
-                        <Button variant="outline-success" className="btnSearch">
-                            <i className="bi bi-search loop"></i>
-                        </Button>
-                    </Form>
-                </div>
+                <SearchForm />
                 <Nav className="ml-auto">
                     <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
                     <ModalMain showModal={showModalLogin} handleClose={handleCloseLogin} isSignIn={isSignIn} />

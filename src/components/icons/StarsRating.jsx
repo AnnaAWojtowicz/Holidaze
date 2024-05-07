@@ -9,8 +9,8 @@ function StarsRating({ rating }) {
 
     return (
         <div className="starsRating">
-            <p>Users' rating: {rating}</p>
-            <p>
+            <div>Users' rating: {rating}</div>
+            <div>
                 {Array.from({ length: fullStars }).map((_, i) => (
                     <i key={`full${i}`} className="bi bi-star-fill"></i>
                 ))}
@@ -20,7 +20,7 @@ function StarsRating({ rating }) {
                 {Array.from({ length: emptyStars }).map((_, i) => (
                     <i key={`empty${i}`} className="bi bi-star"></i>
                 ))}
-            </p>
+            </div>
         </div>
     );
 }

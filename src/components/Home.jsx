@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from "react-router-dom";
+
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
@@ -7,12 +8,19 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import CardHome from './CardHome';
 import CarouselHome from './CarouselHome';
+import { apiVenuesPath, apiVenuesSearchPath } from '../api/constants';
+import SearchContext from './Context';
 
 function Home() {
     const [items, setData] = useState([]);
+    const { inputValue, setInputValue } = useContext(SearchContext);
 
     useEffect(() => {
-        fetch("https://v2.api.noroff.dev/holidaze/venues")
+        const fetchUrl = inputValue
+            ? `${apiVenuesSearchPath}${inputValue}`
+            : apiVenuesPath;
+
+        fetch(fetchUrl)
             .then((response) => response.json())
             .then((response) => {
                 setData(response.data);
@@ -22,24 +30,19 @@ function Home() {
                 console.error('Current data:', items);
             });
     }
-        , []);
+        , [inputValue]);
 
     return (
         <div>
             <CarouselHome />
             <Row xs={1} md={2} lg={3} className="g-4 my-5 mx-2">
-                {/* {data.map(item => (
-                    
-                    <Col key={item.id}>
-                        <CardHome img={item.media[0].url} alt={item.media[0].alt} name={item.name} price={item.price} />
-                    </Col>
-                ))} */}
+                {items.length === 0 && <h1>Sorry, no results found :(</h1>}
                 {items.map((item, index) => {
                     const img = item.media && item.media.length > 0 ? item.media[0].url : '';
                     const alt = item.media && item.media.length > 0 ? item.media[0].alt : '';
                     return (
-                        <Col>
-                            <CardHome key={index} card={item} />
+                        <Col key={index} >
+                            <CardHome card={item} />
                         </Col>
                     );
                 })}
