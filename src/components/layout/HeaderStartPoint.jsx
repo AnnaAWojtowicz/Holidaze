@@ -22,7 +22,8 @@ function HeaderStartPoint({ showModalLogin,
     showSuccessModal,
     setIsSignIn,
     setShowModalLogin,
-    setShowSuccessModal }) {
+    setShowSuccessModal,
+    loginUser }) {
     return (
         <div>
             <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
@@ -33,6 +34,11 @@ function HeaderStartPoint({ showModalLogin,
                 onHide={() => setShowModalLogin(false)}
                 setEmail={setEmail}
                 setPassword={setPassword}
+                email={email}
+                password={password}
+                role={role}
+                loginUser={loginUser}
+
             />
             <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
             <ModalMain

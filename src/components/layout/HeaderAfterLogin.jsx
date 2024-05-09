@@ -5,7 +5,7 @@ import ExampleImage1 from "../../img/luke-stackpoole-eWqOgJ-lfiI-unsplash4.jpg";
 function HeaderAfterLogin() {
     return (
         <div>
-            <NavDropdown title={<img src={ExampleImage1} alt="mdo" width="40" height="40" class="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem">
+            <NavDropdown title={<img src={ExampleImage1} alt="mdo" width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem">
 
                 <NavDropdown.Item href="#action/3.1" >Your account</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">

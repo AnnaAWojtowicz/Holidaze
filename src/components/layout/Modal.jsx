@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import ButtonPrimary from '../Button';
 
 
-function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCloseSignup, isSignIn, register, showModal, handleClose, name, setName, email, setEmail, password, setPassword, role, setRole }) {
+function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCloseSignup, isSignIn, register, showModal, handleClose, name, setName, email, setEmail, password, setPassword, role, setRole, loginUser }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await register(name, email, password, role);
@@ -15,7 +15,17 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
         setPassword('');
     };
 
-
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await loginUser(email, password);
+            handleCloseLogin();
+            setEmail('');
+            setPassword('');
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <>
@@ -28,7 +38,7 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                     )}
                 </Modal.Header>
                 <Modal.Body>
-                    <Form id="registerAndLoginForm" onSubmit={handleSubmit}>
+                    <Form id="registerAndLoginForm" onSubmit={isSignIn ? handleLoginSubmit : handleSubmit}>
                         {!isSignIn && (
                             <Form.Group className="mb-3 formGroup">
                                 <Form.Label>Sign-up as</Form.Label>

@@ -23,6 +23,7 @@ function Header() {
     const [showModalSignup, setShowModalSignup] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isSignIn, setIsSignIn] = useState(false);
+    const [isLoggedin, setIsLoggedin] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +36,17 @@ function Header() {
             setRole(role);
             setShowModalSignup(false);
             setShowSuccessModal(true);
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const loginUser = async (email, password) => {
+        try {
+            const data = await login(email, password);
+            handleCloseLogin();
+            setIsLoggedin(true);
             return data;
         } catch (error) {
             console.error('Error:', error);
@@ -66,28 +78,30 @@ function Header() {
 
                 <SearchForm />
                 <Nav className="ml-auto">
-                    <HeaderStartPoint
-                        showModalLogin={showModalLogin}
-                        handleShowLogin={handleShowLogin}
-                        handleCloseLogin={handleCloseLogin}
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                        showModalSignup={showModalSignup}
-                        handleShowSignup={handleShowSignup}
-                        handleCloseSignup={handleCloseSignup}
-                        name={name}
-                        setName={setName}
-                        email={email}
-                        password={password}
-                        role={role}
-                        setRole={setRole}
-                        registerUser={registerUser}
-                        showSuccessModal={showSuccessModal}
-                        setIsSignIn={setIsSignIn}
-                        setShowModalLogin={setShowModalLogin}
-                        setShowSuccessModal={setShowSuccessModal}
-                    />
-                    {/* <HeaderAfterLogin /> */}
+                    {isLoggedin ? <HeaderAfterLogin /> :
+                        <HeaderStartPoint
+                            showModalLogin={showModalLogin}
+                            handleShowLogin={handleShowLogin}
+                            handleCloseLogin={handleCloseLogin}
+                            setEmail={setEmail}
+                            setPassword={setPassword}
+                            showModalSignup={showModalSignup}
+                            handleShowSignup={handleShowSignup}
+                            handleCloseSignup={handleCloseSignup}
+                            name={name}
+                            setName={setName}
+                            email={email}
+                            password={password}
+                            role={role}
+                            setRole={setRole}
+                            registerUser={registerUser}
+                            showSuccessModal={showSuccessModal}
+                            setIsSignIn={setIsSignIn}
+                            setShowModalLogin={setShowModalLogin}
+                            setShowSuccessModal={setShowSuccessModal}
+                            loginUser={loginUser}
+                        />}
+
                 </Nav>
             </Navbar.Collapse>
 
