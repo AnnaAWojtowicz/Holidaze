@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { NavDropdown } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Calendar from "./Calendar";
@@ -12,7 +13,9 @@ import ButtonPrimary from "../Button";
 import SearchForm from "./SearchForm";
 import { register } from "../../api/register";
 import ModalRegisterSuccess from "../profile/ModalRegisterSuccess";
-
+import { login } from "../../api/login";
+import HeaderStartPoint from "./HeaderStartPoint";
+import HeaderAfterLogin from "./HeaderAfterLogin";
 
 function Header() {
 
@@ -64,40 +67,28 @@ function Header() {
 
                 <SearchForm />
                 <Nav className="ml-auto">
-                    <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
-                    <ModalMain
+                    {/* <HeaderStartPoint
                         showModalLogin={showModalLogin}
+                        handleShowLogin={handleShowLogin}
                         handleCloseLogin={handleCloseLogin}
-                        isSignIn={true}
-                        onHide={() => setShowModalLogin(false)}
                         setEmail={setEmail}
                         setPassword={setPassword}
-                    />
-
-
-                    <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
-                    <ModalMain
                         showModalSignup={showModalSignup}
+                        handleShowSignup={handleShowSignup}
                         handleCloseSignup={handleCloseSignup}
-                        isSignIn={false}
                         name={name}
                         setName={setName}
                         email={email}
-                        setEmail={setEmail}
                         password={password}
-                        setPassword={setPassword}
                         role={role}
                         setRole={setRole}
-
-                        register={registerUser}
-                    />
-                    <ModalRegisterSuccess
-                        show={showSuccessModal}
-                        onHide={() => setShowSuccessModal(false)}
-                        role={role}
+                        registerUser={registerUser}
+                        showSuccessModal={showSuccessModal}
                         setIsSignIn={setIsSignIn}
                         setShowModalLogin={setShowModalLogin}
-                    />
+                        setShowSuccessModal={setShowSuccessModal}
+                    /> */}
+                    <HeaderAfterLogin />
                 </Nav>
             </Navbar.Collapse>
 
