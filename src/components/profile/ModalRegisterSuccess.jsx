@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 function ModalRegisterSuccess({ show, onHide, role, setShowModalLogin, setIsSignIn }) {
     const navigate = useNavigate();
 
-
     const handleClose = () => {
         onHide();
         navigate('/');

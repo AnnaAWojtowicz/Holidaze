@@ -29,11 +29,10 @@ function Header() {
     const [role, setRole] = useState('guest');
 
 
-
-
     const registerUser = async (name, email, password, role) => {
         try {
             const data = await register(name, email, password, role);
+            setRole(role);
             setShowModalSignup(false);
             setShowSuccessModal(true);
             return data;
@@ -67,7 +66,7 @@ function Header() {
 
                 <SearchForm />
                 <Nav className="ml-auto">
-                    {/* <HeaderStartPoint
+                    <HeaderStartPoint
                         showModalLogin={showModalLogin}
                         handleShowLogin={handleShowLogin}
                         handleCloseLogin={handleCloseLogin}
@@ -87,8 +86,8 @@ function Header() {
                         setIsSignIn={setIsSignIn}
                         setShowModalLogin={setShowModalLogin}
                         setShowSuccessModal={setShowSuccessModal}
-                    /> */}
-                    <HeaderAfterLogin />
+                    />
+                    {/* <HeaderAfterLogin /> */}
                 </Nav>
             </Navbar.Collapse>
 

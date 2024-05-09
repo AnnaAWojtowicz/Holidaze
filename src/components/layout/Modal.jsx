@@ -13,8 +13,6 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
         setName('');
         setEmail('');
         setPassword('');
-        setRole('');
-
     };
 
 

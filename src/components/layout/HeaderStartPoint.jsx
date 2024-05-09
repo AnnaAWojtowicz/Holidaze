@@ -49,10 +49,12 @@ function HeaderStartPoint({ showModalLogin,
                 setRole={setRole}
                 register={registerUser}
             />
+
             <ModalRegisterSuccess
                 show={showSuccessModal}
                 onHide={() => setShowSuccessModal(false)}
                 role={role}
+                setRole={setRole}
                 setIsSignIn={setIsSignIn}
                 setShowModalLogin={setShowModalLogin}
             />
