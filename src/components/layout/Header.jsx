@@ -10,13 +10,36 @@ import "react-datepicker/dist/react-datepicker.css";
 import ModalMain from "./Modal";
 import ButtonPrimary from "../Button";
 import SearchForm from "./SearchForm";
-
+import { register } from "../../api/register";
+import ModalRegisterSuccess from "../profile/ModalRegisterSuccess";
 
 
 function Header() {
+
     const [showModalLogin, setShowModalLogin] = useState(false);
     const [showModalSignup, setShowModalSignup] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isSignIn, setIsSignIn] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('guest');
+
+
+
+
+    const registerUser = async (name, email, password, role) => {
+        try {
+            const data = await register(name, email, password, role);
+            setShowModalSignup(false);
+            setShowSuccessModal(true);
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+
 
     const handleShowLogin = () => {
         setIsSignIn(true);
@@ -26,9 +49,10 @@ function Header() {
 
     const handleShowSignup = () => {
         setIsSignIn(false);
-        setShowModalLogin(true)
+        setShowModalSignup(true)
     };
-    const handleCloseSignup = () => setShowModalLogin(false);
+
+    const handleCloseSignup = () => setShowModalSignup(false);
 
     return (
         <Navbar collapseOnSelect expand="lg" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
@@ -41,9 +65,39 @@ function Header() {
                 <SearchForm />
                 <Nav className="ml-auto">
                     <ButtonPrimary className="modalsInNav" name="Login" onClick={handleShowLogin} type="button" />
-                    <ModalMain showModal={showModalLogin} handleClose={handleCloseLogin} isSignIn={isSignIn} />
+                    <ModalMain
+                        showModalLogin={showModalLogin}
+                        handleCloseLogin={handleCloseLogin}
+                        isSignIn={true}
+                        onHide={() => setShowModalLogin(false)}
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                    />
+
+
                     <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
-                    <ModalMain showModal={showModalSignup} handleClose={handleCloseSignup} isSignIn={isSignIn} />
+                    <ModalMain
+                        showModalSignup={showModalSignup}
+                        handleCloseSignup={handleCloseSignup}
+                        isSignIn={false}
+                        name={name}
+                        setName={setName}
+                        email={email}
+                        setEmail={setEmail}
+                        password={password}
+                        setPassword={setPassword}
+                        role={role}
+                        setRole={setRole}
+
+                        register={registerUser}
+                    />
+                    <ModalRegisterSuccess
+                        show={showSuccessModal}
+                        onHide={() => setShowSuccessModal(false)}
+                        role={role}
+                        setIsSignIn={setIsSignIn}
+                        setShowModalLogin={setShowModalLogin}
+                    />
                 </Nav>
             </Navbar.Collapse>
 
@@ -53,43 +107,3 @@ function Header() {
 
 export default Header;
 
-{/* <Navbar collapseOnSelect expand="lg" className="navFont">
-<Container>
-    <Navbar.Brand href="#home" className="logo">Holidaze</Navbar.Brand>
-    <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" />
-    <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                    Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                </NavDropdown.Item>
-            </NavDropdown>
-
-        </Nav>
-        <Form className="d-flex">
-            <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-        </Form>
-        <Nav className="ml-auto">
-            <Nav.Link href="#deets">Login</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-                Sign-up
-            </Nav.Link>
-        </Nav>
-
-    </Navbar.Collapse>
-</Container>
-</Navbar> */}

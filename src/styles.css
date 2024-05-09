@@ -207,6 +207,11 @@ body {
   background-color: #eef0f2 !important;
 }
 
+.form-check-input:checked {
+  background-color: #1c1c1cff !important;
+  border-color: #1c1c1cff !important;
+}
+
 .modal-footer {
   margin: 0 1rem 1rem 1rem !important;
   background-color: #eef0f2 !important;
@@ -214,7 +219,7 @@ body {
 }
 
 .formGroup {
-  margin: 0 1rem !important;
+  margin: 1rem 1rem !important;
 }
 
 .formControlModal {

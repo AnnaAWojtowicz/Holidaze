@@ -30,12 +30,12 @@ function CardHome({ card }) {
         </div>
         <Card.Body className='bodyCardBorder'>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>
+            <div>
                 <NumberOfGuests guests={maxGuests} />
-            </Card.Text>
-            <Card.Text>
+            </div>
+            <div>
                 <StarsRating rating={rating} />
-            </Card.Text>
+            </div>
         </Card.Body>
         <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
             <span>${price} / night</span>

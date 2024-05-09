@@ -47,7 +47,7 @@ function CardPage({ data }) {
     return (
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
-                {cardData ? <Carousel data={cardData} /> : <p>Loading...</p>}
+                {cardData ? <Carousel data={cardData} /> : <div>Loading...</div>}
 
                 {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" className='imgCardBorder' /> */}
                 <Card.Body className='bodyCardBorder'>
@@ -56,39 +56,40 @@ function CardPage({ data }) {
                 </Card.Body>
                 <ListGroup className="list-group-flush bodyCardBorder">
                     <ListGroup.Item>
-                        <p>Price: ${cardData?.price} night / person</p>
+                        <div>Price: ${cardData?.price} night / person</div>
                         <NumberOfGuests guests={cardData?.maxGuests} />
-                        <StarsRating rating={cardData?.rating} /></ListGroup.Item>
+                        <StarsRating rating={cardData?.rating} />
+                    </ListGroup.Item>
                     <ListGroup.Item>
 
                         {cardData?.location && (cardData.location?.address || cardData.location?.city || cardData.location?.country) ? (
                             <Location data={cardData} />
                         ) : (<div>
-                            <p className="location">Location:</p>
-                            <p className="locationDetails">Sorry, no information about the location has been provided</p>
+                            <div className="location">Location:</div>
+                            <div className="locationDetails">Sorry, no information about the location has been provided</div>
                         </div>
                         )}
                     </ListGroup.Item>
-                    <ListGroup.Item><p>This place offers:</p>
+                    <ListGroup.Item><div>This place offers:</div>
                         {cardData?.meta && cardData.meta?.wifi && <Wifi />}
                         {cardData?.meta && cardData.meta?.breakfast && <Breakfast />}
-                        {cardData?.meta && cardData.meta?.parking && <Parking />}
-                        {cardData?.meta && cardData.meta?.pets && <Pets />}
+                        {cardData?.meta && cardData.meta?.parking && <divarking />}
+                        {cardData?.meta && cardData.meta?.pets && <divets />}
                     </ListGroup.Item>
                     <ListGroup.Item>{hostData ? <Host data={hostData} />
                         : (<div>
-                            <p>About host:</p>
+                            <div>About host:</div>
                             <div className="host">
-                                <p className="hostDetails">Sorry, no information about the host has been provided</p>
+                                <div className="hostDetails">Sorry, no information about the host has been provided</div>
                             </div>
                         </div>
                         )}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <p className="availability">Availability:</p>
+                        <div className="availability">Availability:</div>
                         <CalendarAvailability data={data} onExcludeDatesChange={handleExcludeDatesChange} />
                         {isExcludeDatesEmpty && (
-                            <p className="availabilityDetails">Sorry, no information about the availability has been provided</p>
+                            <div className="availabilityDetails">Sorry, no information about the availability has been provided</div>
                         )}
                     </ListGroup.Item>
                 </ListGroup>

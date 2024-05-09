@@ -5,12 +5,23 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import ButtonPrimary from '../Button';
 
-function ModalMain({ showModal, handleClose, isSignIn }) {
+
+function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCloseSignup, isSignIn, register, showModal, handleClose, name, setName, email, setEmail, password, setPassword, role, setRole }) {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await register(name, email, password, role);
+        setName('');
+        setEmail('');
+        setPassword('');
+        setRole('');
+
+    };
+
 
 
     return (
         <>
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={isSignIn ? showModalLogin : showModalSignup} onHide={isSignIn ? handleCloseLogin : handleCloseSignup}>
                 <Modal.Header closeButton className='modalHeader'>
                     {!isSignIn ? (
                         <Modal.Title>Create an account</Modal.Title>
@@ -19,12 +30,42 @@ function ModalMain({ showModal, handleClose, isSignIn }) {
                     )}
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form id="registerAndLoginForm" onSubmit={handleSubmit}>
                         {!isSignIn && (
-                            <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput1">
+                            <Form.Group className="mb-3 formGroup">
+                                <Form.Label>Sign-up as</Form.Label>
+                                {['radio'].map((type) => (
+                                    <div key={`inline-${type}`} className="mb-3">
+                                        <Form.Check
+                                            inline
+                                            label="Guest"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-1`}
+                                            checked={role === 'guest'}
+                                            onChange={() => setRole('guest')}
+                                        />
+                                        <Form.Check
+                                            inline
+                                            label="Manager"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-2`}
+                                            checked={role === 'manager'}
+                                            onChange={() => setRole('manager')}
+                                        />
+
+                                    </div>
+                                ))}
+                            </Form.Group>
+                        )}
+
+                        {!isSignIn && (
+                            <Form.Group className="mb-3 formGroup">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
-                                    type="name"
+                                    type="text"
+                                    value={name} onChange={(event) => setName(event.target.value)}
                                     id="inputName"
                                     aria-describedby="nameHelpBlock"
                                     className='formControlModal'
@@ -36,10 +77,11 @@ function ModalMain({ showModal, handleClose, isSignIn }) {
                             </Form.Group>
                         )}
 
-                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput2">
+                        <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 type="email"
+                                value={email} onChange={(event) => setEmail(event.target.value)}
                                 id="inputEmail"
                                 aria-describedby="emailHelpBlock"
                                 className='formControlModal'
@@ -47,7 +89,7 @@ function ModalMain({ showModal, handleClose, isSignIn }) {
                             />
                             {!isSignIn && (
                                 <Form.Text id="emailHelpBlock" muted>
-                                    Your email address must have the following format: name@example.com
+                                    Your email address must have the following format: name@stud.noroff.no
                                 </Form.Text>
                             )}
                             {/* <Form.Text id="passwordHelpBlock" muted>
@@ -55,10 +97,11 @@ function ModalMain({ showModal, handleClose, isSignIn }) {
                             </Form.Text> */}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 formGroup" controlId="exampleForm.ControlInput3">
+                        <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Enter your password</Form.Label>
                             <Form.Control
                                 type="password"
+                                value={password} onChange={(event) => setPassword(event.target.value)}
                                 id="inputPassword"
                                 aria-describedby="passwordHelpBlock"
                                 className='formControlModal'
@@ -74,13 +117,17 @@ function ModalMain({ showModal, handleClose, isSignIn }) {
                                 Incorrect password. Please try again.
                             </Form.Text> */}
                         </Form.Group>
+
+
+
+
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">
-                    <Button variant="btn btn-outline-success" onClick={handleClose}>
+                    <Button variant="btn btn-outline-success" onClick={isSignIn ? handleCloseLogin : handleCloseSignup}>
                         Close
                     </Button>
-                    <Button variant="btn btn-outline-success" onClick={handleClose}>
+                    <Button variant="btn btn-outline-success" type="submit" form='registerAndLoginForm'>
                         Submit
                     </Button>
                 </Modal.Footer>
