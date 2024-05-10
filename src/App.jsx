@@ -6,6 +6,7 @@ import './styles.css';
 import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import CardPage from './components/cardPage/CardPage';
+import ProfileSite from './components/profile/ProfileSite';
 
 
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} index />
               <Route path="/cardpage/:id" element={<CardPage />} />
+              <Route path="/profilesite" element={<ProfileSite />} />
             </Routes>
           </Layout>
         </div>

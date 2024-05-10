@@ -42,38 +42,6 @@ function CardHome({ card }) {
             <Link to={`/cardPage/${card.id}`}><Button variant="outline-success">More</Button></Link>
         </Card.Footer>
     </Card>);
-
-    // return (
-    //     <Card className="bg-dark text-white cardBorder mx-3">
-    //         {img ? (
-    //             <div>
-    //                 <Card.Img src={img} alt={alt} className='imgCardBorder imgResponsive' />
-    //                 <Card.ImgOverlay>
-    //                     <Card.Title>{name}</Card.Title>
-    //                     <div className="d-flex justify-content-between align-items-center">
-    //                         <Card.Text>${price} / night</Card.Text>
-    //                         <Link to="/cardPage"><Button variant="outline-success">More</Button></Link>
-    //                     </div>
-    //                 </Card.ImgOverlay>
-    //             </div>
-    //         ) : (
-    //             <div>
-    //                 <Card.Img src={NoImage} alt="No image available" className='imgCardBorder imgResponsive' />
-    //                 <Card.ImgOverlay>
-    //                     <Card.Title>Sorry, no image available</Card.Title>
-    //                     <div className="d-flex justify-content-between align-items-center">
-    //                         <Card.Text>${price} / night</Card.Text>
-    //                         <Link to="/cardPage"><Button variant="outline-success">More</Button></Link>
-    //                     </div>
-    //                 </Card.ImgOverlay>
-    //             </div>
-    //         )}
-    //     </Card>
-    // );
-
-
-
-
 }
 
 export default CardHome;
