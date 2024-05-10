@@ -42,12 +42,15 @@ function Header() {
         }
     };
 
+    const [data, setData] = useState(null);
+
     const loginUser = async (email, password) => {
         try {
-            const data = await login(email, password);
+            const response = await login(email, password);
             handleCloseLogin();
             setIsLoggedin(true);
-            return data;
+            setData(response)
+            return response;
         } catch (error) {
             console.error('Error:', error);
         }
@@ -78,7 +81,10 @@ function Header() {
 
                 <SearchForm />
                 <Nav className="ml-auto">
-                    {isLoggedin ? <HeaderAfterLogin /> :
+                    {isLoggedin ?
+                        <HeaderAfterLogin
+                            venueManager={data?.data.venueManager}
+                        /> :
                         <HeaderStartPoint
                             showModalLogin={showModalLogin}
                             handleShowLogin={handleShowLogin}
