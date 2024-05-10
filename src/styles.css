@@ -575,3 +575,12 @@ p {
     margin-bottom: 2rem;
   }
 }
+
+.nameCardProfile {
+  font-family: "Advent Pro", sans-serif;
+  color: #1c1c1cff;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+}
