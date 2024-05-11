@@ -9,11 +9,11 @@ import Button from 'react-bootstrap/Button';
 import CardHome from './CardHome';
 import CarouselHome from './CarouselHome';
 import { apiVenuesPath, apiVenuesSearchPath } from '../api/constants';
-import SearchContext from './Context';
+import HolidazeContext from "../components/HolidazeContext";
 
 function Home() {
     const [items, setData] = useState([]);
-    const { inputValue, setInputValue } = useContext(SearchContext);
+    const { inputValue, setInputValue } = useContext(HolidazeContext);
 
     useEffect(() => {
         const fetchUrl = inputValue

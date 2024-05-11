@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,6 +16,10 @@ import ModalRegisterSuccess from "../profile/ModalRegisterSuccess";
 import { login } from "../../api/login";
 import HeaderStartPoint from "./HeaderStartPoint";
 import HeaderAfterLogin from "./HeaderAfterLogin";
+import HolidazeContext from "../HolidazeContext";
+
+
+
 
 function Header() {
 
@@ -28,6 +32,8 @@ function Header() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('guest');
+    const { avatar, setAvatar } = useContext(HolidazeContext);
+
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
@@ -62,7 +68,8 @@ function Header() {
             setIsLoggedin(true);
             setData(response)
 
-            setImg(response.data.avatar.url);
+            // setImg(response.data.avatar.url);
+            setAvatar(response.data.avatar.url);
             setAlt(response.data.avatar.alt);
 
 
@@ -100,7 +107,7 @@ function Header() {
                     {isLoggedin ?
                         <HeaderAfterLogin
                             venueManager={venueManager}
-                            img={img}
+                            img={avatar}
                             alt={alt}
                         /> :
                         <HeaderStartPoint

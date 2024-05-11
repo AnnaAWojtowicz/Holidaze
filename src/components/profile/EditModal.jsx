@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { updateUserProfile } from "../../api/updateUserProfile";
+import HolidazeContext from "../HolidazeContext";
+
 
 function EditModal({ show, onHide, onEdit, userData }) {
 
     const [bio, setBio] = useState(userData && userData.data && userData.data.bio ? userData.data.bio : "");
-    const [avatar, setAvatar] = useState(userData && userData.data && userData.data.avatar ? userData.data.avatar.url : "");
+    const [avatarTmp, setAvatarTmp] = useState(userData && userData.data && userData.data.avatar ? userData.data.avatar.url : "");
 
     useEffect(() => {
         if (userData && userData.data) {
@@ -14,19 +16,21 @@ function EditModal({ show, onHide, onEdit, userData }) {
                 setBio(userData.data.bio);
             }
             if (userData.data.avatar && userData.data.avatar.url) {
-                setAvatar(userData.data.avatar.url);
+                setAvatarTmp(userData.data.avatar.url);
             }
         }
     }, [userData]);
 
+    const { avatar, setAvatar } = useContext(HolidazeContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await updateUserProfile(avatar, bio);
-            onEdit(bio, avatar);
+            await updateUserProfile(avatarTmp, bio);
+            onEdit(bio, avatarTmp);
+            setAvatar(avatarTmp);
             setBio("");
-            setAvatar("");
+            setAvatarTmp("");
         } catch (error) {
             console.error('Error:', error);
         }
@@ -44,8 +48,8 @@ function EditModal({ show, onHide, onEdit, userData }) {
                         <Form.Label>Avatar</Form.Label>
                         <Form.Control
                             type="text"
-                            value={avatar}
-                            onChange={(event) => setAvatar(event.target.value)}
+                            value={avatarTmp}
+                            onChange={(event) => setAvatarTmp(event.target.value)}
                             className='formControlModal'
                             autoFocus
                         />
