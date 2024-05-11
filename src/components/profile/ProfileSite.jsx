@@ -48,12 +48,12 @@ function ProfileSite() {
                                 <ListGroup.Item>
                                     <div>About: {userData.data.bio}</div>
                                 </ListGroup.Item>
-                                <ListGroup.Item><div>Your bookings</div>
+                                <ListGroup.Item><div>Your bookings:</div>
                                     <div>Coming</div>
                                     <div>Past</div>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <div>Your Properties</div>
+                                    <div>Your Properties:</div>
                                 </ListGroup.Item>
                             </ListGroup>
 
