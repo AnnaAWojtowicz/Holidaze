@@ -584,3 +584,8 @@ p {
   font-weight: 500;
   margin-bottom: 0 !important;
 }
+
+.profileInfo {
+  font-weight: 500;
+  margin-right: 1rem;
+}

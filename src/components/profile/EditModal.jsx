@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
-
+import { updateUserProfile } from "../../api/updateUserProfile";
 
 function EditModal({ show, onHide, onEdit, userData }) {
 
@@ -20,11 +20,16 @@ function EditModal({ show, onHide, onEdit, userData }) {
     }, [userData]);
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        onEdit(bio, avatar);
-        setBio("");
-        setAvatar("");
+        try {
+            await updateUserProfile(avatar, bio);
+            onEdit(bio, avatar);
+            setBio("");
+            setAvatar("");
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
@@ -56,26 +61,24 @@ function EditModal({ show, onHide, onEdit, userData }) {
                             value={bio}
                             onChange={(event) => setBio(event.target.value)}
                             className='formControlModal'
+                            maxLength={160}
                             autoFocus
                         />
                         <Form.Text muted>
-                            Please edit or enter new text
+                            Please edit or enter new text: {bio.length}/160 characters
                         </Form.Text>
                     </Form.Group>
+                    <Modal.Footer className="d-flex justify-content-between align-items-center">
+                        <Button variant="btn btn-outline-success" onClick={onHide}>
+                            Cancel
+                        </Button>
+                        <Button variant="btn btn-outline-success" type="submit">
+                            Save
+                        </Button>
+                    </Modal.Footer>
                 </Form>
             </Modal.Body>
-            <Modal.Footer className="d-flex justify-content-between align-items-center">
-                <Button variant="btn btn-outline-success" onClick={onHide}>
-                    Cancel
-                </Button>
-                <Button variant="btn btn-outline-success" type="submit">
-                    Save
-                </Button>
-            </Modal.Footer>
-
-
-
-        </Modal >
+        </Modal>
     );
 }
 

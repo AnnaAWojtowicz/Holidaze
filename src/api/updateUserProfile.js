@@ -1,17 +1,25 @@
-import { apiLoginUserPath } from "./constants";
+import { apiUserProfilePath } from "./constants.js";
 
-export async function updateUserProfile(url, alt, bio) {
-    const response = await fetch(apiLoginUserPath, {
+export async function updateUserProfile(avatar, bio) {
+    const accessToken = localStorage.getItem('accessToken');
+    const name = localStorage.getItem('userName');
+    const bodyObject = {
+        avatar: {
+            url: avatar,
+            alt: "User Avatar",
+        },
+        bio,
+    }
+
+    const response = await fetch(`${apiUserProfilePath}/${name}`, {
         method: 'PUT',
         headers: {
-            "Content-Type": "application/json",
             Accept: "application/json",
+            "Content-Type": "application/json",
+            "X-Noroff-API-Key": process.env.REACT_APP_API_KEY,
+            Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({
-            url,
-            alt,
-            bio,
-        }),
+        body: JSON.stringify(bodyObject),
     });
 
     const data = await response.json();

@@ -14,6 +14,24 @@ function ProfileSite() {
     const [userData, setUserData] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
 
+    const fetchUserData = async () => {
+        try {
+            const data = await getUserProfile();
+            setUserData(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const handleEdit = () => {
+        fetchUserData();
+        setShowEditModal(false);
+    };
+
     const handleOpenEditModal = () => {
         setShowEditModal(true);
     };
@@ -22,19 +40,6 @@ function ProfileSite() {
         setShowEditModal(false);
     };
 
-
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const data = await getUserProfile();
-                setUserData(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchUserData();
-    }, []);
-
     if (!userData) {
         return <div>Loading...</div>;
     }
@@ -42,10 +47,10 @@ function ProfileSite() {
     return (
         <Container className="containerProfile">
             <Row>
-                <Col className="d-flex justify-content-center" fluid>
+                <Col className="d-flex justify-content-center align-items-center" fluid>
                     <Image src={userData.data.avatar.url} alt={userData.data.avatar.alt || "Profile Avatar"} className="imgProfile" />
                 </Col>
-                <Col className="d-flex justify-content-center cardPage" >
+                <Col className="d-flex justify-content-center align-items-center cardPage" >
                     <div className="cardProfile">
                         <Card className="mx-4 cardBorder cardProfile">
                             <Card.Header className='bodyCardBorder'>
@@ -53,26 +58,26 @@ function ProfileSite() {
                             </Card.Header>
                             <ListGroup className="list-group-flush bodyCardBorder">
                                 <ListGroup.Item>
-                                    <div>Contact: {userData.data.email}</div>
+                                    <div><span className="profileInfo">Contact:</span>{userData.data.email}</div>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <div>About: {userData.data.bio}</div>
+                                    <div><span className="profileInfo">About:</span>{userData.data.bio}</div>
                                 </ListGroup.Item>
-                                <ListGroup.Item><div>Your bookings:</div>
-                                    <div>Coming</div>
-                                    <div>Past</div>
+                                <ListGroup.Item><div><span className="profileInfo">Your bookings:</span></div>
+                                    <div><span className="profileInfo">Coming:</span></div>
+                                    <div><span className="profileInfo">Past:</span></div>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <div>Your Properties:</div>
+                                    <div><span className="profileInfo">Your Properties:</span></div>
                                 </ListGroup.Item>
                             </ListGroup>
-
                             <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
                                 <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
                                 <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
                                 <EditModal
                                     show={showEditModal}
                                     onHide={handleCloseEditModal}
+                                    onEdit={handleEdit}
                                     userData={userData}
                                 />
                             </Card.Footer>
