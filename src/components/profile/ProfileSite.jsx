@@ -7,11 +7,21 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { getUserProfile } from "../../api/userProfile";
-
+import EditModal from "./EditModal";
 
 
 function ProfileSite() {
     const [userData, setUserData] = useState(null);
+    const [showEditModal, setShowEditModal] = useState(false);
+
+    const handleOpenEditModal = () => {
+        setShowEditModal(true);
+    };
+
+    const handleCloseEditModal = () => {
+        setShowEditModal(false);
+    };
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -28,7 +38,7 @@ function ProfileSite() {
     if (!userData) {
         return <div>Loading...</div>;
     }
-    console.log(userData);
+
     return (
         <Container className="containerProfile">
             <Row>
@@ -59,7 +69,12 @@ function ProfileSite() {
 
                             <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
                                 <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
-                                <Link to="/cardPage"><Button variant="outline-success">Edit</Button></Link>
+                                <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
+                                <EditModal
+                                    show={showEditModal}
+                                    onHide={handleCloseEditModal}
+                                    userData={userData}
+                                />
                             </Card.Footer>
                         </Card>
                     </div>

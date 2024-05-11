@@ -33,3 +33,6 @@ export const apiVenuesSearchPath = apiVenuesSearch.toString();
 // API userProfile path
 const apiUserProfile = `${apiPath}/profiles`;
 export const apiUserProfilePath = apiUserProfile.toString();
+
+// API userProfile with id path
+

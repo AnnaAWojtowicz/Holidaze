@@ -98,7 +98,6 @@ function Header() {
                 <SearchForm />
                 <Nav className="ml-auto">
                     {isLoggedin ?
-
                         <HeaderAfterLogin
                             venueManager={venueManager}
                             img={img}

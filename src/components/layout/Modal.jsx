@@ -79,7 +79,7 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                     className='formControlModal'
                                     autoFocus
                                 />
-                                <Form.Text id="emailHelpBlock" muted>
+                                <Form.Text id="nameHelpBlock" muted>
                                     Please enter your name
                                 </Form.Text>
                             </Form.Group>
