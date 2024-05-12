@@ -544,6 +544,18 @@ p {
   align-items: center;
 }
 
+.imgProfile2 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #1c1c1cff !important;
+  border-radius: 50% !important;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
 .cardProfile {
   width: 100% !important;
   min-width: 30rem !important;

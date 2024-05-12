@@ -1,6 +1,6 @@
 import { apiUserProfilePath } from "./constants.js";
 
-export async function updateUserProfile(avatar, bio) {
+export async function updateUserProfile(avatar, bio, banner) {
     const accessToken = localStorage.getItem('accessToken');
     const name = localStorage.getItem('userName');
     const bodyObject = {
@@ -9,6 +9,10 @@ export async function updateUserProfile(avatar, bio) {
             alt: "User Avatar",
         },
         bio,
+        banner: {
+            url: banner,
+            alt: "User Banner",
+        },
     }
 
     const response = await fetch(`${apiUserProfilePath}/${name}`, {

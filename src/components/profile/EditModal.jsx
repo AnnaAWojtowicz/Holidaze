@@ -9,6 +9,7 @@ function EditModal({ show, onHide, onEdit, userData }) {
 
     const [bio, setBio] = useState(userData && userData.data && userData.data.bio ? userData.data.bio : "");
     const [avatarTmp, setAvatarTmp] = useState(userData && userData.data && userData.data.avatar ? userData.data.avatar.url : "");
+    const [banner, setBanner] = useState(userData && userData.data && userData.data.banner ? userData.data.banner : "");
 
     useEffect(() => {
         if (userData && userData.data) {
@@ -18,6 +19,9 @@ function EditModal({ show, onHide, onEdit, userData }) {
             if (userData.data.avatar && userData.data.avatar.url) {
                 setAvatarTmp(userData.data.avatar.url);
             }
+            if (userData.data.banner && userData.data.banner.url) {
+                setBanner(userData.data.banner.url);
+            }
         }
     }, [userData]);
 
@@ -26,11 +30,12 @@ function EditModal({ show, onHide, onEdit, userData }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await updateUserProfile(avatarTmp, bio);
-            onEdit(bio, avatarTmp);
+            await updateUserProfile(avatarTmp, bio, banner);
+            onEdit(bio, avatarTmp, banner);
             setAvatar(avatarTmp);
             setBio("");
             setAvatarTmp("");
+            setBanner("");
         } catch (error) {
             console.error('Error:', error);
         }
@@ -57,6 +62,19 @@ function EditModal({ show, onHide, onEdit, userData }) {
                             Please enter your new avatar URL
                         </Form.Text>
                     </Form.Group>
+                    <Form.Group controlId="formBanner" className="mb-3 formGroup">
+                        <Form.Label>Banner</Form.Label>
+                        <Form.Control
+                            type="text"
+                            value={banner}
+                            onChange={(event) => setBanner(event.target.value)}
+                            className='formControlModal'
+                            autoFocus
+                        />
+                        <Form.Text muted>
+                            Please enter your new banner URL
+                        </Form.Text>
+                    </Form.Group>
                     <Form.Group controlId="formBio" className="mb-3 formGroup">
                         <Form.Label>About you</Form.Label>
                         <Form.Control
@@ -72,16 +90,17 @@ function EditModal({ show, onHide, onEdit, userData }) {
                             Please edit or enter new text: {bio.length}/160 characters
                         </Form.Text>
                     </Form.Group>
-                    <Modal.Footer className="d-flex justify-content-between align-items-center">
-                        <Button variant="btn btn-outline-success" onClick={onHide}>
-                            Cancel
-                        </Button>
-                        <Button variant="btn btn-outline-success" type="submit" form="updateProfileForm">
-                            Save
-                        </Button>
-                    </Modal.Footer>
                 </Form>
             </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-between align-items-center">
+                <Button variant="btn btn-outline-success" onClick={onHide}>
+                    Cancel
+                </Button>
+                <Button variant="btn btn-outline-success" type="submit" form="updateProfileForm">
+                    Save
+                </Button>
+            </Modal.Footer>
+
         </Modal>
     );
 }
