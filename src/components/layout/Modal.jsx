@@ -125,10 +125,6 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                 Incorrect password. Please try again.
                             </Form.Text> */}
                         </Form.Group>
-
-
-
-
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">

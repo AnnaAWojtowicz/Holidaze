@@ -43,7 +43,7 @@ function EditModal({ show, onHide, onEdit, userData }) {
             </Modal.Header>
 
             <Modal.Body>
-                <Form onSubmit={handleSubmit}>
+                <Form id="updateProfileForm" onSubmit={handleSubmit}>
                     <Form.Group controlId="formAvatar" className="mb-3 formGroup">
                         <Form.Label>Avatar</Form.Label>
                         <Form.Control
@@ -76,7 +76,7 @@ function EditModal({ show, onHide, onEdit, userData }) {
                         <Button variant="btn btn-outline-success" onClick={onHide}>
                             Cancel
                         </Button>
-                        <Button variant="btn btn-outline-success" type="submit">
+                        <Button variant="btn btn-outline-success" type="submit" form="updateProfileForm">
                             Save
                         </Button>
                     </Modal.Footer>

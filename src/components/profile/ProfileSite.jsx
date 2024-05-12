@@ -8,11 +8,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
+import NewVenueModal from "./NewVenueModal";
 
 
 function ProfileSite() {
     const [userData, setUserData] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showModalVenu, setShowModalVenu] = useState(false);
+
+
+
 
     const fetchUserData = async () => {
         try {
@@ -26,6 +31,11 @@ function ProfileSite() {
     useEffect(() => {
         fetchUserData();
     }, []);
+
+    const handleShowModalVenu = () => setShowModalVenu(true);
+    const handleCloseModalVenu = () => setShowModalVenu(false);
+
+
 
     const handleEdit = () => {
         fetchUserData();
@@ -67,8 +77,13 @@ function ProfileSite() {
                                     <div><span className="profileInfo">Coming:</span></div>
                                     <div><span className="profileInfo">Past:</span></div>
                                 </ListGroup.Item>
-                                <ListGroup.Item>
+                                <ListGroup.Item className="d-flex justify-content-between align-items-center">
                                     <div><span className="profileInfo">Your Properties:</span></div>
+                                    <Button variant="outline-success" onClick={handleShowModalVenu}>Add new</Button>
+                                    <NewVenueModal
+                                        show={showModalVenu}
+                                        onHide={handleCloseModalVenu}
+                                    />
                                 </ListGroup.Item>
                             </ListGroup>
                             <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
