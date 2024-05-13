@@ -9,9 +9,6 @@ import NewVenueModalSuccess from "./NewVenueModalSuccess";
 function NewVenueModal(props) {
     const [nameVenue, setNameVenue] = useState("");
     const [descriptionVenue, setDescriptionVenue] = useState("");
-    const [img1Venue, setImg1Venue] = useState("");
-    const [img2Venue, setImg2Venue] = useState("");
-    const [img3Venue, setImg3Venue] = useState("");
     const [images, setImages] = useState([]);
     const [guestVenue, setGuestVenue] = useState("");
     const [ratingVenue, setRatingVenue] = useState("");
@@ -46,21 +43,10 @@ function NewVenueModal(props) {
         const data = {
             name: nameVenue,
             description: descriptionVenue,
-            media: [
-
-                {
-                    url: img1Venue,
-                    alt: "Property Picture",
-                },
-                {
-                    url: img2Venue,
-                    alt: "Property Picture",
-                },
-                {
-                    url: img3Venue,
-                    alt: "Property Picture",
-                },
-            ],
+            media: images.map((image, index) => ({
+                url: image,
+                alt: `Property Picture ${index + 1}`,
+            })),
             price: priceVenue,
             maxGuests: guestVenue,
             rating: ratingVenue,
@@ -143,8 +129,17 @@ function NewVenueModal(props) {
                             <Form.Label>Add pictures of your property (max. 3)</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={img1Venue}
-                                onChange={(event) => setImg1Venue(event.target.value)}
+                                value={images[0] || ''}
+                                onChange={(event) => {
+                                    const newImages = [...images];
+                                    newImages[0] = event.target.value;
+                                    if (event.target.value === "") {
+                                        const indexToRemove = 0;
+                                        setImages(images.filter((_, index) => index !== indexToRemove));
+                                    } else {
+                                        setImages(newImages);
+                                    }
+                                }}
                                 id="inputPropertyImg1"
                                 aria-describedby="propertyImg1Block"
                                 className='formControlModal'
@@ -152,8 +147,17 @@ function NewVenueModal(props) {
                             />
                             <Form.Control
                                 type="text"
-                                value={img2Venue}
-                                onChange={(event) => setImg2Venue(event.target.value)}
+                                value={images[1] || ''}
+                                onChange={(event) => {
+                                    const newImages = [...images];
+                                    newImages[1] = event.target.value;
+                                    if (event.target.value === "") {
+                                        const indexToRemove = 1;
+                                        setImages(images.filter((_, index) => index !== indexToRemove));
+                                    } else {
+                                        setImages(newImages);
+                                    }
+                                }}
                                 id="inputPropertyImg2"
                                 aria-describedby="propertyImg2Block"
                                 className='formControlModal'
@@ -161,8 +165,17 @@ function NewVenueModal(props) {
                             />
                             <Form.Control
                                 type="text"
-                                value={img3Venue}
-                                onChange={(event) => setImg3Venue(event.target.value)}
+                                value={images[2] || ''}
+                                onChange={(event) => {
+                                    const newImages = [...images];
+                                    newImages[2] = event.target.value;
+                                    if (event.target.value === "") {
+                                        const indexToRemove = 2;
+                                        setImages(images.filter((_, index) => index !== indexToRemove));
+                                    } else {
+                                        setImages(newImages);
+                                    }
+                                }}
                                 id="inputPropertyImg3"
                                 aria-describedby="propertyImg3Block"
                                 className='formControlModal'
