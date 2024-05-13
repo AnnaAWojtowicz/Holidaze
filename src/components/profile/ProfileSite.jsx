@@ -39,6 +39,7 @@ function ProfileSite(props) {
     };
 
     const handleCloseEditModal = () => {
+        debugger;
         setShowEditModal(false);
     };
 

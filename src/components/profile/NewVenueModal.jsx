@@ -321,7 +321,7 @@ function NewVenueModal(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">
-                    <Button variant="btn btn-outline-success" onClick={onHide}>
+                    <Button variant="btn btn-outline-success" onClick={props.onHide}>
                         Close
                     </Button>
                     <Button variant="btn btn-outline-success" type="submit" form='newVenueForm' onClick={handleSubmit}>

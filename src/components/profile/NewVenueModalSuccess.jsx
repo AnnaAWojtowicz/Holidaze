@@ -6,9 +6,8 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function NewVenueModalSuccess() {
+function NewVenueModalSuccess(props) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
 
     return (
