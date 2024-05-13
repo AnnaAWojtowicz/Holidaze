@@ -4,10 +4,15 @@ export async function addNewVenue({
     name = "",
     description = "",
     media = [],
-    price = "0",
-    maxGuests = "0",
-    rating = "0",
-    meta: { wifi = false, parking = false, breakfast = false, pets = false } = {},
+    price = "",
+    maxGuests = "",
+    rating = "",
+    meta: {
+        wifi = false,
+        parking = false,
+        breakfast = false,
+        pets = false
+    } = {},
     location: venueLocation = {}
 }) {
     const { address = "", city = "", country = "" } = venueLocation;

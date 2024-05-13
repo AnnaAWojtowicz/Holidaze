@@ -13,10 +13,10 @@ function NewVenueModal(props) {
     const [guestVenue, setGuestVenue] = useState("");
     const [ratingVenue, setRatingVenue] = useState("");
     const [priceVenue, setPriceVenue] = useState("");
-    const [wifiVenue, setWifiVenue] = useState("");
-    const [parkingVenue, setParkingVenue] = useState("");
-    const [breakfastVenue, setBreakfastVenue] = useState("");
-    const [petsVenue, setPetsVenue] = useState("");
+    const [wifiVenue, setWifiVenue] = useState(false);
+    const [parkingVenue, setParkingVenue] = useState(false);
+    const [breakfastVenue, setBreakfastVenue] = useState(false);
+    const [petsVenue, setPetsVenue] = useState(false);
     const [addressVenue, setAddressVenue] = useState("");
     const [cityVenue, setCityVenue] = useState("");
     const [countryVenue, setCountryVenue] = useState("");
