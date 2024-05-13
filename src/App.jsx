@@ -7,6 +7,7 @@ import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
+import NewVenueModal from './components/profile/NewVenueModal';
 
 
 
@@ -15,6 +16,11 @@ import ProfileSite from './components/profile/ProfileSite';
 function App() {
   const [inputValue, setInputValue] = useState('');
   const [avatar, setAvatar] = useState("");
+  // const [showModalNewVenue, setShowModalNewVenue] = useState(false);
+  // const handleShowModalNewVenue = () => setShowModalNewVenue(true);
+  // const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
+
+
   return (
     <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar }}>
       {/* <AvatarContext.Provider value={{ avatar, setAvatar }}> */}
@@ -24,11 +30,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} index />
               <Route path="/cardpage/:id" element={<CardPage />} />
+              {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
             </Routes>
           </Layout>
+          {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}
         </div>
       </BrowserRouter>
+
       {/* </AvatarContext.Provider> */}
     </HolidazeContext.Provider>
   );

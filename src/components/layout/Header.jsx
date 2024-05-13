@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavDropdown } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Calendar from "./Calendar";
 import "react-datepicker/dist/react-datepicker.css";
 
 import ModalMain from "./Modal";
@@ -97,7 +92,7 @@ function Header() {
     return (
         <Navbar collapseOnSelect expand="lg" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
 
-            <Navbar.Brand href="#home" className="logo">Holidaze</Navbar.Brand>
+            <Navbar.Brand href="/" className="logo">Holidaze</Navbar.Brand>
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" />
             <Navbar.Collapse id="responsive-navbar-nav">

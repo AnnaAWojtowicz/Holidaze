@@ -3,21 +3,15 @@ import { Card, Button, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ExampleImage2 from "../../img/nachelle-nocom-51adhgg5KkE-unsplash.jpg";
 import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
 import NewVenueModal from "./NewVenueModal";
 
 
-function ProfileSite() {
+function ProfileSite(props) {
     const [userData, setUserData] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
-    const [showModalVenu, setShowModalVenu] = useState(false);
-
-
-
+    const [showModalNewVenue, setShowModalNewVenue] = useState(false);
 
     const fetchUserData = async () => {
         try {
@@ -32,10 +26,8 @@ function ProfileSite() {
         fetchUserData();
     }, []);
 
-    const handleShowModalVenu = () => setShowModalVenu(true);
-    const handleCloseModalVenu = () => setShowModalVenu(false);
-
-
+    const handleShowModalNewVenue = () => setShowModalNewVenue(true);
+    const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
 
     const handleEdit = () => {
         fetchUserData();
@@ -128,10 +120,12 @@ function ProfileSite() {
                     </ListGroup.Item>
                     <ListGroup.Item className="d-flex justify-content-between align-items-center">
                         <div><div className="profileInfo">Your Properties:</div></div>
-                        <Button variant="outline-success" onClick={handleShowModalVenu}>Add new</Button>
+                        {/* <Button variant="outline-success" onClick={props.handleShowModalNewVenue}>Add new</Button> */}
+                        <Button variant="outline-success" onClick={handleShowModalNewVenue}>Add new</Button>
                         <NewVenueModal
-                            show={showModalVenu}
-                            onHide={handleCloseModalVenu}
+                            show={showModalNewVenue}
+                            // show={true}
+                            onHide={handleCloseModalNewVenue}
                         />
                     </ListGroup.Item>
                 </ListGroup>
@@ -147,8 +141,10 @@ function ProfileSite() {
                 </Card.Footer>
             </Card>
             <div className="profileInfo">Your upcoming bookings:</div>
-            <div className="profileInfo">Your properties:</div>
+            <div>
+                <div className="profileInfo">Your properties:</div>
 
+            </div>
 
         </div>
 
