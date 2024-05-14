@@ -5,6 +5,8 @@ import { useState } from "react";
 import { addNewVenue } from "../../api/addNewVenue";
 import ModalFail from "../ModalFail";
 import NewVenueModalSuccess from "./NewVenueModalSuccess";
+import { useEffect } from "react";
+import { type } from "@testing-library/user-event/dist/type";
 
 function NewVenueModal(props) {
     const [nameVenue, setNameVenue] = useState("");
@@ -20,11 +22,17 @@ function NewVenueModal(props) {
     const [addressVenue, setAddressVenue] = useState("");
     const [cityVenue, setCityVenue] = useState("");
     const [countryVenue, setCountryVenue] = useState("");
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
 
+
+    const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
+
+    useEffect(() => {
+        setShow(props.show);
+    }, [props.show]);
 
     const handleHideFail = () => {
         setShowFailModal(false);
@@ -38,7 +46,7 @@ function NewVenueModal(props) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setShow(false);
+        onHide();
 
         const data = {
             name: nameVenue,
@@ -65,12 +73,15 @@ function NewVenueModal(props) {
         };
         try {
             const response = await addNewVenue(data);
-            console.log(response);
-            if (response.status === 200) {
-                onHide();
+            console.log('Response:', response);
+            if (response && typeof response === 'object') {
+                console.log('Success modal should be visible now');
+                props.onHide();
                 setShowSuccessModal(true);
+
             } else {
-                onHide();
+                console.log('Fail modal should be visible now');
+                props.onHide();
                 setShowFailModal(true);
             }
         } catch (error) {
@@ -324,13 +335,14 @@ function NewVenueModal(props) {
                     <Button variant="btn btn-outline-success" onClick={props.onHide}>
                         Close
                     </Button>
-                    <Button variant="btn btn-outline-success" type="submit" form='newVenueForm' onClick={handleSubmit}>
+                    <Button variant="btn btn-outline-success" type="submit" form='newVenueForm'>
+                        {/* <Button variant="btn btn-outline-success" type="submit" form='newVenueForm' onClick={handleSubmit}> */}
                         Submit
                     </Button>
                 </Modal.Footer>
             </Modal>
             {showFailModal && <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} />}
-            {showSuccessModal && <NewVenueModalSuccess />}
+            {showSuccessModal && <NewVenueModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} />}
         </>
     );
 }
