@@ -78,6 +78,7 @@ function NewVenueModal(props) {
                 console.log('Success modal should be visible now');
                 props.onHide();
                 setShowSuccessModal(true);
+                props.onNewVenueAdded();
             }
             // } else {
             //     console.log('Fail modal should be visible now');
@@ -260,7 +261,7 @@ function NewVenueModal(props) {
                                     />
                                     <Form.Check
                                         inline
-                                        label="parking"
+                                        label="Parking"
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-2`}

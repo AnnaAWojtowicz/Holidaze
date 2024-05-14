@@ -602,7 +602,6 @@ p {
   margin-right: 1rem;
 }
 
-.profileInfoTitle {
-  margin-left: 3rem;
-  margin-top: 2rem;
+.propertiesTitleAndButton {
+  margin: 3rem 3rem 0 3rem;
 }
