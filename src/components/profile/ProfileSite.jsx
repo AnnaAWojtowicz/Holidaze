@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
 import NewVenueModal from "./NewVenueModal";
-
+import OwnerProperties from "../venueManaging/OwnerProperties";
 
 function ProfileSite(props) {
     const [userData, setUserData] = useState(null);
@@ -141,10 +141,10 @@ function ProfileSite(props) {
                     />
                 </Card.Footer>
             </Card>
-            <div className="profileInfo">Your upcoming bookings:</div>
+            <div className="profileInfoTitle"><h2>Your upcoming bookings:</h2></div>
             <div>
-                <div className="profileInfo">Your properties:</div>
-
+                <div className="profileInfoTitle"><h2>Your properties:</h2></div>
+                <OwnerProperties />
             </div>
 
         </div>

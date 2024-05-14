@@ -601,3 +601,8 @@ p {
   font-weight: 500;
   margin-right: 1rem;
 }
+
+.profileInfoTitle {
+  margin-left: 3rem;
+  margin-top: 2rem;
+}

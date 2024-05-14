@@ -32,7 +32,7 @@ function OwnerProperties() {
     return (
         <div>
             {items.length === 0 && <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3rem 0' }}>Sorry, no results found</h1>}
-            <Row xs={1} md={2} lg={3} className="g-4 my-5 mx-2">
+            <Row xs={1} md={2} lg={3} className="g-4 my-3 mx-2">
 
                 {items.map((item, index) => {
                     const img = item.media && item.media.length > 0 ? item.media[0].url : '';
