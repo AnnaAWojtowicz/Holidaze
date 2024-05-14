@@ -10,13 +10,13 @@ function HeaderAfterLogin({ img, alt }) {
             <NavDropdown title={<img src={img} alt={alt} width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem">
 
                 <NavDropdown.Item as={Link} to="/profilesite">Your account</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item as={Link} to="/yourbookings">
                     Your bookings
                 </NavDropdown.Item>
 
-                <NavDropdown.Item href="#action/3.3">Property manager</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/ownerproperties">Property manager</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
+                <NavDropdown.Item as={Link} to="/signout">
                     Sign out
                 </NavDropdown.Item>
 

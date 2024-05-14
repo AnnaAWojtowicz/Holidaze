@@ -8,7 +8,7 @@ import Home from './components/Home';
 import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
 import NewVenueModal from './components/profile/NewVenueModal';
-
+import OwnerProperties from './components/venueManaging/OwnerProperties';
 
 
 
@@ -32,6 +32,7 @@ function App() {
               <Route path="/cardpage/:id" element={<CardPage />} />
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
+              <Route path='/ownerproperties' element={<OwnerProperties />} />
             </Routes>
           </Layout>
           {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}
