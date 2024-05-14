@@ -78,15 +78,15 @@ function NewVenueModal(props) {
                 console.log('Success modal should be visible now');
                 props.onHide();
                 setShowSuccessModal(true);
-
-            } else {
-                console.log('Fail modal should be visible now');
-                props.onHide();
-                setShowFailModal(true);
             }
+            // } else {
+            //     console.log('Fail modal should be visible now');
+            //     props.onHide();
+            //     setShowFailModal(true);
+            // }
         } catch (error) {
             console.error("Error occurred while adding new venue: ", error);
-            onHide();
+            props.onHide();
             setShowFailModal(true);
         }
 
