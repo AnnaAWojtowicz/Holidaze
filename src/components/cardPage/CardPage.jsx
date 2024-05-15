@@ -43,8 +43,9 @@ function CardPage({ data }) {
         const { name, email, avatar, bio } = data.owner;
         hostData = { name, email, avatar, bio };
     }
-    console.log("cardData:", cardData);
-    console.log("aboutOwner:", cardData.owner);
+
+    const currentUserName = localStorage.getItem('userName');
+
 
     return (
         <div className="my-5 cardPage">
@@ -98,9 +99,14 @@ function CardPage({ data }) {
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
                     <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
-                    <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
-                    <Button variant="outline-success">Edit</Button>
-                    <Button variant="outline-success">Delete</Button>
+                    {currentUserName === cardData.owner.name ? (
+                        <>
+                            <Button variant="outline-success">Edit</Button>
+                            <Button variant="outline-success">Delete</Button>
+                        </>
+                    ) : (
+                        <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
+                    )}
                 </Card.Body>
             </Card>
         </div>
