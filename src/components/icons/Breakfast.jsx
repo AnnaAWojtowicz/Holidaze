@@ -4,10 +4,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function Breakfast() {
     return (
         <div className="breakfast">
-            <p className="breakfastDetails">Breakfast</p>
-            <p class="material-symbols-rounded media">
+            <div className="breakfastDetails">Breakfast</div>
+            <div className="material-symbols-rounded media">
                 restaurant
-            </p>
+            </div>
         </div>
     );
 }

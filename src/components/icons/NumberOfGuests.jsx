@@ -5,7 +5,7 @@ function NumberOfGuests({ guests }) {
     const iconsToShowMaxGuests = guests > 5 ? 5 : guests;
     return (
         <div className="maximumGuests">
-            <div>max. {guests} guests</div>
+            <div>Max. {guests} guests</div>
             <div>
                 {Array.from({ length: iconsToShowMaxGuests }).map((_, i) => (
                     <i key={i} className="bi bi-person-arms-up"></i>

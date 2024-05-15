@@ -202,6 +202,7 @@ function NewVenueModal(props) {
                             <Form.Label>Guests:</Form.Label>
                             <Form.Control
                                 type="number"
+                                min="1"
                                 value={guestVenue}
                                 onChange={(event) => setGuestVenue(event.target.value)}
                                 id="inputGuestVenue"
@@ -218,6 +219,8 @@ function NewVenueModal(props) {
                             <Form.Label>Rating:</Form.Label>
                             <Form.Control
                                 type="number"
+                                min="0"
+                                max="5"
                                 value={ratingVenue}
                                 onChange={(event) => setRatingVenue(event.target.value)}
                                 id="inputRatingVenue"
@@ -234,6 +237,7 @@ function NewVenueModal(props) {
                             <Form.Label>Price:</Form.Label>
                             <Form.Control
                                 type="number"
+                                min="1"
                                 value={priceVenue}
                                 onChange={(event) => setPriceVenue(event.target.value)}
                                 id="inputPriceVenue"

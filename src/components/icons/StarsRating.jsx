@@ -9,7 +9,7 @@ function StarsRating({ rating }) {
 
     return (
         <div className="starsRating">
-            <div>Users' rating: {rating}</div>
+            <div>Rating: {rating}</div>
             <div>
                 {Array.from({ length: fullStars }).map((_, i) => (
                     <i key={`full${i}`} className="bi bi-star-fill"></i>

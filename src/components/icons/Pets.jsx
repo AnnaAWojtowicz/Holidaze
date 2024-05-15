@@ -5,7 +5,7 @@ function Pets() {
     return (
         <div className="pets">
             <p className="petsDetails">Pets allowed</p>
-            <p class="material-symbols-rounded media">
+            <p className="material-symbols-rounded media">
                 pets
             </p>
         </div>

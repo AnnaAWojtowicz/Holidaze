@@ -13,7 +13,8 @@ import Pets from "../icons/Pets";
 import Wifi from "../icons/Wifi";
 import Host from "./Host";
 import CalendarAvailability from "./CalendarAvailability";
-
+import { apiVenuesPath } from "../../api/constants";
+import ProfileCard from "../profile/ProfileCard";
 
 
 function CardPage({ data }) {
@@ -22,7 +23,7 @@ function CardPage({ data }) {
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
 
     useEffect(() => {
-        fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true`)
+        fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
                 setCardData(response.data);
@@ -42,7 +43,8 @@ function CardPage({ data }) {
         const { name, email, avatar, bio } = data.owner;
         hostData = { name, email, avatar, bio };
     }
-
+    console.log("cardData:", cardData);
+    console.log("aboutOwner:", cardData.owner);
 
     return (
         <div className="my-5 cardPage">
@@ -56,7 +58,7 @@ function CardPage({ data }) {
                 </Card.Body>
                 <ListGroup className="list-group-flush bodyCardBorder">
                     <ListGroup.Item>
-                        <div>Price: ${cardData?.price} night / person</div>
+                        <div>Price: ${cardData?.price} / night</div>
                         <NumberOfGuests guests={cardData?.maxGuests} />
                         <StarsRating rating={cardData?.rating} />
                     </ListGroup.Item>
@@ -73,17 +75,19 @@ function CardPage({ data }) {
                     <ListGroup.Item><div>This place offers:</div>
                         {cardData?.meta && cardData.meta?.wifi && <Wifi />}
                         {cardData?.meta && cardData.meta?.breakfast && <Breakfast />}
-                        {cardData?.meta && cardData.meta?.parking && <divarking />}
-                        {cardData?.meta && cardData.meta?.pets && <divets />}
+                        {cardData?.meta && cardData.meta?.parking && <Parking />}
+                        {cardData?.meta && cardData.meta?.pets && <Pets />}
                     </ListGroup.Item>
-                    <ListGroup.Item>{hostData ? <Host data={hostData} />
-                        : (<div>
-                            <div>About host:</div>
-                            <div className="host">
-                                <div className="hostDetails">Sorry, no information about the host has been provided</div>
+                    <ListGroup.Item>
+
+                        {cardData?.owner ? <Host userData={cardData.owner} />
+                            : (<div>
+                                <div>About host:</div>
+                                <div className="host">
+                                    <div className="hostDetails">Sorry, no information about the host has been provided</div>
+                                </div>
                             </div>
-                        </div>
-                        )}
+                            )}
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <div className="availability">Availability:</div>
@@ -96,6 +100,8 @@ function CardPage({ data }) {
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
                     <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
                     <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
+                    <Button variant="outline-success">Edit</Button>
+                    <Button variant="outline-success">Delete</Button>
                 </Card.Body>
             </Card>
         </div>
