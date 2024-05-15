@@ -21,25 +21,6 @@ palette2:
   margin: 0;
 }
 
-/* body,
-.background {
-  background-color: #daddd8;
-  color: #1c1c1cff;
-} */
-
-/* .main {
-  box-sizing: border-box;
-  background-color: #eef0f2;
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto;
-  margin: 3rem 3rem;
-}
-
-footer {
-  flex-shrink: 0;
-} */
-
 html,
 body {
   height: 100%;
@@ -67,10 +48,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-/* footer {
-  flex-shrink: 0;
-} */
 
 @media (min-width: 768px) and (max-width: 992px) {
   .site {
@@ -268,8 +245,6 @@ body {
 
 .containerCarouselHome {
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   width: 100%;
   height: 100%;
   margin: auto;
@@ -459,7 +434,14 @@ body {
 .availabilityCalendar {
   margin: auto;
   width: 50%;
+  min-width: 240px;
 }
+
+/* @media (max-width: 992px) {
+  .availabilityCalendar {
+    width: 100%;
+  }
+} */
 
 .addressDetails,
 .breakfastDetails,
@@ -523,12 +505,14 @@ p {
 }
 
 .cardWidth {
-  max-width: 70%;
+  max-width: 100%;
+  min-width: 30rem;
 }
 
 @media (max-width: 992px) {
   .cardWidth {
-    max-width: 90%;
+    max-width: 100%;
+    min-width: 20rem;
   }
 }
 

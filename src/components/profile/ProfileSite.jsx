@@ -97,7 +97,7 @@ function ProfileSite(props) {
     // );
 
     return (
-        <div className="">
+        <div>
             <div className="my-5 cardPage">
                 <Card className="mx-4 cardBorder cardWidth">
                     <div style={{
@@ -153,7 +153,6 @@ function ProfileSite(props) {
             <div>
                 <OwnerProperties />
             </div>
-
         </div>
 
 

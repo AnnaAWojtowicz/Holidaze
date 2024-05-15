@@ -14,22 +14,25 @@ import Wifi from "../icons/Wifi";
 import Host from "./Host";
 import CalendarAvailability from "./CalendarAvailability";
 import { apiVenuesPath } from "../../api/constants";
-import ProfileCard from "../profile/ProfileCard";
 
 
-function CardPage({ data }) {
+
+function CardPage() {
     const { id } = useParams();
     const [cardData, setCardData] = useState([]);
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
                 setCardData(response.data);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error(error);
+                setIsLoading(false);
             });
     }, [id]);
 
@@ -38,16 +41,17 @@ function CardPage({ data }) {
         setIsExcludeDatesEmpty(isEmpty);
     };
 
-    let hostData;
-    if (data?.owner) {
-        const { name, email, avatar, bio } = data.owner;
-        hostData = { name, email, avatar, bio };
-    }
 
     const currentUserName = localStorage.getItem('userName');
 
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+
 
     return (
+
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
                 {cardData ? <Carousel data={cardData} /> : <div>Loading...</div>}
@@ -91,7 +95,7 @@ function CardPage({ data }) {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <div className="availability">Availability:</div>
-                        <CalendarAvailability data={data} onExcludeDatesChange={handleExcludeDatesChange} />
+                        <CalendarAvailability data={cardData} onExcludeDatesChange={handleExcludeDatesChange} />
                         {isExcludeDatesEmpty && (
                             <div className="availabilityDetails">Sorry, no information about the availability has been provided</div>
                         )}
@@ -110,6 +114,7 @@ function CardPage({ data }) {
                 </Card.Body>
             </Card>
         </div>
+
     );
 }
 
