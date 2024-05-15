@@ -97,53 +97,60 @@ function ProfileSite(props) {
     // );
 
     return (
-        <div>
-            <Card className="mx-4 cardBorder">
-                <div style={{
-                    backgroundImage: `url(${userData.data.banner.url})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }} className="d-flex justify-content-center align-items-center imgCardBorder">
-                    <Image src={userData.data.avatar.url} alt={userData.data.avatar.alt || "Profile Avatar"} className="imgProfile2" />
-                </div>
-                <Card.Header className='bodyCardBorder'>
-                    <Card.Title className="nameCardProfile">{userData.data.name}</Card.Title>
-                </Card.Header>
-                <ListGroup className="list-group-flush bodyCardBorder">
-                    <ListGroup.Item>
-                        <div><div className="profileInfo">Contact:</div>{userData.data.email}</div>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        <div><div className="profileInfo">About:</div>{userData.data.bio}</div>
-                    </ListGroup.Item>
-                    <ListGroup.Item><div><div className="profileInfo">Your bookings:</div></div>
-                        <div><div className="profileInfo">Coming:</div></div>
-                    </ListGroup.Item>
+        <div className="">
+            <div className="my-5 cardPage">
+                <Card className="mx-4 cardBorder cardWidth">
+                    <div style={{
+                        backgroundImage: `url(${userData.data.banner.url})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }} className="d-flex justify-content-center align-items-center imgCardBorder">
+                        <Image src={userData.data.avatar.url} alt={userData.data.avatar.alt || "Profile Avatar"} className="imgProfile2" />
+                    </div>
+                    <Card.Header className='bodyCardBorder'>
+                        <Card.Title className="nameCardProfile">{userData.data.name}</Card.Title>
+                    </Card.Header>
+                    <ListGroup className="list-group-flush bodyCardBorder">
+                        <ListGroup.Item>
+                            <div className="profileInfo">Contact:</div>
+                            <div className="profileInfoDetails">{userData.data.email}</div>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <div className="profileInfo">About:</div>
+                            <div className="profileInfoDetails">{userData.data.bio}</div>
+                        </ListGroup.Item>
+                        {/* <ListGroup.Item>
+                        <div>
+                            <div className="profileInfo">Your bookings:</div>
+                        </div>
+                        <div>
+                            <div className="profileInfo">Coming:</div>
+                        </div>
+                    </ListGroup.Item> 
                     <ListGroup.Item className="d-flex justify-content-between align-items-center">
                         <div><div className="profileInfo">Your Properties:</div></div>
-                        {/* <Button variant="outline-success" onClick={props.handleShowModalNewVenue}>Add new</Button> */}
                         <Button variant="outline-success" onClick={handleShowModalNewVenue}>Add new</Button>
                         <NewVenueModal
                             show={showModalNewVenue}
                             // show={true}
                             onHide={handleCloseModalNewVenue}
                         />
-                    </ListGroup.Item>
-                </ListGroup>
-                <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
-                    <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
-                    <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
-                    <EditModal
-                        show={showEditModal}
-                        onHide={handleCloseEditModal}
-                        onEdit={handleEdit}
-                        userData={userData}
-                    />
-                </Card.Footer>
-            </Card>
+                    </ListGroup.Item>*/}
+                    </ListGroup>
+                    <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
+                        <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
+                        <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
+                        <EditModal
+                            show={showEditModal}
+                            onHide={handleCloseEditModal}
+                            onEdit={handleEdit}
+                            userData={userData}
+                        />
+                    </Card.Footer>
+                </Card>
+            </div>
             <div className="profileInfoTitle"><h2>Your upcoming bookings:</h2></div>
             <div>
-                <div className="profileInfoTitle"><h2>Your properties:</h2></div>
                 <OwnerProperties />
             </div>
 

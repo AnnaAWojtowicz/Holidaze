@@ -468,8 +468,17 @@ body {
 .petsDetails,
 .wifiDetails,
 .hostDetails,
-.availabilityDetails {
+.availabilityDetails,
+.profileInfoDetails {
   margin: 0 1rem !important;
+}
+
+.hostDetails {
+  text-align: left;
+}
+
+.hostButton {
+  margin-left: 2rem;
 }
 
 .availabilityDetails {

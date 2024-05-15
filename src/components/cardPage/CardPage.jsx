@@ -79,7 +79,6 @@ function CardPage({ data }) {
                         {cardData?.meta && cardData.meta?.pets && <Pets />}
                     </ListGroup.Item>
                     <ListGroup.Item>
-
                         {cardData?.owner ? <Host userData={cardData.owner} />
                             : (<div>
                                 <div>About host:</div>
