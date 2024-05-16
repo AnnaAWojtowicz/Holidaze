@@ -95,9 +95,7 @@ function NewAndUpdateVenueModal(props) {
         if (data && data.name) {
             try {
                 const response = isEditing ? await updateVenue(data) : await addNewVenue(data);
-                console.log('Response:', response);
                 if (response && typeof response === 'object') {
-                    console.log('Success modal should be visible now');
                     props.onHide();
                     setShowSuccessModal(true);
                     props.onNewVenueAdded();

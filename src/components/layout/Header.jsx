@@ -58,7 +58,7 @@ function Header() {
     const loginUser = async (email, password) => {
         try {
             const response = await login(email, password);
-            console.log(response.data);
+
             handleCloseLogin();
             setIsLoggedin(true);
             setData(response)

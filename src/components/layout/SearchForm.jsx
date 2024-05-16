@@ -14,7 +14,6 @@ function SearchForm({ setSearchLocation }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (inputValue.trim() !== '') {
-            console.log("Setting search location to:", inputValue);
             setSearchLocation(inputValue);
         }
     };

@@ -11,7 +11,7 @@ function ControlledCarousel({ data }) {
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
-    console.log(data);
+
     return (
         <Carousel activeIndex={index} onSelect={handleSelect}>
             {data && data.media && data.media.length > 0 ? (
@@ -26,7 +26,7 @@ function ControlledCarousel({ data }) {
                         alt = "No image available";
                         isImgMissing = true;
                     }
-                    console.log(`img: ${img}, alt: ${alt}, isImgMissing: ${isImgMissing}`);
+
                     return (
                         <Carousel.Item key={i} className="imgContainer2">
                             <Card.Img src={img} alt={alt} className="imgCardBorder imgResponsive" />

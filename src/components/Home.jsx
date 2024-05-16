@@ -23,7 +23,6 @@ function Home() {
         fetch(fetchUrl)
             .then((response) => response.json())
             .then((response) => {
-                console.log('Response data:', response.data);
                 setData(response.data);
             })
             .catch((error) => {
