@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addNewVenue } from "../../api/addNewVenue";
 import ModalFail from "../ModalFail";
 import NewAndUpdateVenueModalSuccess from "./NewAndUpdateVenueModalSuccess";
-import { useEffect } from "react";
 import { type } from "@testing-library/user-event/dist/type";
 import { updateVenue } from "../../api/updateVenue";
 
@@ -24,7 +23,6 @@ function NewAndUpdateVenueModal(props) {
     const [addressVenue, setAddressVenue] = useState("");
     const [cityVenue, setCityVenue] = useState("");
     const [countryVenue, setCountryVenue] = useState("");
-    // const [show, setShow] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
     const isEditing = props.isEditing;
@@ -38,22 +36,22 @@ function NewAndUpdateVenueModal(props) {
     }, [props.show]);
 
     useEffect(() => {
-        if (cardData) {
-            setNameVenue(cardData.name);
-            setDescriptionVenue(cardData.description);
+        if (isEditing && cardData) {
+            setNameVenue(cardData.name || "");
+            setDescriptionVenue(cardData.description || "");
             setImages(Array.isArray(cardData.media) ? cardData.media.map(media => media.url) : []);
-            setGuestVenue(cardData.maxGuests);
-            setRatingVenue(cardData.rating);
-            setPriceVenue(cardData.price);
-            setWifiVenue(cardData.meta?.wifi);
-            setParkingVenue(cardData.meta?.parking);
-            setBreakfastVenue(cardData.meta?.breakfast);
-            setPetsVenue(cardData.meta?.pets);
-            setAddressVenue(cardData.location?.address);
-            setCityVenue(cardData.location?.city);
-            setCountryVenue(cardData.location?.country);
+            setGuestVenue(cardData.maxGuests || "");
+            setRatingVenue(cardData.rating || "");
+            setPriceVenue(cardData.price || "");
+            setWifiVenue(cardData.meta?.wifi || false);
+            setParkingVenue(cardData.meta?.parking || false);
+            setBreakfastVenue(cardData.meta?.breakfast || false);
+            setPetsVenue(cardData.meta?.pets || false);
+            setAddressVenue(cardData.location?.address || "");
+            setCityVenue(cardData.location?.city || "");
+            setCountryVenue(cardData.location?.country || "");
         }
-    }, [cardData]);
+    }, [isEditing, cardData]);
 
 
     const handleHideFail = () => {
@@ -71,6 +69,7 @@ function NewAndUpdateVenueModal(props) {
         onHide();
 
         const data = {
+            id: cardData.id,
             name: nameVenue,
             description: descriptionVenue,
             media: images.map((image, index) => ({
@@ -128,7 +127,7 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Label>Name: </Form.Label>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.name ? props.cardData.name : nameVenue}
+                                value={nameVenue}
                                 onChange={(event) => setNameVenue(event.target.value)}
                                 id="inputNameVenue"
                                 aria-describedby="nameHelpBlock"
@@ -144,7 +143,7 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Label>Description:</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.description ? props.cardData.description : descriptionVenue}
+                                value={descriptionVenue}
                                 onChange={(event) => setDescriptionVenue(event.target.value)}
                                 id="inputPropertyDesription"
                                 aria-describedby="propertyDesriptionHelpBlock"
@@ -160,7 +159,7 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Label>Add pictures of your property (max. 3)</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.images?.[0] ? props.cardData.images[0] || '' : images[0] || ''}
+                                value={images[0] || ''}
                                 onChange={(event) => {
                                     const newImages = [...images];
                                     newImages[0] = event.target.value;
@@ -178,7 +177,7 @@ function NewAndUpdateVenueModal(props) {
                             />
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.images?.[1] ? props.cardData.images[1] || '' : images[1] || ''}
+                                value={images[1] || ''}
                                 onChange={(event) => {
                                     const newImages = [...images];
                                     newImages[1] = event.target.value;
@@ -196,7 +195,7 @@ function NewAndUpdateVenueModal(props) {
                             />
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.images?.[2] ? props.cardData.images[2] || '' : images[2] || ''}
+                                value={images[2] || ''}
                                 onChange={(event) => {
                                     const newImages = [...images];
                                     newImages[2] = event.target.value;
@@ -222,7 +221,7 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Control
                                 type="number"
                                 min="1"
-                                value={isEditing && props.cardData?.maxGuests ? props.cardData.maxGuests : guestVenue}
+                                value={guestVenue}
                                 onChange={(event) => setGuestVenue(event.target.value)}
                                 id="inputGuestVenue"
                                 aria-describedby="guestVenueHelpBlock"
@@ -240,7 +239,7 @@ function NewAndUpdateVenueModal(props) {
                                 type="number"
                                 min="0"
                                 max="5"
-                                value={isEditing && props.cardData?.rating ? props.cardData.rating : ratingVenue}
+                                value={ratingVenue}
                                 onChange={(event) => setRatingVenue(event.target.value)}
                                 id="inputRatingVenue"
                                 aria-describedby="ratingHelpBlock"
@@ -257,7 +256,8 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Control
                                 type="number"
                                 min="1"
-                                value={isEditing && props.cardData?.price ? props.cardData.price : priceVenue}
+                                max="10000"
+                                value={priceVenue}
                                 onChange={(event) => setPriceVenue(event.target.value)}
                                 id="inputPriceVenue"
                                 aria-describedby="priceVenueHelpBlock"
@@ -279,7 +279,7 @@ function NewAndUpdateVenueModal(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-1`}
-                                        checked={isEditing && props.cardData?.meta?.wifi ? props.cardData.meta.wifi : wifiVenue}
+                                        checked={wifiVenue}
                                         onChange={(event) => setWifiVenue(event.target.checked)}
                                     />
                                     <Form.Check
@@ -288,7 +288,7 @@ function NewAndUpdateVenueModal(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-2`}
-                                        checked={isEditing && props.cardData?.meta?.parking ? props.cardData.meta.parking : parkingVenue}
+                                        checked={parkingVenue}
                                         onChange={(event) => setParkingVenue(event.target.checked)}
                                     />
                                     <Form.Check
@@ -297,7 +297,7 @@ function NewAndUpdateVenueModal(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-3`}
-                                        checked={isEditing && props.cardData?.meta?.breakfast ? props.cardData.meta.breakfast : breakfastVenue}
+                                        checked={breakfastVenue}
                                         onChange={(event) => setBreakfastVenue(event.target.checked)}
                                     />
                                     <Form.Check
@@ -306,7 +306,7 @@ function NewAndUpdateVenueModal(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-4`}
-                                        checked={isEditing && props.cardData?.meta?.pets ? props.cardData.meta.pets : petsVenue}
+                                        checked={petsVenue}
                                         onChange={(event) => setPetsVenue(event.target.checked)}
                                     />
                                 </div>
@@ -317,7 +317,7 @@ function NewAndUpdateVenueModal(props) {
                             <Form.Label>Location: </Form.Label>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.location?.address ? props.cardData.location.address : addressVenue}
+                                value={addressVenue}
                                 onChange={(event) => setAddressVenue(event.target.value)}
                                 id="inputAddressVenue"
                                 aria-describedby="addressVenueBlock"
@@ -329,7 +329,7 @@ function NewAndUpdateVenueModal(props) {
                             </Form.Text>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.location?.city ? props.cardData.location.city : cityVenue}
+                                value={cityVenue}
                                 onChange={(event) => setCityVenue(event.target.value)}
                                 id="inputCityVenue"
                                 aria-describedby="cityVenueBlock"
@@ -341,7 +341,7 @@ function NewAndUpdateVenueModal(props) {
                             </Form.Text>
                             <Form.Control
                                 type="text"
-                                value={isEditing && props.cardData?.location?.country ? props.cardData.location.country : countryVenue}
+                                value={countryVenue}
                                 onChange={(event) => setCountryVenue(event.target.value)}
                                 id="inputCountryVenue"
                                 aria-describedby="countryVenueBlock"
