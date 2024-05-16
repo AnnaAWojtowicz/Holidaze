@@ -14,7 +14,7 @@ import Wifi from "../icons/Wifi";
 import Host from "./Host";
 import CalendarAvailability from "./CalendarAvailability";
 import { apiVenuesPath } from "../../api/constants";
-
+import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 
 
 function CardPage() {
@@ -22,6 +22,15 @@ function CardPage() {
     const [cardData, setCardData] = useState([]);
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
+
+    const handleEditClick = () => {
+        setShowNewAndUpdateVenueModal(true);
+    };
+
+    const handleCloseNewAndUpdateVenueModal = () => {
+        setShowNewAndUpdateVenueModal(false);
+    };
 
     useEffect(() => {
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
@@ -105,13 +114,21 @@ function CardPage() {
                     <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
                     {currentUserName === cardData.owner.name ? (
                         <>
-                            <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
+                            <Button variant="outline-success" onClick={handleEditClick}>Edit</Button>
                             <Button variant="outline-success">Delete</Button>
                         </>
                     ) : (
                         <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
                     )}
                 </Card.Body>
+
+                <NewAndUpdateVenueModal
+                    show={showNewAndUpdateVenueModal}
+                    onHide={() => setShowNewAndUpdateVenueModal(false)}
+                    cardData={cardData}
+                    isEditing={true}
+
+                />
             </Card>
         </div>
 
