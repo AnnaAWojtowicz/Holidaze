@@ -80,19 +80,13 @@ function NewVenueModal(props) {
                 setShowSuccessModal(true);
                 props.onNewVenueAdded();
             }
-            // } else {
-            //     console.log('Fail modal should be visible now');
-            //     props.onHide();
-            //     setShowFailModal(true);
-            // }
+
         } catch (error) {
             console.error("Error occurred while adding new venue: ", error);
             props.onHide();
             setShowFailModal(true);
         }
-
     }
-
 
     return (
         <>
@@ -100,7 +94,7 @@ function NewVenueModal(props) {
                 <Modal.Header closeButton className='modalHeader'>
 
                     <Modal.Title>Create a new venue</Modal.Title>
-
+                    <Modal.Title>Update your venue</Modal.Title>
 
                 </Modal.Header>
                 <Modal.Body>
@@ -341,7 +335,6 @@ function NewVenueModal(props) {
                         Close
                     </Button>
                     <Button variant="btn btn-outline-success" type="submit" form='newVenueForm'>
-                        {/* <Button variant="btn btn-outline-success" type="submit" form='newVenueForm' onClick={handleSubmit}> */}
                         Submit
                     </Button>
                 </Modal.Footer>

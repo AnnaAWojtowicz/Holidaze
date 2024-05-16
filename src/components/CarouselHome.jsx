@@ -37,7 +37,7 @@ function CarouselHome() {
                                 <Col md={4} className="word">Hygge</Col>
                                 <Col md={7} className="line">
                                     <div className="phonetic">/ˈh(j)uːɡə/</div>
-                                    <div className="def">Hygge is a Danish concept encompassing coziness, comfort, and contentment in creating a warm and inviting atmosphere</div>
+                                    <div className="def">Hygge is a Danish concept encompassing coziness, comfort, and contentment in creating a warm and inviting atmosphere.</div>
                                     <div className="example">"Is it even possible to have more hygge than this?"</div>
                                 </Col>
                             </Row>

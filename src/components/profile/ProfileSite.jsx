@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
 import NewVenueModal from "./NewVenueModal";
-import OwnerProperties from "../venueManaging/OwnerProperties";
+import OwnerProperties from "../profile/OwnerProperties";
 
 function ProfileSite(props) {
     const [userData, setUserData] = useState(null);

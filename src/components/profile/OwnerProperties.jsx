@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import CardHome from '../CardHome';
 
 import { getUserVenues } from '../../api/getUserVenues';
-import NewVenueModal from '../profile/NewVenueModal';
+import NewVenueModal from './NewVenueModal';
 
 
 function OwnerProperties() {
@@ -63,7 +63,7 @@ function OwnerProperties() {
                     );
                 })}
             </Row>
-        </div >
+        </div>
     );
 }
 
