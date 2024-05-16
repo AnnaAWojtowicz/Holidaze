@@ -105,7 +105,7 @@ function CardPage() {
                     <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
                     {currentUserName === cardData.owner.name ? (
                         <>
-                            <Button variant="outline-success">Edit</Button>
+                            <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
                             <Button variant="outline-success">Delete</Button>
                         </>
                     ) : (

@@ -5,7 +5,7 @@ import ExampleImage2 from "../../img/nachelle-nocom-51adhgg5KkE-unsplash.jpg";
 import Image from 'react-bootstrap/Image';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
-import NewVenueModal from "./NewVenueModal";
+import NewAndUpdateVenueModal from "./NewAndUpdateVenueModal";
 import OwnerProperties from "../profile/OwnerProperties";
 
 function ProfileSite(props) {

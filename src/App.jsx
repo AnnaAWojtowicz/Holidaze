@@ -7,7 +7,7 @@ import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
-import NewVenueModal from './components/profile/NewVenueModal';
+import NewVenueModal from './components/profile/NewAndUpdateVenueModal';
 import OwnerProperties from './components/profile/OwnerProperties';
 
 

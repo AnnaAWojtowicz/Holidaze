@@ -4,11 +4,11 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from "react";
 import { addNewVenue } from "../../api/addNewVenue";
 import ModalFail from "../ModalFail";
-import NewVenueModalSuccess from "./NewVenueModalSuccess";
+import NewAndUpdateVenueModalSuccess from "./NewAndUpdateVenueModalSuccess";
 import { useEffect } from "react";
 import { type } from "@testing-library/user-event/dist/type";
 
-function NewVenueModal(props) {
+function NewAndUpdateVenueModal(props) {
     const [nameVenue, setNameVenue] = useState("");
     const [descriptionVenue, setDescriptionVenue] = useState("");
     const [images, setImages] = useState([]);
@@ -340,9 +340,9 @@ function NewVenueModal(props) {
                 </Modal.Footer>
             </Modal>
             {showFailModal && <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} />}
-            {showSuccessModal && <NewVenueModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} />}
+            {showSuccessModal && <NewAndUpdateVenueModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} />}
         </>
     );
 }
 
-export default NewVenueModal;
+export default NewAndUpdateVenueModal;

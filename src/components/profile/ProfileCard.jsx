@@ -2,7 +2,7 @@ import react from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Image from 'react-bootstrap/Image';
-import NewVenueModal from "./NewVenueModal";
+import NewAndUpdateVenueModal from "./NewAndUpdateVenueModal";
 import EditModal from "./EditModal";
 
 

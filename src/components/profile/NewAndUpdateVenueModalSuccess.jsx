@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function NewVenueModalSuccess(props) {
+function NewAndUpdateVenueModalSuccess(props) {
     const { show, onHide } = props;
 
 
@@ -32,4 +32,4 @@ function NewVenueModalSuccess(props) {
     );
 }
 
-export default NewVenueModalSuccess;
+export default NewAndUpdateVenueModalSuccess;

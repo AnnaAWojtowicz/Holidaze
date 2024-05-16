@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import CardHome from '../CardHome';
 
 import { getUserVenues } from '../../api/getUserVenues';
-import NewVenueModal from './NewVenueModal';
+import NewVenueModal from './NewAndUpdateVenueModal';
 
 
 function OwnerProperties() {
