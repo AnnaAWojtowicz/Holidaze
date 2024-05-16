@@ -38,7 +38,7 @@ export async function updateVenue({
             country
         },
     };
-    debugger;
+
     const response = await fetch(`${apiVenuesPath}/${id}`, {
         method: 'PUT',
         headers: {

@@ -15,6 +15,7 @@ import Host from "./Host";
 import CalendarAvailability from "./CalendarAvailability";
 import { apiVenuesPath } from "../../api/constants";
 import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
+import DeleteVenueModal from "../profile/DeleteVenueModal";
 
 
 function CardPage() {
@@ -23,6 +24,8 @@ function CardPage() {
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
+    const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
+
 
     const handleEditClick = () => {
         setShowNewAndUpdateVenueModal(true);
@@ -31,6 +34,11 @@ function CardPage() {
     const handleCloseNewAndUpdateVenueModal = () => {
         setShowNewAndUpdateVenueModal(false);
     };
+
+    const handleDeleteClick = () => {
+        setShowDeleteVenueModal(true);
+    };
+
 
     useEffect(() => {
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
@@ -115,7 +123,7 @@ function CardPage() {
                     {currentUserName === cardData.owner.name ? (
                         <>
                             <Button variant="outline-success" onClick={handleEditClick}>Edit</Button>
-                            <Button variant="outline-success">Delete</Button>
+                            <Button variant="outline-success" onClick={handleDeleteClick}>Delete</Button>
                         </>
                     ) : (
                         <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
@@ -127,7 +135,11 @@ function CardPage() {
                     onHide={() => setShowNewAndUpdateVenueModal(false)}
                     cardData={cardData}
                     isEditing={true}
-
+                />
+                <DeleteVenueModal
+                    show={showDeleteVenueModal}
+                    onHide={() => setShowDeleteVenueModal(false)}
+                    cardData={cardData}
                 />
             </Card>
         </div>
