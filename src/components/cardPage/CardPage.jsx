@@ -17,6 +17,7 @@ import { apiVenuesPath } from "../../api/constants";
 import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 import DeleteVenueModal from "../profile/DeleteVenueModal";
 import { useNavigate } from "react-router-dom";
+import BookingCard from "../profile/BookingCard";
 
 function CardPage({ card, redirectAfterDelete }) {
     const { id } = useParams();
@@ -25,6 +26,7 @@ function CardPage({ card, redirectAfterDelete }) {
     const [isLoading, setIsLoading] = useState(true);
     const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
     const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
+    const [chosenBooking, setChosenBooking] = useState(null);
     const navigate = useNavigate();
 
     const handleEditClick = () => {
@@ -122,15 +124,25 @@ function CardPage({ card, redirectAfterDelete }) {
                         {cardData.bookings
                             .filter(booking => new Date(booking.dateTo) > new Date())
                             .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom))
-                            .map((booking, index) => (
-                                <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
-                                        <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                            .map((booking, index) => {
+
+                                const handleShowBookingClick = (booking) => {
+                                    console.log(booking);
+                                    navigate(`/bookingcard/${booking.id}`);
+                                };
+
+                                return (
+                                    <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                                            <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                                        </div>
+                                        <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingClick(booking)}>Show more</Button>
+
                                     </div>
-                                    <Button className="bookingButton" variant="outline-success">Show more</Button>
-                                </div>
-                            ))}
+                                );
+                            })
+                        }
 
                     </ListGroup.Item>
                 </ListGroup>

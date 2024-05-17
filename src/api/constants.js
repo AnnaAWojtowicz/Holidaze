@@ -21,9 +21,9 @@ export const apiPath = apiUrl.toString();
 const apiVenues = `${apiUrl}/venues`;
 export const apiVenuesPath = apiVenues.toString();
 
-// API venuues with id path
-const apiVenuesId = `${apiVenues}/id`;
-export const apiVenuesIdPath = apiVenuesId.toString();
+// API venue with id path
+const apiVenueId = `${apiPath}/bookings`;
+export const apiVenueIdPath = apiVenueId.toString();
 
 // API venues search path
 const apiVenuesSearch = `${apiVenues}/search?q=`;
