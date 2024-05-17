@@ -13,7 +13,7 @@ import { getUserVenues } from '../../api/getUserVenues';
 import NewVenueModal from './NewAndUpdateVenueModal';
 
 
-function OwnerProperties() {
+function OwnerProperties({ redirectAfterDelate }) {
     const [items, setItems] = useState([]);
     const [showModalNewVenue, setShowModalNewVenue] = useState(false);
     const [newVenueAdded, setNewVenueAdded] = useState(false);
@@ -58,7 +58,7 @@ function OwnerProperties() {
                     const alt = item.media && item.media.length > 0 ? item.media[0].alt : '';
                     return (
                         <Col key={index} >
-                            <CardHome card={item} />
+                            <CardHome card={item} redirectAfterDelete="/ownerpropertiessite" />
                         </Col>
                     );
                 })}

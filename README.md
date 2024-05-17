@@ -10,6 +10,8 @@ Vinh Bui (u.a.). _Bootstrap 5 Design System - UI Kit_. Retrieved 16.04.2024 from
 
 ### Photos:
 
+Idris, K. (04.04.200). _Modern minimalist home design._ Retrieved 14.05.2024 from: https://unsplash.com/photos/brown-wooden-framed-yellow-padded-chair-_HqHX3LBN18
+
 Stackpole L. (16.02.2018). _Cute cabin._ Retrieved 30.04.2024 from: https://unsplash.com/photos/red-and-white-house-surround-green-grass-field-eWqOgJ-lfiI
 
 Bench Accounting (04.12.2015). _Minimalist White Table_. Retrieved 30.04.2024 from: https://unsplash.com/photos/white-wooden-table-near-brown-chair-nvzvOPQW0gc

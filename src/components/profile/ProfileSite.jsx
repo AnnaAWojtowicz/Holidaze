@@ -151,7 +151,7 @@ function ProfileSite(props) {
             </div>
             <div className="profileInfoTitle"><h2>Your upcoming bookings:</h2></div>
             <div>
-                <OwnerProperties />
+                <OwnerProperties redirectAfterDelate="/profilesite" />
             </div>
         </div>
 

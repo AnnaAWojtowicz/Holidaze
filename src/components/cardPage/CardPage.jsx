@@ -16,16 +16,16 @@ import CalendarAvailability from "./CalendarAvailability";
 import { apiVenuesPath } from "../../api/constants";
 import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 import DeleteVenueModal from "../profile/DeleteVenueModal";
+import { useNavigate } from "react-router-dom";
 
-
-function CardPage() {
+function CardPage({ card, redirectAfterDelete }) {
     const { id } = useParams();
     const [cardData, setCardData] = useState([]);
     const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
     const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
-
+    const navigate = useNavigate();
 
     const handleEditClick = () => {
         setShowNewAndUpdateVenueModal(true);
@@ -120,7 +120,7 @@ function CardPage() {
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
                     <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
-                    {currentUserName === cardData.owner.name ? (
+                    {currentUserName === cardData?.owner?.name ? (
                         <>
                             <Button variant="outline-success" onClick={handleEditClick}>Edit</Button>
                             <Button variant="outline-success" onClick={handleDeleteClick}>Delete</Button>
@@ -140,6 +140,7 @@ function CardPage() {
                     show={showDeleteVenueModal}
                     onHide={() => setShowDeleteVenueModal(false)}
                     cardData={cardData}
+                    redirectPath={() => navigate(-1)}
                 />
             </Card>
         </div>

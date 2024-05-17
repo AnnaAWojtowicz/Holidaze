@@ -32,7 +32,7 @@ function App() {
               <Route path="/cardpage/:id" element={<CardPage />} />
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
-              <Route path='/ownerproperties' element={<OwnerProperties />} />
+              <Route path='/ownerproperties' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
             </Routes>
           </Layout>
           {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}

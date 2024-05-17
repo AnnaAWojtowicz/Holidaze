@@ -6,7 +6,7 @@ import NoImage from "../img/simon-berger-2JONUbTfN38-unsplash.jpg";
 import NumberOfGuests from "./icons/NumberOfGuests";
 import StarsRating from "./icons/StarsRating";
 
-function CardHome({ card }) {
+function CardHome({ card, redirectAfterDelete }) {
     const { id, name, price, maxGuests, rating, media } = card;
 
     let img, alt;
@@ -21,27 +21,28 @@ function CardHome({ card }) {
     }
 
 
-    return (<Card className='cardBorder mx-3'>
-        <div className='imgContainer'>
-            <Card.Img variant="top" src={img} alt={alt} className='imgCardBorder imgResponsive' />
-            {isImgMissing && (
-                <div className="card-img-overlay"> <Card.Text className="noImgText">Sorry, no image was provided</Card.Text></div>
-            )}
-        </div>
-        <Card.Body className='bodyCardBorder'>
-            <Card.Title>{name}</Card.Title>
-            <div>
-                <NumberOfGuests guests={maxGuests} />
+    return (
+        <Card className='cardBorder mx-3'>
+            <div className='imgContainer'>
+                <Card.Img variant="top" src={img} alt={alt} className='imgCardBorder imgResponsive' />
+                {isImgMissing && (
+                    <div className="card-img-overlay"> <Card.Text className="noImgText">Sorry, no image was provided</Card.Text></div>
+                )}
             </div>
-            <div>
-                <StarsRating rating={rating} />
-            </div>
-        </Card.Body>
-        <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
-            <span>${price} / night</span>
-            <Link to={`/cardPage/${card.id}`}><Button variant="outline-success">More</Button></Link>
-        </Card.Footer>
-    </Card>);
+            <Card.Body className='bodyCardBorder'>
+                <Card.Title>{name}</Card.Title>
+                <div>
+                    <NumberOfGuests guests={maxGuests} />
+                </div>
+                <div>
+                    <StarsRating rating={rating} />
+                </div>
+            </Card.Body>
+            <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
+                <span>${price} / night</span>
+                <Link to={`/cardPage/${card.id}`}><Button variant="outline-success">More</Button></Link>
+            </Card.Footer>
+        </Card>);
 }
 
 export default CardHome;

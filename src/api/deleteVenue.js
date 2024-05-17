@@ -1,7 +1,7 @@
 import { apiVenuesPath } from "./constants.js";
 
 export async function deleteVenue(id) {
-    debugger;
+
     const accessToken = localStorage.getItem('accessToken');
 
 
