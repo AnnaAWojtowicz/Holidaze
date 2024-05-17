@@ -113,9 +113,25 @@ function CardPage({ card, redirectAfterDelete }) {
                     <ListGroup.Item>
                         <div className="availability">Availability:</div>
                         <CalendarAvailability data={cardData} onExcludeDatesChange={handleExcludeDatesChange} />
-                        {isExcludeDatesEmpty && (
+                        {/* {isExcludeDatesEmpty && (
                             <div className="availabilityDetails">Sorry, no information about the availability has been provided</div>
-                        )}
+                        )} */}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        <div className="bookings">Bookings:</div>
+                        {cardData.bookings
+                            .filter(booking => new Date(booking.dateTo) > new Date())
+                            .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom))
+                            .map((booking, index) => (
+                                <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                                        <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                                    </div>
+                                    <Button className="bookingButton" variant="outline-success">Show more</Button>
+                                </div>
+                            ))}
+
                     </ListGroup.Item>
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">

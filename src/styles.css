@@ -416,7 +416,8 @@ body {
 .parking,
 .pets,
 .wifi,
-.host {
+.host,
+.bookings {
   font-family: "Montserrat", sans-serif;
   color: #1c1c1cff;
   font-size: 1rem;
@@ -451,7 +452,8 @@ body {
 .wifiDetails,
 .hostDetails,
 .availabilityDetails,
-.profileInfoDetails {
+.profileInfoDetails,
+.bookingsDetails {
   margin: 0 1rem !important;
 }
 
@@ -461,6 +463,16 @@ body {
 
 .hostButton {
   margin-left: 2rem;
+}
+
+.bookingsBorder {
+  border: 0.5px solid #1c1c1cff !important;
+  border-radius: 5px !important;
+  margin: 0.5rem 0 !important;
+}
+
+.bookingButton {
+  margin: 0.5rem 0.5rem 0.5rem 0 !important;
 }
 
 .availabilityDetails {
