@@ -33,7 +33,7 @@ function App() {
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
               <Route path='/ownerproperties' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
-              <Route path="/bookingcard/:id" element={<BookingCard />} />
+              {/* <Route path="/bookingcard/:id" element={<BookingCard />} /> */}
             </Routes>
           </Layout>
           {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}

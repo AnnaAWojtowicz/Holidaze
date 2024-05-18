@@ -18,6 +18,7 @@ import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 import DeleteVenueModal from "../profile/DeleteVenueModal";
 import { useNavigate } from "react-router-dom";
 import BookingCard from "../profile/BookingCard";
+import BookingModalDetails from "../profile/BookingModalDetails";
 
 function CardPage({ card, redirectAfterDelete }) {
     const { id } = useParams();
@@ -28,6 +29,7 @@ function CardPage({ card, redirectAfterDelete }) {
     const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
     const [chosenBooking, setChosenBooking] = useState(null);
     const navigate = useNavigate();
+    const [showBookingModalDetails, setShowBookingModalDetails] = useState(false);
 
     const handleEditClick = () => {
         setShowNewAndUpdateVenueModal(true);
@@ -39,6 +41,12 @@ function CardPage({ card, redirectAfterDelete }) {
 
     const handleDeleteClick = () => {
         setShowDeleteVenueModal(true);
+    };
+
+    const handleShowBookingModalDetails = (booking) => {
+        console.log(booking.id);
+        setChosenBooking(booking);
+        setShowBookingModalDetails(true);
     };
 
 
@@ -137,7 +145,8 @@ function CardPage({ card, redirectAfterDelete }) {
                                             <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
                                             <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
                                         </div>
-                                        <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingClick(booking)}>Show more</Button>
+                                        <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
+                                        {/* <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingClick(booking)}>Show more</Button> */}
 
                                     </div>
                                 );
@@ -170,6 +179,14 @@ function CardPage({ card, redirectAfterDelete }) {
                     cardData={cardData}
                     redirectPath={() => navigate(-1)}
                 />
+                {chosenBooking && (
+                    <BookingModalDetails
+                        show={showBookingModalDetails}
+                        onHide={() => setShowBookingModalDetails(false)}
+                        booking={chosenBooking}
+                        id={chosenBooking?.id}
+                    />
+                )}
             </Card>
         </div>
 
