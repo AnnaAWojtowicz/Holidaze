@@ -74,6 +74,50 @@ function CardPage({ card, redirectAfterDelete }) {
         return <div>Loading...</div>;
     }
 
+    const renderBookings = () => {
+        const today = new Date();
+        const pastBookings = cardData.bookings.filter(booking => new Date(booking.dateTo) < today);
+        const ongoingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) <= today && new Date(booking.dateTo) >= today);
+        const upcomingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) > today);
+
+        const render = (bookings) => {
+            return bookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
+                return (
+                    <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
+                        <div>
+                            <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                            <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                        </div>
+                        <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
+                    </div>
+                );
+            });
+        };
+
+        return (
+            <>
+                {pastBookings.length > 0 && (
+                    <>
+                        <div className="bookingsDetails">Past Bookings:</div>
+                        {render(pastBookings)}
+                    </>
+                )}
+                {ongoingBookings.length > 0 && (
+                    <>
+                        <div className="bookingsDetails">Ongoing Bookings:</div>
+                        {render(ongoingBookings)}
+                    </>
+                )}
+                {upcomingBookings.length > 0 && (
+                    <>
+                        <div className="bookingsDetails">Upcoming Bookings:</div>
+                        {render(upcomingBookings)}
+                    </>
+                )}
+            </>
+        );
+    };
+
 
 
     return (
@@ -94,7 +138,6 @@ function CardPage({ card, redirectAfterDelete }) {
                         <StarsRating rating={cardData?.rating} />
                     </ListGroup.Item>
                     <ListGroup.Item>
-
                         {cardData?.location && (cardData.location?.address || cardData.location?.city || cardData.location?.country) ? (
                             <Location data={cardData} />
                         ) : (<div>
@@ -122,57 +165,14 @@ function CardPage({ card, redirectAfterDelete }) {
                     <ListGroup.Item>
                         <div className="availability">Availability:</div>
                         <CalendarAvailability data={cardData} onExcludeDatesChange={handleExcludeDatesChange} />
-                        {/* {isExcludeDatesEmpty && (
-                            <div className="availabilityDetails">Sorry, no information about the availability has been provided</div>
-                        )} */}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <div className="bookings">Bookings:</div>
-                        {
-                            (() => {
-                                const today = new Date();
-                                const pastBookings = cardData.bookings.filter(booking => new Date(booking.dateTo) < today);
-                                const ongoingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) <= today && new Date(booking.dateTo) >= today);
-                                const upcomingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) > today);
-
-                                const renderBookings = (bookings) => {
-                                    return bookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
-                                        return (
-                                            <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
-                                                    <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
-                                                </div>
-                                                <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
-                                            </div>
-                                        );
-                                    });
-                                };
-
-                                return (
-                                    <>
-                                        {pastBookings.length > 0 && (
-                                            <>
-                                                <div className="bookingsDetails">Past Bookings:</div>
-                                                {renderBookings(pastBookings)}
-                                            </>
-                                        )}
-                                        {ongoingBookings.length > 0 && (
-                                            <>
-                                                <div className="bookingsDetails">Ongoing Bookings:</div>
-                                                {renderBookings(ongoingBookings)}
-                                            </>
-                                        )}
-                                        {upcomingBookings.length > 0 && (
-                                            <>
-                                                <div className="bookingsDetails">Upcoming Bookings:</div>
-                                                {renderBookings(upcomingBookings)}
-                                            </>
-                                        )}
-                                    </>
-                                );
-                            })()
-                        }
+                        {currentUserName === cardData?.owner?.name && (
+                            <>
+                                <div className="bookings">Bookings:</div>
+                                {renderBookings()}
+                            </>
+                        )}
                     </ListGroup.Item>
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
