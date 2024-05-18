@@ -9,7 +9,7 @@ import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
 import NewVenueModal from './components/profile/NewAndUpdateVenueModal';
 import OwnerProperties from './components/profile/OwnerProperties';
-import BookingCard from './components/profile/BookingCard';
+
 
 
 
@@ -33,7 +33,6 @@ function App() {
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
               <Route path='/ownerproperties' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
-              {/* <Route path="/bookingcard/:id" element={<BookingCard />} /> */}
             </Routes>
           </Layout>
           {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}

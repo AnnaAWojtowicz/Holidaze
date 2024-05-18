@@ -17,7 +17,6 @@ import { apiVenuesPath } from "../../api/constants";
 import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 import DeleteVenueModal from "../profile/DeleteVenueModal";
 import { useNavigate } from "react-router-dom";
-import BookingCard from "../profile/BookingCard";
 import BookingModalDetails from "../profile/BookingModalDetails";
 
 function CardPage({ card, redirectAfterDelete }) {

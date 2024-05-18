@@ -40,11 +40,11 @@ function BookingModalDetails({ show, onHide, id }) {
                 <Modal.Title>{booking.venue.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className="mb-3 formGroup">Name: {customerName}</div>
+                <div className="mb-3 formGroup">Booked by: {customerName}</div>
                 <div className="mb-3 formGroup">Email: {booking.customer.email}</div>
                 <div>
-                    <div className="mb-3 formGroup">Date from: {new Date(booking.dateFrom).toLocaleDateString()}</div>
-                    <div className="mb-3 formGroup">Date to: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                    <div className="mb-3 formGroup">Booked from: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                    <div className="mb-3 formGroup">Booked to: {new Date(booking.dateTo).toLocaleDateString()}</div>
                 </div>
                 <div className="mb-3 formGroup">Number of guests: {booking.guests}</div>
             </Modal.Body>

@@ -434,6 +434,7 @@ body {
 
 .availabilityCalendar {
   margin: auto;
+  margin-top: 0.5rem;
   width: 50%;
   min-width: 240px;
 }
@@ -451,11 +452,14 @@ body {
 .petsDetails,
 .wifiDetails,
 .hostDetails,
-.availabilityDetails,
 .profileInfoDetails,
 .bookingsDetails {
   margin: 0 1rem !important;
 }
+
+/* .availabilityDetails {
+  margin: 0.5rem 0rem !important;
+} */
 
 .hostDetails {
   text-align: left;
@@ -517,13 +521,13 @@ p {
 }
 
 .cardWidth {
-  max-width: 100%;
+  max-width: 35rem;
   min-width: 30rem;
 }
 
 @media (max-width: 992px) {
   .cardWidth {
-    max-width: 100%;
+    max-width: 35rem;
     min-width: 20rem;
   }
 }
