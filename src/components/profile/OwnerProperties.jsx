@@ -1,14 +1,9 @@
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from "react-router-dom";
-
-import Card from 'react-bootstrap/Card';
-import { Container } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import CardHome from '../CardHome';
-
 import { getUserVenues } from '../../api/getUserVenues';
 import NewVenueModal from './NewAndUpdateVenueModal';
 

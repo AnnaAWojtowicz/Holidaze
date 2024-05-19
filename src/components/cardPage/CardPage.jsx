@@ -90,11 +90,9 @@ function CardPage({ card, redirectAfterDelete }) {
 
 
     useEffect(() => {
-        console.log('useEffect is running, id:', id);
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
-                console.log('Fetched data:', response.data);
                 setCardData(response.data);
                 setIsLoading(false);
             })
@@ -111,8 +109,22 @@ function CardPage({ card, redirectAfterDelete }) {
         return <div>Loading...</div>;
     }
 
+    const renderBookingsCustomer = () => {
+        const userBookings = cardData.bookings.filter(booking => booking.customer.name === currentUserName);
+        return userBookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
+            return (
+                <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
+                    <div>
+                        <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                        <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
+                    </div>
+                    <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
+                </div>
+            );
+        });
+    };
+
     const renderBookings = () => {
-        console.log('renderBookings is running');
         const bookings = cardData?.bookings || [];
         const today = new Date();
         const pastBookings = bookings.filter(booking => new Date(booking.dateTo) < today);
@@ -159,8 +171,8 @@ function CardPage({ card, redirectAfterDelete }) {
             </>
         );
     };
-
-
+    console.log(cardData);
+    console.log(currentUserName, cardData?.customer?.name);
 
     return (
 
@@ -216,6 +228,17 @@ function CardPage({ card, redirectAfterDelete }) {
                                 {renderBookings()}
                             </>
                         )}
+                        {cardData?.bookings?.map((booking) => {
+                            if (currentUserName === booking.customer.name) {
+                                return (
+                                    <>
+                                        <div className="bookings">My Bookings:</div>
+                                        {renderBookingsCustomer()}
+                                    </>
+                                );
+                            }
+                            return null;
+                        })}
                     </ListGroup.Item>
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
