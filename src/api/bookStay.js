@@ -11,7 +11,7 @@ export async function bookStay({ dateFrom, dateTo, guests, venueId }) {
         venueId,
     };
 
-    const response = await fetch(`${apiVenueIdPath}/_customer=true&_venue=true`, {
+    const response = await fetch(`${apiVenueIdPath}/?_customer=true&_venue=true`, {
         method: 'POST',
         headers: {
             Accept: "application/json",

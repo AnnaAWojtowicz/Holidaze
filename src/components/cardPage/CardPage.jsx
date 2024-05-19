@@ -257,6 +257,7 @@ function CardPage({ card, redirectAfterDelete }) {
                         onExcludeDatesChange={handleExcludeDatesChange}
                         excludeDates={excludeDates}
                         maxGuests={cardData?.maxGuests}
+                        id={cardData?.id}
 
                     />
                 )}

@@ -8,9 +8,9 @@ import BookStayModalSuccess from "./BookStayModalSuccess";
 import ModalFail from "../ModalFail";
 import BookStayCalendar from "./BookStayCalendar";
 
-function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates, maxGuests }) {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates, maxGuests, id }) {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [guests, setGuests] = useState(1);
@@ -40,7 +40,7 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
         parentOnExcludeDatesChange(excludeDates);
     }, [bookings, parentOnExcludeDatesChange]);
 
-    const onChange = (dates) => {
+    const handleDateChange = (dates) => {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
@@ -59,15 +59,16 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
         event.preventDefault();
 
         try {
-            const venueId = data.id; // assuming data is the venue data and it has an id property
+            const venueId = id;
             const dateFrom = startDate.toISOString();
             const dateTo = endDate.toISOString();
-
+            console.log({ dateFrom, dateTo, guests, venueId });
             await bookStay({ dateFrom, dateTo, guests, venueId });
 
             onHide();
             setShowSuccessModal(true);
         } catch (error) {
+            console.error(error);
             setShowFailModal(true);
         }
     };
@@ -134,7 +135,7 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
 
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Check-in and check-out dates:</Form.Label>
-                            <BookStayCalendar data={data} onExcludeDatesChange={parentOnExcludeDatesChange} excludeDates={excludeDates} />
+                            <BookStayCalendar data={data} onExcludeDatesChange={parentOnExcludeDatesChange} excludeDates={excludeDates} selected={startDate} onChange={handleDateChange} />
                             <Form.Text id="checkInHelpBlock" muted>
                                 Please chose a check-in and check-out dates
                             </Form.Text>
