@@ -8,7 +8,7 @@ import BookStayModalSuccess from "./BookStayModalSuccess";
 import ModalFail from "../ModalFail";
 import BookStayCalendar from "./BookStayCalendar";
 
-function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates }) {
+function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates, maxGuests }) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [name, setName] = useState("");
@@ -119,7 +119,7 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
                             <Form.Control
                                 type="number"
                                 min="1"
-                                max=""
+                                max={maxGuests}
                                 value={guests}
                                 onChange={(event) => setGuests(event.target.value)}
                                 id="inputGuestVenue"

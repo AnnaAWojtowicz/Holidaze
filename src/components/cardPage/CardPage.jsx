@@ -256,6 +256,7 @@ function CardPage({ card, redirectAfterDelete }) {
                         onHide={() => setShowBookStayModal(false)}
                         onExcludeDatesChange={handleExcludeDatesChange}
                         excludeDates={excludeDates}
+                        maxGuests={cardData?.maxGuests}
 
                     />
                 )}
