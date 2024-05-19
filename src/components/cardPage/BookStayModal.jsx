@@ -9,11 +9,12 @@ import ModalFail from "../ModalFail";
 import BookStayCalendar from "./BookStayCalendar";
 
 function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates, maxGuests, id }) {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [guests, setGuests] = useState(1);
+    const [formInput, setFormInput] = useState({ guests: '' });
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
 
@@ -57,13 +58,19 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        if (startDate === null || endDate === null) {
+            // Show an error message and return
+            console.error('Please select a date');
+            return;
+        }
+        const guestsToSend = guests !== undefined ? Number(guests) : 1;
         try {
             const venueId = id;
             const dateFrom = startDate.toISOString();
             const dateTo = endDate.toISOString();
-            console.log({ dateFrom, dateTo, guests, venueId });
-            await bookStay({ dateFrom, dateTo, guests, venueId });
+
+            console.log({ dateFrom, dateTo, guestsToSend, venueId });
+            await bookStay({ dateFrom, dateTo, guests: guestsToSend, venueId });
 
             onHide();
             setShowSuccessModal(true);
@@ -119,7 +126,6 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
                             <Form.Label>Guests:</Form.Label>
                             <Form.Control
                                 type="number"
-                                min="1"
                                 max={maxGuests}
                                 value={guests}
                                 onChange={(event) => setGuests(event.target.value)}
@@ -135,7 +141,14 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
 
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Check-in and check-out dates:</Form.Label>
-                            <BookStayCalendar data={data} onExcludeDatesChange={parentOnExcludeDatesChange} excludeDates={excludeDates} selected={startDate} onChange={handleDateChange} />
+                            <BookStayCalendar
+                                data={data}
+                                onExcludeDatesChange={parentOnExcludeDatesChange}
+                                excludeDates={excludeDates}
+                                startDate={startDate}
+                                endDate={endDate}
+                                onChange={handleDateChange}
+                            />
                             <Form.Text id="checkInHelpBlock" muted>
                                 Please chose a check-in and check-out dates
                             </Form.Text>

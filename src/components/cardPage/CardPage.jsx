@@ -44,8 +44,6 @@ function CardPage({ card, redirectAfterDelete }) {
         setExcludeDates(newExcludeDates);
     }, []);
 
-
-
     const handleCloseCheckLoginModal = () => {
         setShowCheckLoginModal(false);
     };
@@ -87,8 +85,6 @@ function CardPage({ card, redirectAfterDelete }) {
         setShowModalMain(true); // open the ModalMain
     };
 
-
-
     useEffect(() => {
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
             .then((response) => response.json())
@@ -102,26 +98,20 @@ function CardPage({ card, redirectAfterDelete }) {
             });
     }, [id]);
 
-
-
-
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    const renderBookingsCustomer = () => {
-        const userBookings = cardData.bookings.filter(booking => booking.customer.name === currentUserName);
-        return userBookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
-            return (
-                <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
-                    <div>
-                        <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
-                        <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
-                    </div>
-                    <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
+    const renderBookingsCustomer = (booking) => {
+        return (
+            <div key={`customer-booking-${booking.id}`} className="bookingsBorder d-flex justify-content-between align-items-center">
+                <div>
+                    <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
+                    <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
                 </div>
-            );
-        });
+                <Button className="bookingButton" variant="outline-success" onClick={() => handleShowBookingModalDetails(booking)}>Show more</Button>
+            </div>
+        );
     };
 
     const renderBookings = () => {
@@ -137,7 +127,7 @@ function CardPage({ card, redirectAfterDelete }) {
             }
             return bookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
                 return (
-                    <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
+                    <div key={`booking-${booking.id}`} className="bookingsBorder d-flex justify-content-between align-items-center">
                         <div>
                             <div className="bookingsDetails">From: {new Date(booking.dateFrom).toLocaleDateString()}</div>
                             <div className="bookingsDetails">To: {new Date(booking.dateTo).toLocaleDateString()}</div>
@@ -171,11 +161,8 @@ function CardPage({ card, redirectAfterDelete }) {
             </>
         );
     };
-    console.log(cardData);
-    console.log(currentUserName, cardData?.customer?.name);
 
     return (
-
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
                 {cardData ? <Carousel data={cardData} /> : <div>Loading...</div>}
@@ -228,17 +215,17 @@ function CardPage({ card, redirectAfterDelete }) {
                                 {renderBookings()}
                             </>
                         )}
-                        {cardData?.bookings?.map((booking) => {
-                            if (currentUserName === booking.customer.name) {
-                                return (
-                                    <>
-                                        <div className="bookings">My Bookings:</div>
-                                        {renderBookingsCustomer()}
-                                    </>
-                                );
-                            }
-                            return null;
-                        })}
+                        {cardData?.bookings?.some(booking => currentUserName === booking.customer.name) && (
+                            <div>
+                                <div className="bookings">My Bookings:</div>
+                                {cardData.bookings.map((booking) => {
+                                    if (currentUserName === booking.customer.name) {
+                                        return renderBookingsCustomer(booking);
+                                    }
+                                    return null;
+                                })}
+                            </div>
+                        )}
                     </ListGroup.Item>
                 </ListGroup>
                 <Card.Body className=" footerCardBorder d-flex justify-content-between align-items-center">
@@ -281,14 +268,12 @@ function CardPage({ card, redirectAfterDelete }) {
                         excludeDates={excludeDates}
                         maxGuests={cardData?.maxGuests}
                         id={cardData?.id}
-
                     />
                 )}
                 <CheckLoginModal show={showCheckLoginModal} handleClose={handleCloseCheckLoginModal} handleLogin={handleOpenLoginModal} />
                 <ModalMain show={showModalMain} handleClose={() => setShowModalMain(false)} isSignIn={true} />
             </Card>
         </div>
-
     );
 }
 
