@@ -2,17 +2,9 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function CalendarAvailability({ data, onExcludeDatesChange }) {
+function BookStayCalendar({ data, onExcludeDatesChange, excludeDates }) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-
-    const { bookings } = data || {};
-
-    const excludeDates = bookings ? bookings.map((booking) => {
-        const dateFrom = new Date(booking.dateFrom);
-        const dateTo = new Date(booking.dateTo);
-        return [dateFrom, dateTo];
-    }).flat() : [];
 
     useEffect(() => {
         onExcludeDatesChange(excludeDates.length === 0);
@@ -36,10 +28,11 @@ function CalendarAvailability({ data, onExcludeDatesChange }) {
                 selectsRange
                 selectsDisabledDaysInRange
                 inline
+                minDate={new Date()}
                 className="mr-sm-2 form-control-sm form-control"
             />
         </div>
     );
 };
 
-export default CalendarAvailability;
+export default BookStayCalendar;

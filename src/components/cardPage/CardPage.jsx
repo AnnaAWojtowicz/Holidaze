@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
@@ -18,17 +18,37 @@ import NewAndUpdateVenueModal from "../profile/NewAndUpdateVenueModal";
 import DeleteVenueModal from "../profile/DeleteVenueModal";
 import { useNavigate } from "react-router-dom";
 import BookingModalDetails from "../profile/BookingModalDetails";
+import CheckLoginModal from "./CheckLoginModal"
+import BookStayModal from "./BookStayModal";
+import ModalMain from "../layout/Modal";
 
 function CardPage({ card, redirectAfterDelete }) {
     const { id } = useParams();
     const [cardData, setCardData] = useState([]);
-    const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState(false);
+    const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
     const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
     const [chosenBooking, setChosenBooking] = useState(null);
     const navigate = useNavigate();
     const [showBookingModalDetails, setShowBookingModalDetails] = useState(false);
+    const [showModalMain, setShowModalMain] = useState(false);
+    const [excludeDates, setExcludeDates] = useState([]);
+
+    const currentUserName = localStorage.getItem('userName');
+    const isLoggedIn = Boolean(currentUserName);
+    const [showCheckLoginModal, setShowCheckLoginModal] = useState(!isLoggedIn);
+    const [showBookStayModal, setShowBookStayModal] = useState(false);
+
+    const handleExcludeDatesChange = useCallback((newExcludeDates) => {
+        setExcludeDates(newExcludeDates);
+    }, []);
+
+
+
+    const handleCloseCheckLoginModal = () => {
+        setShowCheckLoginModal(false);
+    };
 
     const handleEditClick = () => {
         setShowNewAndUpdateVenueModal(true);
@@ -48,39 +68,61 @@ function CardPage({ card, redirectAfterDelete }) {
         setShowBookingModalDetails(true);
     };
 
+    const handleCheckLoginModal = () => {
+        console.log('handleCheckLoginModal function has been called');
+        const currentUserName = localStorage.getItem('userName');
+        console.log('currentUserName:', currentUserName);
+        if (currentUserName) {
+            console.log('User is logged in, showing BookStayModal');
+            setShowBookStayModal(true);
+            console.log('showBookStayModal state:', showBookStayModal);
+        } else {
+            console.log('User is not logged in, showing CheckLoginModal');
+            setShowCheckLoginModal(true);
+        }
+    };
+
+    const handleOpenLoginModal = () => {
+        setShowCheckLoginModal(false); // close the CheckLoginModal
+        setShowModalMain(true); // open the ModalMain
+    };
+
+
 
     useEffect(() => {
+        console.log('useEffect is running, id:', id);
         fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`)
             .then((response) => response.json())
             .then((response) => {
+                console.log('Fetched data:', response.data);
                 setCardData(response.data);
                 setIsLoading(false);
             })
             .catch((error) => {
-                console.error(error);
+                console.error("Fetch error:", error);
                 setIsLoading(false);
             });
     }, [id]);
 
 
-    const handleExcludeDatesChange = (isEmpty) => {
-        setIsExcludeDatesEmpty(isEmpty);
-    };
 
-
-    const currentUserName = localStorage.getItem('userName');
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
     const renderBookings = () => {
+        console.log('renderBookings is running');
+        const bookings = cardData?.bookings || [];
         const today = new Date();
-        const pastBookings = cardData.bookings.filter(booking => new Date(booking.dateTo) < today);
-        const ongoingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) <= today && new Date(booking.dateTo) >= today);
-        const upcomingBookings = cardData.bookings.filter(booking => new Date(booking.dateFrom) > today);
+        const pastBookings = bookings.filter(booking => new Date(booking.dateTo) < today);
+        const ongoingBookings = bookings.filter(booking => new Date(booking.dateFrom) <= today && new Date(booking.dateTo) >= today);
+        const upcomingBookings = bookings.filter(booking => new Date(booking.dateFrom) > today);
 
         const render = (bookings) => {
+            if (!bookings) {
+                return null;
+            }
             return bookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)).map((booking, index) => {
                 return (
                     <div key={index} className="bookingsBorder d-flex justify-content-between align-items-center">
@@ -96,19 +138,19 @@ function CardPage({ card, redirectAfterDelete }) {
 
         return (
             <>
-                {pastBookings.length > 0 && (
+                {pastBookings?.length > 0 && (
                     <>
                         <div className="bookingsDetails">Past Bookings:</div>
                         {render(pastBookings)}
                     </>
                 )}
-                {ongoingBookings.length > 0 && (
+                {ongoingBookings?.length > 0 && (
                     <>
                         <div className="bookingsDetails">Ongoing Bookings:</div>
                         {render(ongoingBookings)}
                     </>
                 )}
-                {upcomingBookings.length > 0 && (
+                {upcomingBookings?.length > 0 && (
                     <>
                         <div className="bookingsDetails">Upcoming Bookings:</div>
                         {render(upcomingBookings)}
@@ -146,7 +188,8 @@ function CardPage({ card, redirectAfterDelete }) {
                         </div>
                         )}
                     </ListGroup.Item>
-                    <ListGroup.Item><div>This place offers:</div>
+                    <ListGroup.Item>
+                        <div>This place offers:</div>
                         {cardData?.meta && cardData.meta?.wifi && <Wifi />}
                         {cardData?.meta && cardData.meta?.breakfast && <Breakfast />}
                         {cardData?.meta && cardData.meta?.parking && <Parking />}
@@ -183,7 +226,7 @@ function CardPage({ card, redirectAfterDelete }) {
                             <Button variant="outline-success" onClick={handleDeleteClick}>Delete</Button>
                         </>
                     ) : (
-                        <Link to="/cardPage"><Button variant="outline-success">Book Now</Button></Link>
+                        <Button variant="outline-success" onClick={handleCheckLoginModal}>Book Now</Button>
                     )}
                 </Card.Body>
 
@@ -207,6 +250,17 @@ function CardPage({ card, redirectAfterDelete }) {
                         id={chosenBooking?.id}
                     />
                 )}
+                {currentUserName && (
+                    <BookStayModal
+                        show={showBookStayModal}
+                        onHide={() => setShowBookStayModal(false)}
+                        onExcludeDatesChange={handleExcludeDatesChange}
+                        excludeDates={excludeDates}
+
+                    />
+                )}
+                <CheckLoginModal show={showCheckLoginModal} handleClose={handleCloseCheckLoginModal} handleLogin={handleOpenLoginModal} />
+                <ModalMain show={showModalMain} handleClose={() => setShowModalMain(false)} isSignIn={true} />
             </Card>
         </div>
 
