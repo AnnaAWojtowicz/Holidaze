@@ -166,19 +166,19 @@ function CardPage({ card, redirectAfterDelete }) {
             <>
                 {pastBookings?.length > 0 && (
                     <>
-                        <div className="bookingsDetails">Past Bookings:</div>
+                        <div className="bookingsDetails">Past bookings:</div>
                         {render(pastBookings)}
                     </>
                 )}
                 {ongoingBookings?.length > 0 && (
                     <>
-                        <div className="bookingsDetails">Ongoing Bookings:</div>
+                        <div className="bookingsDetails">Ongoing bookings:</div>
                         {render(ongoingBookings)}
                     </>
                 )}
                 {upcomingBookings?.length > 0 && (
                     <>
-                        <div className="bookingsDetails">Upcoming Bookings:</div>
+                        <div className="bookingsDetails">Upcoming bookings:</div>
                         {render(upcomingBookings)}
                     </>
                 )}

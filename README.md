@@ -10,7 +10,11 @@ Vinh Bui (u.a.). _Bootstrap 5 Design System - UI Kit_. Retrieved 16.04.2024 from
 
 ### Photos:
 
-Idris, K. (04.04.200). _Modern minimalist home design._ Retrieved 14.05.2024 from: https://unsplash.com/photos/brown-wooden-framed-yellow-padded-chair-_HqHX3LBN18
+Idris, K. (04.04.2000). _Modern minimalist home design._ Retrieved 14.05.2024 from: https://unsplash.com/photos/brown-wooden-framed-yellow-padded-chair-_HqHX3LBN18
+
+Idris, K. (05.04.2000). _Black and white bed linen._ Retrieved 20.05.2024 from: https://unsplash.com/photos/black-and-white-bed-linen-kyt0PkBSCNQ
+
+Idris, K. (10.05.2023). _No title [Dining room]._ Retrieved 20.05.2024 from: https://unsplash.com/photos/a-dining-room-with-a-table-and-chairs-7lZxYqwDNXo
 
 Stackpole L. (16.02.2018). _Cute cabin._ Retrieved 30.04.2024 from: https://unsplash.com/photos/red-and-white-house-surround-green-grass-field-eWqOgJ-lfiI
 
