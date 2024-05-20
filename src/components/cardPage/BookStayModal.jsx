@@ -8,7 +8,7 @@ import BookStayModalSuccess from "./BookStayModalSuccess";
 import ModalFail from "../ModalFail";
 import BookStayCalendar from "./BookStayCalendar";
 
-function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExcludeDatesChange, excludeDates, maxGuests, id }) {
+function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, onShowVenue }) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [name, setName] = useState("");
@@ -17,29 +17,21 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
     const [formInput, setFormInput] = useState({ guests: '' });
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
+    const [excludeDates, setExcludeDates] = useState([]);
 
     const [showModalAgain, setShowModalAgain] = useState(false);
 
-    let excludeDatesArray = excludeDates; // Use a different variable name
-
-    if (!excludeDatesArray) {
-        excludeDatesArray = []; // Set to empty array if it's undefined
-    }
-    // const [checkInDate, setCheckInDate] = useState(null);
-    // const [checkOutDate, setCheckOutDate] = useState(null);
-
     const { bookings } = data || {};
-
-
     useEffect(() => {
+        console.log(bookings);
         const excludeDates = bookings ? bookings.map((booking) => {
             const dateFrom = new Date(booking.dateFrom);
             const dateTo = new Date(booking.dateTo);
             return [dateFrom, dateTo];
         }).flat() : [];
 
-        parentOnExcludeDatesChange(excludeDates);
-    }, [bookings, parentOnExcludeDatesChange]);
+        setExcludeDates(excludeDates);
+    }, [bookings]);
 
     const handleDateChange = (dates) => {
         const [start, end] = dates;
@@ -59,7 +51,6 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (startDate === null || endDate === null) {
-            // Show an error message and return
             console.error('Please select a date');
             return;
         }
@@ -69,11 +60,11 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
             const dateFrom = startDate.toISOString();
             const dateTo = endDate.toISOString();
 
-            console.log({ dateFrom, dateTo, guestsToSend, venueId });
             await bookStay({ dateFrom, dateTo, guests: guestsToSend, venueId });
 
             onHide();
             setShowSuccessModal(true);
+            onBookingSuccess();
         } catch (error) {
             console.error(error);
             setShowFailModal(true);
@@ -143,7 +134,6 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
                             <Form.Label>Check-in and check-out dates:</Form.Label>
                             <BookStayCalendar
                                 data={data}
-                                onExcludeDatesChange={parentOnExcludeDatesChange}
                                 excludeDates={excludeDates}
                                 startDate={startDate}
                                 endDate={endDate}
@@ -165,7 +155,7 @@ function BookStayModal({ show, onHide, data, onExcludeDatesChange: parentOnExclu
                 </Modal.Footer>
             </Modal>
             {showFailModal && <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} />}
-            {showSuccessModal && <BookStayModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} />}
+            {showSuccessModal && <BookStayModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} onShowVenue={onShowVenue} />}
         </>
     );
 }

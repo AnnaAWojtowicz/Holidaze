@@ -153,7 +153,8 @@ body {
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected,
 .react-datepicker__day:hover,
-.react-datepicker__day--in-selecting-range {
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range {
   background-color: #e9e8e4ff !important;
   color: #1c1c1cff !important;
 }

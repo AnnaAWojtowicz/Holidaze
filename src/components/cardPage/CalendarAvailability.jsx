@@ -14,10 +14,6 @@ function CalendarAvailability({ data, onExcludeDatesChange }) {
         return [dateFrom, dateTo];
     }).flat() : [];
 
-    useEffect(() => {
-        onExcludeDatesChange(excludeDates.length === 0);
-    }, [excludeDates, onExcludeDatesChange]);
-
     const onChange = (dates) => {
         const [start, end] = dates;
         setStartDate(start);
@@ -36,6 +32,7 @@ function CalendarAvailability({ data, onExcludeDatesChange }) {
                 selectsRange
                 selectsDisabledDaysInRange
                 inline
+                minDate={new Date()}
                 className="mr-sm-2 form-control-sm form-control"
             />
         </div>

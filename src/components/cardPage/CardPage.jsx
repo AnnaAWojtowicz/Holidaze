@@ -34,11 +34,30 @@ function CardPage({ card, redirectAfterDelete }) {
     const [showBookingModalDetails, setShowBookingModalDetails] = useState(false);
     const [showModalMain, setShowModalMain] = useState(false);
     const [excludeDates, setExcludeDates] = useState([]);
-
     const currentUserName = localStorage.getItem('userName');
     const isLoggedIn = Boolean(currentUserName);
     const [showCheckLoginModal, setShowCheckLoginModal] = useState(!isLoggedIn);
     const [showBookStayModal, setShowBookStayModal] = useState(false);
+    const [bookingsData, setBookingsData] = useState([]);
+    const [refresh, setRefresh] = useState(false);
+    const [showBookStayModalSuccess, setShowBookStayModalSuccess] = useState(false);
+
+    useEffect(() => {
+        fetchBookingsData(id);
+    }, [refresh]);
+
+    const fetchBookingsData = async (id) => {
+        const response = await fetch(`${apiVenuesPath}/${id}?_owner=true&_bookings=true`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setBookingsData(data);
+    };
+
+    const handleShowVenue = () => {
+        setRefresh(!refresh);
+    };
 
     const handleExcludeDatesChange = useCallback((newExcludeDates) => {
         setExcludeDates(newExcludeDates);
@@ -61,28 +80,22 @@ function CardPage({ card, redirectAfterDelete }) {
     };
 
     const handleShowBookingModalDetails = (booking) => {
-        console.log(booking.id);
         setChosenBooking(booking);
         setShowBookingModalDetails(true);
     };
 
     const handleCheckLoginModal = () => {
-        console.log('handleCheckLoginModal function has been called');
         const currentUserName = localStorage.getItem('userName');
-        console.log('currentUserName:', currentUserName);
         if (currentUserName) {
-            console.log('User is logged in, showing BookStayModal');
             setShowBookStayModal(true);
-            console.log('showBookStayModal state:', showBookStayModal);
         } else {
-            console.log('User is not logged in, showing CheckLoginModal');
             setShowCheckLoginModal(true);
         }
     };
 
     const handleOpenLoginModal = () => {
-        setShowCheckLoginModal(false); // close the CheckLoginModal
-        setShowModalMain(true); // open the ModalMain
+        setShowCheckLoginModal(false);
+        setShowModalMain(true);
     };
 
     useEffect(() => {
@@ -96,7 +109,18 @@ function CardPage({ card, redirectAfterDelete }) {
                 console.error("Fetch error:", error);
                 setIsLoading(false);
             });
-    }, [id]);
+    }, [id, refresh]);
+
+    const handleBookingSuccess = () => {
+        setRefresh(!refresh);
+        setShowBookStayModalSuccess(true);
+    };
+
+    const handleShowVenueClick = () => {
+        setShowBookStayModalSuccess(false);
+        setRefresh(prevState => !prevState);
+    };
+
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -206,7 +230,7 @@ function CardPage({ card, redirectAfterDelete }) {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <div className="availability">Availability:</div>
-                        <CalendarAvailability data={cardData} onExcludeDatesChange={handleExcludeDatesChange} />
+                        <CalendarAvailability data={cardData} />
                     </ListGroup.Item>
                     <ListGroup.Item>
                         {currentUserName === cardData?.owner?.name && (
@@ -262,12 +286,14 @@ function CardPage({ card, redirectAfterDelete }) {
                 )}
                 {currentUserName && (
                     <BookStayModal
+                        data={cardData}
                         show={showBookStayModal}
                         onHide={() => setShowBookStayModal(false)}
-                        onExcludeDatesChange={handleExcludeDatesChange}
                         excludeDates={excludeDates}
                         maxGuests={cardData?.maxGuests}
                         id={cardData?.id}
+                        onBookingSuccess={handleBookingSuccess}
+                        onShowVenue={handleShowVenueClick}
                     />
                 )}
                 <CheckLoginModal show={showCheckLoginModal} handleClose={handleCloseCheckLoginModal} handleLogin={handleOpenLoginModal} />

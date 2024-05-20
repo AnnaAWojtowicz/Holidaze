@@ -1,7 +1,14 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 
-function BookStayModalSuccess({ show, onHide }) {
+function BookStayModalSuccess({ show, onHide, onShowVenue }) {
+    const handleClick = () => {
+        console.log('handleClick called');
+        console.log('onShowVenue:', onShowVenue);
+        console.log('onHide:', onHide);
+        onShowVenue();
+        onHide();
+    };
     return (
         <>
             <Modal show={show} onHide={onHide}>
@@ -15,7 +22,7 @@ function BookStayModalSuccess({ show, onHide }) {
                     <Button variant="btn btn-outline-success" onClick={onHide}>
                         Close
                     </Button>
-                    <Button variant="btn btn-outline-success" onClick={onHide}>
+                    <Button variant="btn btn-outline-success" onClick={handleClick}>
                         Show venue
                     </Button>
                 </Modal.Footer>
