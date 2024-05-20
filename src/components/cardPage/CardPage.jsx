@@ -241,7 +241,7 @@ function CardPage({ card, redirectAfterDelete }) {
                         )}
                         {cardData?.bookings?.some(booking => currentUserName === booking.customer.name) && (
                             <div>
-                                <div className="bookings">My Bookings:</div>
+                                <div className="bookings">Your bookings:</div>
                                 {cardData.bookings.map((booking) => {
                                     if (currentUserName === booking.customer.name) {
                                         return renderBookingsCustomer(booking);
