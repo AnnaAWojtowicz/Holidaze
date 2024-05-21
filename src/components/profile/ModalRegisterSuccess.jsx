@@ -29,7 +29,7 @@ function ModalRegisterSuccess({ show, onHide, role, setShowModalLogin, setIsSign
                 </Modal.Header>
                 <Modal.Body>
                     <div className="mb-3 formGroup">Your are now registered as {role === "manager" ? "manager" : "guest"}.</div>
-                    <div className="mb-3 formGroup">Please login.</div>
+                    <div className="mb-3 formGroup">Please log in.</div>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">
                     <Button variant="btn btn-outline-success" onClick={handleClose}>

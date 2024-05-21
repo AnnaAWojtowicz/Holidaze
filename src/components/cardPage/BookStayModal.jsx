@@ -84,7 +84,7 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                 <Modal.Body>
                     <Form id="newBookingForm">
                         <Form.Group className="mb-3 formGroup">
-                            <Form.Label>Name: </Form.Label>
+                            <Form.Label>Name </Form.Label>
                             <Form.Control
                                 type="text"
                                 value={name}
@@ -114,7 +114,7 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                         </Form.Group>
 
                         <Form.Group className="mb-3 formGroup" >
-                            <Form.Label>Guests:</Form.Label>
+                            <Form.Label>Guests</Form.Label>
                             <Form.Control
                                 type="number"
                                 max={maxGuests}
@@ -131,7 +131,7 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
 
 
                         <Form.Group className="mb-3 formGroup" >
-                            <Form.Label>Check-in and check-out dates:</Form.Label>
+                            <Form.Label>Check-in and check-out dates</Form.Label>
                             <BookStayCalendar
                                 data={data}
                                 excludeDates={excludeDates}
@@ -140,7 +140,7 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                                 onChange={handleDateChange}
                             />
                             <Form.Text id="checkInHelpBlock" muted>
-                                Please chose a check-in and check-out dates
+                                Please choose a check-in and check-out dates
                             </Form.Text>
                         </Form.Group>
                     </Form>
