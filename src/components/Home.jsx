@@ -10,27 +10,37 @@ import CardHome from './CardHome';
 import CarouselHome from './CarouselHome';
 import { apiVenuesPath, apiVenuesSearchPath } from '../api/constants';
 import HolidazeContext from "../components/HolidazeContext";
+import PaginationElement from './Pagination';
+
 
 function Home() {
     const [items, setData] = useState([]);
     const { inputValue, setInputValue } = useContext(HolidazeContext);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+
+
 
     useEffect(() => {
-        const fetchUrl = inputValue
-            ? `${apiVenuesSearchPath}${inputValue}`
-            : apiVenuesPath;
+        const fetchVenues = async () => {
+            const fetchUrl = inputValue
+                ? `${apiVenuesSearchPath}${inputValue}`
+                : `${apiVenuesPath}?limit=99&page=${currentPage}`;
 
-        fetch(fetchUrl)
-            .then((response) => response.json())
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch((error) => {
+            try {
+                const response = await fetch(fetchUrl);
+                const data = await response.json();
+                setData(data.data);
+                setTotalPages(data.meta.pageCount);
+            } catch (error) {
                 console.error('API request failed:', error);
                 console.error('Current data:', items);
-            });
-    }
-        , [inputValue]);
+            }
+        };
+
+        fetchVenues();
+    }, [inputValue, currentPage]);
+
 
     return (
         <div>
@@ -52,7 +62,9 @@ function Home() {
                     );
                 })}
             </Row>
+            <PaginationElement currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </div>
+
     );
 }
 

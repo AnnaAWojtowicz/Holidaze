@@ -343,6 +343,23 @@ body {
   }
 }
 
+/* footer */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem !important;
+  --bs-pagination-color: #1c1c1cff !important;
+  --bs-pagination-hover-color: #a9a59a !important;
+  --bs-pagination-focus-color: #a9a59a !important;
+  --bs-pagination-active-bg: #a9a59a !important;
+  --bs-pagination-active-border-color: #a9a59a !important;
+}
+
+.paginationDetails {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* cardHome & cardPage */
 
 .card {
