@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import ExampleImage2 from "../../img/nachelle-nocom-51adhgg5KkE-unsplash.jpg";
 import Image from 'react-bootstrap/Image';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";

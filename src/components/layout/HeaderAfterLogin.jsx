@@ -14,7 +14,7 @@ function HeaderAfterLogin({ img, alt }) {
                     Your bookings
                 </NavDropdown.Item>
 
-                <NavDropdown.Item as={Link} to="/ownerproperties">Property manager</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/ownerproperties/${userName}`}>Property manager</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item as={Link} to="/signout">
                     Sign out

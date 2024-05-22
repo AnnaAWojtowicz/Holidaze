@@ -7,9 +7,12 @@ import CardHome from '../CardHome';
 import { getUserVenues } from '../../api/getUserVenues';
 import NewAndUpdateVenueModal from './NewAndUpdateVenueModal';
 import Container from 'react-bootstrap/Container';
+import { useParams } from "react-router-dom";
 
 
-function OwnerProperties({ userName, redirectAfterDelate }) {
+function OwnerProperties({ redirectAfterDelate }) {
+    const { name } = useParams();
+    const userName = localStorage.getItem('userName');
     const [items, setItems] = useState([]);
     const [showModalNewVenue, setShowModalNewVenue] = useState(false);
     const [newVenueAdded, setNewVenueAdded] = useState(false);
@@ -21,16 +24,16 @@ function OwnerProperties({ userName, redirectAfterDelate }) {
 
     useEffect(() => {
         const fetchVenues = async () => {
-            console.log(userName);
+            console.log(name);
             try {
-                const data = await getUserVenues(userName);
+                const data = await getUserVenues(name);
                 setItems(data.data);
             } catch (error) {
                 console.error(error);
             }
         };
         fetchVenues();
-    }, [newVenueAdded, userName]);
+    }, [newVenueAdded, name]);
 
 
 
@@ -38,7 +41,7 @@ function OwnerProperties({ userName, redirectAfterDelate }) {
         <Container fluid className="ownerPropertiesContainer">
             <div className="d-flex justify-content-between align-items-center propertiesTitleAndButton">
                 <div><h2>Your properties:</h2></div>
-                {userName === localStorage.getItem('userName') && (
+                {name === userName && (
                     <Button variant="outline-success" onClick={handleShowModalNewVenue}>Add new</Button>
                 )}
                 <NewAndUpdateVenueModal
