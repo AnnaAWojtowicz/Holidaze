@@ -32,7 +32,6 @@ function App() {
               <Route path="/" element={<Home />} index />
               <Route path="/cardpage/:id" element={<CardPage />} />
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
-              <Route path="/profilesite" element={<ProfileSite />} />
               <Route path="/profilesite/:name" element={<ProfileSite />} />
               <Route path='/ownerproperties' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
               <Route path="/yourbookings" element={<UserBookings />} />

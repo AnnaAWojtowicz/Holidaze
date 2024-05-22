@@ -8,12 +8,12 @@ import StarsRating from "./icons/StarsRating";
 
 function CardHome({ card, redirectAfterDelete }) {
     const { id, name, price, maxGuests, rating, media } = card;
-    const shortName = name.length > 30 ? name.substring(0, 30) + '...' : name;
+    const shortName = name ? (name.length > 30 ? name.substring(0, 30) + '...' : name) : 'Sorry, no name has been provided';
 
 
     let img, alt;
     let isImgMissing = false;
-    if (media && media.length > 0) {
+    if (media && Array.isArray(media) && media.length > 0) {
         img = media[0].url;
         alt = media[0].alt;
     } else {

@@ -8,19 +8,21 @@ import EditModal from "./EditModal";
 import NewAndUpdateVenueModal from "./NewAndUpdateVenueModal";
 import OwnerProperties from "../profile/OwnerProperties";
 import UserBookings from "../profile/UserBookings";
+import { useParams } from "react-router-dom";
+
 
 function ProfileSite({ currentUser }) {
     const [userData, setUserData] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
     const [showModalNewVenue, setShowModalNewVenue] = useState(false);
     const location = useLocation();
-
+    const { name } = useParams();
+    const userName = localStorage.getItem('userName');
 
     const fetchUserData = async () => {
         try {
-            const ownerName = location.pathname.split('/')[2]; // Assuming the owner's name is the third part of the URL
-            const userName = ownerName || localStorage.getItem('userName');
-            const data = await getUserProfile(userName);
+            console.log(name);
+            const data = await getUserProfile(name);
             setUserData(data);
         } catch (error) {
             console.error(error);
@@ -29,7 +31,7 @@ function ProfileSite({ currentUser }) {
 
     useEffect(() => {
         fetchUserData();
-    }, [location.pathname]);
+    }, [name]);
 
     const isCurrentUserProfile = currentUser && userData && currentUser.name === userData.name;
 
@@ -83,7 +85,7 @@ function ProfileSite({ currentUser }) {
                     </ListGroup>
                     <Card.Footer className="footerCardBorder d-flex justify-content-between align-items-center">
                         <Link to="/"><Button variant="outline-success">Go Back</Button></Link>
-                        {userData.data.name === localStorage.getItem('userName') && (
+                        {name === userName && (
                             <Button variant="outline-success" onClick={handleOpenEditModal}>Edit</Button>
                         )}
                         <EditModal
@@ -96,11 +98,11 @@ function ProfileSite({ currentUser }) {
                     </Card.Footer>
                 </Card>
             </div>
-            {userData.data.name === localStorage.getItem('userName') && (
-                <UserBookings redirectAfterDelate="/profilesite" />
+            {name === userName && (
+                <UserBookings redirectAfterDelate={`/profilesite/${name}`} />
             )}
 
-            <OwnerProperties userName={userData.data.name} redirectAfterDelate="/profilesite" />
+            <OwnerProperties userName={userData.data.name} redirectAfterDelate={`/profilesite/${name}`} />
 
         </div>
 

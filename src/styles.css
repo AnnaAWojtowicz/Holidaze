@@ -362,16 +362,8 @@ body {
 
 /* cardHome & cardPage */
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
 .card {
   --bs-card-border-color: none !important;
-  max-height: 650px;
-  overflow: auto;
 }
 
 .imgCardBorder,
