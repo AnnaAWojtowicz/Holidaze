@@ -22,12 +22,14 @@ function Header() {
     const [showModalSignup, setShowModalSignup] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isSignIn, setIsSignIn] = useState(false);
-    const [isLoggedin, setIsLoggedin] = useState(false);
+    // const [isLoggedin, setIsLoggedin] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('guest');
     const { avatar, setAvatar } = useContext(HolidazeContext);
+    const { isLoggedin, setIsLoggedin } = useContext(HolidazeContext);
+
 
 
     useEffect(() => {

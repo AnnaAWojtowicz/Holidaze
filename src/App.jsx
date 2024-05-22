@@ -20,10 +20,16 @@ function App() {
   // const [showModalNewVenue, setShowModalNewVenue] = useState(false);
   // const handleShowModalNewVenue = () => setShowModalNewVenue(true);
   // const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
+  const [isLoggedin, setIsLoggedin] = useState(false);
 
+  const logOut = () => {
+    localStorage.removeItem('userName');
+    localStorage.removeItem('accessToken');
+    setIsLoggedin(false);
+  };
 
   return (
-    <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar, cardData, setCardData }}>
+    <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar, cardData, setCardData, isLoggedin, setIsLoggedin, logOut }}>
       {/* <AvatarContext.Provider value={{ avatar, setAvatar }}> */}
       <BrowserRouter>
         <div className="background">
@@ -31,7 +37,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} index />
               <Route path="/cardpage/:id" element={<CardPage />} />
-              {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite/:name" element={<ProfileSite />} />
               <Route path='/ownerproperties/:name' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
               <Route path="/yourbookings" element={<UserBookings />} />
