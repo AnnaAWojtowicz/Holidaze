@@ -632,3 +632,7 @@ p {
 .propertiesTitleAndButton {
   margin: 3rem 3rem 0 3rem;
 }
+
+.ownerPropertiesContainer {
+  width: 90vw !important;
+}

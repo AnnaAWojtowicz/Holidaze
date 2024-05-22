@@ -1,15 +1,22 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { addNewVenue } from "../../api/addNewVenue";
 import ModalFail from "../ModalFail";
 import NewAndUpdateVenueModalSuccess from "./NewAndUpdateVenueModalSuccess";
 import { type } from "@testing-library/user-event/dist/type";
 import { updateVenue } from "../../api/updateVenue";
-
+import HolidazeContext from "../HolidazeContext";
 
 function NewAndUpdateVenueModal(props) {
+
+    const context = useContext(HolidazeContext);
+    console.log(context);
+    const cardData = context.cardData;
+
+
+
     const [nameVenue, setNameVenue] = useState("");
     const [descriptionVenue, setDescriptionVenue] = useState("");
     const [images, setImages] = useState([]);
@@ -26,10 +33,13 @@ function NewAndUpdateVenueModal(props) {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
     const isEditing = props.isEditing;
-    const cardData = props.cardData;
+
 
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
+
+
+
 
     useEffect(() => {
         setShow(props.show);
@@ -54,6 +64,7 @@ function NewAndUpdateVenueModal(props) {
     }, [isEditing, cardData]);
 
 
+
     const handleHideFail = () => {
         setShowFailModal(false);
     };
@@ -65,11 +76,15 @@ function NewAndUpdateVenueModal(props) {
 
 
     const handleSubmit = async (event) => {
+
+        console.log("handleSubmit called");
         event.preventDefault();
         onHide();
 
+
+
         const data = {
-            id: cardData.id,
+            id: props.isEditing ? props.cardData.id : null,
             name: nameVenue,
             description: descriptionVenue,
             media: images.map((image, index) => ({
@@ -92,6 +107,11 @@ function NewAndUpdateVenueModal(props) {
                 country: countryVenue,
             },
         };
+
+        if (cardData && cardData.id) {
+            data.id = cardData.id;
+        }
+
         if (data && data.name) {
             try {
                 const response = isEditing ? await updateVenue(data) : await addNewVenue(data);
@@ -357,7 +377,7 @@ function NewAndUpdateVenueModal(props) {
                     <Button variant="btn btn-outline-success" onClick={props.onHide}>
                         Close
                     </Button>
-                    <Button variant="btn btn-outline-success" type="submit" form='newVenueForm'>
+                    <Button variant="btn btn-outline-success" onClick={handleSubmit} form='newVenueForm'>
                         Submit
                     </Button>
                 </Modal.Footer>

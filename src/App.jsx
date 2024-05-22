@@ -16,13 +16,14 @@ import UserBookings from './components/profile/UserBookings';
 function App() {
   const [inputValue, setInputValue] = useState('');
   const [avatar, setAvatar] = useState("");
+  const [cardData, setCardData] = useState(null);
   // const [showModalNewVenue, setShowModalNewVenue] = useState(false);
   // const handleShowModalNewVenue = () => setShowModalNewVenue(true);
   // const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
 
 
   return (
-    <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar }}>
+    <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar, cardData, setCardData }}>
       {/* <AvatarContext.Provider value={{ avatar, setAvatar }}> */}
       <BrowserRouter>
         <div className="background">
@@ -32,6 +33,7 @@ function App() {
               <Route path="/cardpage/:id" element={<CardPage />} />
               {/* <Route path="/profilesite" element={<ProfileSite handleShowModalNewVenue={handleShowModalNewVenue} />} /> */}
               <Route path="/profilesite" element={<ProfileSite />} />
+              <Route path="/profilesite/:name" element={<ProfileSite />} />
               <Route path='/ownerproperties' element={<OwnerProperties redirectAfterDelete="/ownerpropertiessite" />} />
               <Route path="/yourbookings" element={<UserBookings />} />
             </Routes>

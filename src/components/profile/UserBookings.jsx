@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState, useContext } from 'react';
+import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
@@ -26,7 +27,7 @@ function OwnerBookings({ redirectAfterDelate }) {
 
 
     return (
-        <div>
+        <Container fluid className="ownerPropertiesContainer">
             <div className="d-flex justify-content-between align-items-center propertiesTitleAndButton">
                 <div><h2>Your bookings:</h2></div>
             </div>
@@ -43,7 +44,7 @@ function OwnerBookings({ redirectAfterDelate }) {
                     );
                 })}
             </Row>
-        </div>
+        </Container>
     );
 }
 

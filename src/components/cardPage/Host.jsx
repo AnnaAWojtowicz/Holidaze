@@ -1,7 +1,11 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Host({ userData }) {
+    const navigate = useNavigate();
+
+
     return (
         <div>
             <div>Host:</div>
@@ -9,7 +13,7 @@ function Host({ userData }) {
                 <div className="hostDetails">
                     {userData.name}
                 </div>
-                <Button className="" variant="outline-success">Show profile</Button>
+                <Button variant="outline-success" onClick={() => navigate(`/profilesite/${userData.name}`)}>Show profile</Button>
             </div>
         </div>
     );
