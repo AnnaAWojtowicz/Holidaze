@@ -8,6 +8,8 @@ import StarsRating from "./icons/StarsRating";
 
 function CardHome({ card, redirectAfterDelete }) {
     const { id, name, price, maxGuests, rating, media } = card;
+    const shortName = name.length > 30 ? name.substring(0, 30) + '...' : name;
+
 
     let img, alt;
     let isImgMissing = false;
@@ -30,7 +32,7 @@ function CardHome({ card, redirectAfterDelete }) {
                 )}
             </div>
             <Card.Body className='bodyCardBorder'>
-                <Card.Title>{name}</Card.Title>
+                <Card.Title>{shortName}</Card.Title>
                 <div>
                     <NumberOfGuests guests={maxGuests} />
                 </div>
