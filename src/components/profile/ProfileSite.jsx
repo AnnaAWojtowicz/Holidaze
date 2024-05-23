@@ -47,7 +47,6 @@ function ProfileSite({ currentUser }) {
     };
 
     const handleCloseEditModal = () => {
-        debugger;
         setShowEditModal(false);
     };
 

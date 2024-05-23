@@ -218,11 +218,22 @@ body {
 .dropdown-menu,
 .show {
   z-index: 10000 !important;
+  border-radius: 0 !important;
+  padding: 0.5rem !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.dropdownContainer {
+  background-color: #eef0f2 !important;
+  margin: 0.4rem !important;
+  padding: 0.4rem 0rem !important;
 }
 
 .dropdown-menu[data-bs-popper] {
   left: auto !important;
   right: 0 !important;
+  border: 0.5px solid #1c1c1cff !important;
+  background-color: #daddd8ff !important;
 }
 
 .dropdown-toggle::after {

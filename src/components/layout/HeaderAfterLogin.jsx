@@ -13,18 +13,18 @@ function HeaderAfterLogin({ img, alt }) {
     return (
         <div>
             <NavDropdown title={<img src={img} alt={alt} width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem">
+                <div className="dropdownContainer">
+                    <NavDropdown.Item as={Link} to={`/profilesite/${userName}`}>Your account</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/yourbookings">
+                        Your bookings
+                    </NavDropdown.Item>
 
-                <NavDropdown.Item as={Link} to={`/profilesite/${userName}`}>Your account</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/yourbookings">
-                    Your bookings
-                </NavDropdown.Item>
-
-                <NavDropdown.Item as={Link} to={`/ownerproperties/${userName}`}>Property manager</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={logOut}>
-                    Sign out
-                </NavDropdown.Item>
-
+                    <NavDropdown.Item as={Link} to={`/ownerproperties/${userName}`}>Property manager</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={logOut}>
+                        Sign out
+                    </NavDropdown.Item>
+                </div>
             </NavDropdown>
         </div>
     );

@@ -63,3 +63,7 @@ Dehmel, N. (27.10.2020). _No Title (A Hipster Appartment)._ Retrieved 21.05.2024
 Lotus Design N Print (10.02.2021). _No Title (A Clean Appartment)._ Retrieved 21.05.2024 from: https://unsplash.com/photos/black-flat-screen-tv-turned-off-5O-KFVmKSjY
 
 Bato, L. (29.10.2020). _No Title (A Retro Appartment)._ Retrieved 21.05.2024 from: https://unsplash.com/photos/black-flat-screen-tv-on-brown-wooden-tv-rack-9vWhrKcn2pE
+
+Ferrer, Ch. (14.03.2018). _No Title (A Young Girl)._ Retrieved 23.05.2024 from: https://unsplash.com/photos/woman-standing-in-bushes-aK5Dt6L6_hQ
+
+Reich, T. (09.08.2021). _No Title (A LAndscape)._ Retrieved 23.05.2024 from: https://unsplash.com/photos/green-trees-near-lake-and-mountain-during-daytime-bSdQKMEyMRE
