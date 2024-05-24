@@ -17,7 +17,6 @@ export async function addNewVenue({
 }) {
     const { address = "", city = "", country = "" } = venueLocation;
     const accessToken = localStorage.getItem('accessToken');
-    // const userName = localStorage.getItem('userName');
     const bodyObject = {
         name,
         description,
@@ -38,8 +37,6 @@ export async function addNewVenue({
         },
     };
 
-
-
     const response = await fetch(`${apiVenuesPath}`, {
         method: 'POST',
         headers: {
@@ -56,7 +53,6 @@ export async function addNewVenue({
     if (!response.ok) {
         throw new Error(data.message)
     }
-
 
     return data;
 }

@@ -5,18 +5,12 @@ import { useState, useEffect, useContext } from "react";
 import { addNewVenue } from "../../api/addNewVenue";
 import ModalFail from "../ModalFail";
 import NewAndUpdateVenueModalSuccess from "./NewAndUpdateVenueModalSuccess";
-import { type } from "@testing-library/user-event/dist/type";
 import { updateVenue } from "../../api/updateVenue";
 import HolidazeContext from "../HolidazeContext";
 
 function NewAndUpdateVenueModal(props) {
-
     const context = useContext(HolidazeContext);
-    console.log(context);
     const cardData = context.cardData;
-
-
-
     const [nameVenue, setNameVenue] = useState("");
     const [descriptionVenue, setDescriptionVenue] = useState("");
     const [images, setImages] = useState([]);
@@ -33,13 +27,8 @@ function NewAndUpdateVenueModal(props) {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
     const isEditing = props.isEditing;
-
-
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
-
-
-
 
     useEffect(() => {
         setShow(props.show);
@@ -63,8 +52,6 @@ function NewAndUpdateVenueModal(props) {
         }
     }, [isEditing, cardData]);
 
-
-
     const handleHideFail = () => {
         setShowFailModal(false);
     };
@@ -74,15 +61,9 @@ function NewAndUpdateVenueModal(props) {
         setShowFailModal(false);
     };
 
-
     const handleSubmit = async (event) => {
-
-        console.log("handleSubmit called");
         event.preventDefault();
         onHide();
-
-
-
         const data = {
             id: props.isEditing ? props.cardData.id : null,
             name: nameVenue,
@@ -111,7 +92,6 @@ function NewAndUpdateVenueModal(props) {
         if (cardData && cardData.id) {
             data.id = cardData.id;
         }
-
         if (data && data.name) {
             try {
                 const response = isEditing ? await updateVenue(data) : await addNewVenue(data);
@@ -120,7 +100,6 @@ function NewAndUpdateVenueModal(props) {
                     setShowSuccessModal(true);
                     props.onNewVenueAdded();
                 }
-
             } catch (error) {
                 console.error("Error occurred while adding new venue: ", error);
                 props.onHide();
@@ -150,13 +129,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputNameVenue"
                                 aria-describedby="nameHelpBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="nameHelpBlock" muted>
                                 Please enter the name of your property
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Description:</Form.Label>
                             <Form.Control
@@ -166,13 +143,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputPropertyDesription"
                                 aria-describedby="propertyDesriptionHelpBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="emailHelpBlock" muted>
                                 Describe your property
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Add pictures of your property (max. 3)</Form.Label>
                             <Form.Control
@@ -191,7 +166,6 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputPropertyImg1"
                                 aria-describedby="propertyImg1Block"
                                 className='formControlModal'
-
                             />
                             <Form.Control
                                 type="text"
@@ -209,7 +183,6 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputPropertyImg2"
                                 aria-describedby="propertyImg2Block"
                                 className='formControlModal'
-
                             />
                             <Form.Control
                                 type="text"
@@ -227,13 +200,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputPropertyImg3"
                                 aria-describedby="propertyImg3Block"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="propertyImg3Block" muted>
                                 Please enter your photo URL
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Guests:</Form.Label>
                             <Form.Control
@@ -244,13 +215,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputGuestVenue"
                                 aria-describedby="guestVenueHelpBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="guestVenueHelpBlock" muted>
                                 Please enter a maxium number of guests
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Rating:</Form.Label>
                             <Form.Control
@@ -262,13 +231,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputRatingVenue"
                                 aria-describedby="ratingHelpBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="ratinVenueHelpBlock" muted>
                                 Please enter a rating for your property (1-5)
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Price:</Form.Label>
                             <Form.Control
@@ -280,13 +247,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputPriceVenue"
                                 aria-describedby="priceVenueHelpBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="guestVenueHelpBlock" muted>
                                 Please enter a price per night
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup">
                             <Form.Label>Your property offers: </Form.Label>
                             {['checkbox'].map((type) => (
@@ -330,7 +295,6 @@ function NewAndUpdateVenueModal(props) {
                                 </div>
                             ))}
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Location: </Form.Label>
                             <Form.Control
@@ -340,7 +304,6 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputAddressVenue"
                                 aria-describedby="addressVenueBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="addressVenueBlock" muted>
                                 Please enter an address
@@ -352,7 +315,6 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputCityVenue"
                                 aria-describedby="cityVenueBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="cityVenueBlock" muted>
                                 Please enter a city
@@ -364,13 +326,11 @@ function NewAndUpdateVenueModal(props) {
                                 id="inputCountryVenue"
                                 aria-describedby="countryVenueBlock"
                                 className='formControlModal'
-
                             />
                             <Form.Text id="countryVenueBlock" muted>
                                 Please enter a country
                             </Form.Text>
                         </Form.Group>
-
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">

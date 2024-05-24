@@ -2,7 +2,6 @@ import { apiUserProfilePath } from "./constants.js";
 
 export async function getProfile(name) {
     const accessToken = localStorage.getItem('accessToken');
-
     const response = await fetch(`${apiUserProfilePath}/${name}?_venues=true`, {
         method: 'get',
         headers: {

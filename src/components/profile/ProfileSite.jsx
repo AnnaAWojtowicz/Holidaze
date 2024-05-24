@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Image from 'react-bootstrap/Image';
 import { getUserProfile } from "../../api/userProfile";
 import EditModal from "./EditModal";
-import NewAndUpdateVenueModal from "./NewAndUpdateVenueModal";
 import OwnerProperties from "../profile/OwnerProperties";
 import UserBookings from "../profile/UserBookings";
-import { useParams } from "react-router-dom";
-
 
 function ProfileSite({ currentUser }) {
     const [userData, setUserData] = useState(null);
@@ -33,7 +30,6 @@ function ProfileSite({ currentUser }) {
     }, [name]);
 
     const isCurrentUserProfile = currentUser && userData && currentUser.name === userData.name;
-
     const handleShowModalNewVenue = () => setShowModalNewVenue(true);
     const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
 
@@ -54,9 +50,6 @@ function ProfileSite({ currentUser }) {
         return <div>Loading...</div>;
     }
 
-
-    console.log('User data name:', userData.data.name);
-    console.log('Local storage user name:', localStorage.getItem('userName'));
     return (
         <div>
             <div className="my-5 cardPage">
@@ -92,20 +85,14 @@ function ProfileSite({ currentUser }) {
                             onEdit={handleEdit}
                             userData={userData}
                         />
-
                     </Card.Footer>
                 </Card>
             </div>
             {name === userName && (
                 <UserBookings redirectAfterDelate={`/profilesite/${name}`} />
             )}
-
             <OwnerProperties userName={userData.data.name} redirectAfterDelate={`/profilesite/${name}`} />
-
         </div>
-
-
-
     );
 
 }

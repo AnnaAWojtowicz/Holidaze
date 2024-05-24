@@ -66,4 +66,8 @@ Bato, L. (29.10.2020). _No Title (A Retro Appartment)._ Retrieved 21.05.2024 fro
 
 Ferrer, Ch. (14.03.2018). _No Title (A Young Girl)._ Retrieved 23.05.2024 from: https://unsplash.com/photos/woman-standing-in-bushes-aK5Dt6L6_hQ
 
-Reich, T. (09.08.2021). _No Title (A LAndscape)._ Retrieved 23.05.2024 from: https://unsplash.com/photos/green-trees-near-lake-and-mountain-during-daytime-bSdQKMEyMRE
+Watt, P (28.11.2017). _Nov in Sierra_ Retrieved 23.05.2024 from: https://unsplash.com/photos/aerial-shot-of-forest-2Hzmz15wGik
+
+Nadal de, R. (08.03.2018). _No Title (A City in Black and White)._ Retrieved 24.05.2024 from: https://unsplash.com/photos/time-lapse-photography-of-city-building-b0eg-PYGICQ
+
+Paula de, S. (09.102019). _Man Smile Black and White._ Retrieved 24.05.2024 from: https://unsplash.com/photos/grayscale-photo-of-man-c_GmwfHBDzk

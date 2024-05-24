@@ -9,6 +9,7 @@ function BookStayModalSuccess({ show, onHide, onShowVenue }) {
         onShowVenue();
         onHide();
     };
+
     return (
         <>
             <Modal show={show} onHide={onHide}>

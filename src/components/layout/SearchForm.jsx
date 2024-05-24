@@ -18,7 +18,6 @@ function SearchForm({ setSearchLocation }) {
         }
     };
 
-
     return (<div className="mx-auto py-md">
         <Form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center">
             <Form.Control

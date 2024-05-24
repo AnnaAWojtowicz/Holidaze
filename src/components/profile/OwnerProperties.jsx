@@ -9,18 +9,14 @@ import NewAndUpdateVenueModal from './NewAndUpdateVenueModal';
 import Container from 'react-bootstrap/Container';
 import { useParams } from "react-router-dom";
 
-
 function OwnerProperties({ redirectAfterDelate }) {
     const { name } = useParams();
     const userName = localStorage.getItem('userName');
     const [items, setItems] = useState([]);
     const [showModalNewVenue, setShowModalNewVenue] = useState(false);
     const [newVenueAdded, setNewVenueAdded] = useState(false);
-
     const handleShowModalNewVenue = () => setShowModalNewVenue(true);
     const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
-
-
 
     useEffect(() => {
         const fetchVenues = async () => {
@@ -34,8 +30,6 @@ function OwnerProperties({ redirectAfterDelate }) {
         };
         fetchVenues();
     }, [newVenueAdded, name]);
-
-
 
     return (
         <Container fluid className="ownerPropertiesContainer">
@@ -52,11 +46,8 @@ function OwnerProperties({ redirectAfterDelate }) {
                     onNewVenueAdded={() => setNewVenueAdded(prevState => !prevState)}
                 />
             </div>
-
             {items.length === 0 && <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3rem 0' }}>Sorry, no results found</h1>}
-
             <Row xs={1} md={2} lg={3} className="g-4 my-3 mx-2">
-
                 {items.map((item, index) => {
                     const img = item.media && item.media.length > 0 ? item.media[0].url : '';
                     const alt = item.media && item.media.length > 0 ? item.media[0].alt : '';

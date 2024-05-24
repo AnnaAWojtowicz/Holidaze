@@ -17,8 +17,6 @@ function DeleteVenueModal(props) {
     const onHide = () => setShow(false);
     const navigate = useNavigate();
 
-
-
     const handleHideFail = () => {
         setShowFailModal(false);
     };
@@ -28,16 +26,13 @@ function DeleteVenueModal(props) {
         setShowFailModal(false);
     };
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         onHide();
-
         if (!props.cardData) {
             console.error('cardData is undefined');
             return;
         }
-
         try {
             await deleteVenue(props.cardData.id);
             props.onHide();
@@ -51,13 +46,11 @@ function DeleteVenueModal(props) {
                 navigate(redirectPath);
                 console.log('Navigation should have occurred');
             }
-
         } catch (error) {
             props.onHide();
             setShowFailModal(true);
         }
     }
-
 
     return (
         <div

@@ -18,7 +18,6 @@ export async function updateVenue({
 }) {
     const { address = "", city = "", country = "" } = venueLocation;
     const accessToken = localStorage.getItem('accessToken');
-
     const bodyObject = {
         name,
         description,
@@ -56,8 +55,5 @@ export async function updateVenue({
         throw new Error(responseData.message)
     }
 
-
     return responseData;
-
-
 }

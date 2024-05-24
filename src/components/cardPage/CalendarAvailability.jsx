@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 function CalendarAvailability({ data, onExcludeDatesChange }) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-
     const { bookings } = data || {};
 
     const excludeDates = bookings ? bookings.map((booking) => {

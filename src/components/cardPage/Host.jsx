@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function Host({ userData }) {
     const navigate = useNavigate();
 
-
     return (
         <div>
             <div>Host:</div>

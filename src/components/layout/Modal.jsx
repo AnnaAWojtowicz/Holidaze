@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import ButtonPrimary from '../Button';
 
-
 function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCloseSignup, isSignIn, register, showModal, handleClose, name, setName, email, setEmail, password, setPassword, role, setRole, loginUser }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -62,7 +61,6 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                             checked={role === 'manager'}
                                             onChange={() => setRole('manager')}
                                         />
-
                                     </div>
                                 ))}
                             </Form.Group>
@@ -84,7 +82,6 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                 </Form.Text>
                             </Form.Group>
                         )}
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
@@ -100,11 +97,7 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                     Your email address must have the following format: name@stud.noroff.no
                                 </Form.Text>
                             )}
-                            {/* <Form.Text id="passwordHelpBlock" muted>
-                                Incorrect email. Please try again.
-                            </Form.Text> */}
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Enter your password</Form.Label>
                             <Form.Control
@@ -121,9 +114,6 @@ function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCl
                                     and must not contain spaces, special characters, or emoji.
                                 </Form.Text>
                             )}
-                            {/* <Form.Text id="passwordHelpBlock" muted>
-                                Incorrect password. Please try again.
-                            </Form.Text> */}
                         </Form.Group>
                     </Form>
                 </Modal.Body>

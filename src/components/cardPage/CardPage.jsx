@@ -121,7 +121,6 @@ function CardPage({ card, redirectAfterDelete }) {
         setRefresh(prevState => !prevState);
     };
 
-
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -144,7 +143,6 @@ function CardPage({ card, redirectAfterDelete }) {
         const pastBookings = bookings.filter(booking => new Date(booking.dateTo) < today);
         const ongoingBookings = bookings.filter(booking => new Date(booking.dateFrom) <= today && new Date(booking.dateTo) >= today);
         const upcomingBookings = bookings.filter(booking => new Date(booking.dateFrom) > today);
-
         const render = (bookings) => {
             if (!bookings) {
                 return null;
@@ -190,8 +188,6 @@ function CardPage({ card, redirectAfterDelete }) {
         <div className="my-5 cardPage">
             <Card className="mx-4 cardBorder cardWidth">
                 {cardData ? <Carousel data={cardData} /> : <div>Loading...</div>}
-
-                {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" className='imgCardBorder' /> */}
                 <Card.Body className='bodyCardBorder'>
                     <Card.Title>{cardData?.name}</Card.Title>
                     <Card.Text>{cardData?.description}</Card.Text>

@@ -6,7 +6,6 @@ import HolidazeContext from "../HolidazeContext";
 
 
 function EditModal({ show, onHide, onEdit, userData }) {
-
     const [bio, setBio] = useState(userData && userData.data && userData.data.bio ? userData.data.bio : "");
     const [avatarTmp, setAvatarTmp] = useState(userData && userData.data && userData.data.avatar ? userData.data.avatar.url : "");
     const [banner, setBanner] = useState(userData && userData.data && userData.data.banner ? userData.data.banner : "");
@@ -46,7 +45,6 @@ function EditModal({ show, onHide, onEdit, userData }) {
             <Modal.Header closeButton className='modalHeader'>
                 <Modal.Title>Edit your profile</Modal.Title>
             </Modal.Header>
-
             <Modal.Body>
                 <Form id="updateProfileForm" onSubmit={handleSubmit}>
                     <Form.Group controlId="formAvatar" className="mb-3 formGroup">
@@ -100,7 +98,6 @@ function EditModal({ show, onHide, onEdit, userData }) {
                     Save
                 </Button>
             </Modal.Footer>
-
         </Modal>
     );
 }

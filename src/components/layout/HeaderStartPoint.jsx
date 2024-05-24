@@ -3,7 +3,6 @@ import ButtonPrimary from "../Button";
 import ModalMain from "./Modal";
 import ModalRegisterSuccess from "../profile/ModalRegisterSuccess";
 
-
 function HeaderStartPoint({ showModalLogin,
     handleShowLogin,
     handleCloseLogin,
@@ -38,7 +37,6 @@ function HeaderStartPoint({ showModalLogin,
                 password={password}
                 role={role}
                 loginUser={loginUser}
-
             />
             <ButtonPrimary name="Sign-up" onClick={handleShowSignup} type="button" />
             <ModalMain
@@ -55,7 +53,6 @@ function HeaderStartPoint({ showModalLogin,
                 setRole={setRole}
                 register={registerUser}
             />
-
             <ModalRegisterSuccess
                 show={showSuccessModal}
                 onHide={() => setShowSuccessModal(false)}

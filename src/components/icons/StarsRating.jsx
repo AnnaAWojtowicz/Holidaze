@@ -6,7 +6,6 @@ function StarsRating({ rating }) {
     const halfStars = rating - fullStars > 0 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStars;
 
-
     return (
         <div className="starsRating">
             <div>Rating: {rating}</div>

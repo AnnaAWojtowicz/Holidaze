@@ -1,10 +1,7 @@
 import { apiVenuesPath } from "./constants.js";
 
 export async function deleteVenue(id) {
-
     const accessToken = localStorage.getItem('accessToken');
-
-
     const response = await fetch(`${apiVenuesPath}/${id}`, {
         method: 'DELETE',
         headers: {

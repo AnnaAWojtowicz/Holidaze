@@ -1,13 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import ExampleImage from "../../img/clement-proust-bDGgOlguqJA-unsplash.jpg";
 import NoImage from "../../img/simon-berger-2JONUbTfN38-unsplash.jpg";
 import Card from 'react-bootstrap/Card';
 
 function ControlledCarousel({ data }) {
     const [index, setIndex] = useState(0);
-
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
@@ -26,7 +24,6 @@ function ControlledCarousel({ data }) {
                         alt = "No image available";
                         isImgMissing = true;
                     }
-
                     return (
                         <Carousel.Item key={i} className="imgContainer2">
                             <Card.Img src={img} alt={alt} className="imgCardBorder imgResponsive" />

@@ -3,8 +3,6 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-
-
 function ModalFail({ show, onHide, onTryAgain }) {
     const navigate = useNavigate();
 

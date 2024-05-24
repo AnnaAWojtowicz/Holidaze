@@ -1,7 +1,5 @@
 import { apiRegisterUserPath } from "./constants";
 
-
-
 export async function register(name, email, password, role) {
     const response = await fetch(apiRegisterUserPath, {
         method: 'POST',

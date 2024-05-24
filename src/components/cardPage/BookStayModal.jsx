@@ -71,15 +71,11 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
         }
     };
 
-
-
     return (
         <>
             <Modal show={show} onHide={onHide}>
                 <Modal.Header closeButton className='modalHeader'>
-
                     <Modal.Title>Book your stay</Modal.Title>
-
                 </Modal.Header>
                 <Modal.Body>
                     <Form id="newBookingForm">
@@ -97,7 +93,6 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                                 Please enter your name
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
@@ -112,7 +107,6 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                                 Please enter your email address
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Guests</Form.Label>
                             <Form.Control
@@ -128,8 +122,6 @@ function BookStayModal({ show, onHide, data, maxGuests, id, onBookingSuccess, on
                                 Please enter the number of guests staying
                             </Form.Text>
                         </Form.Group>
-
-
                         <Form.Group className="mb-3 formGroup" >
                             <Form.Label>Check-in and check-out dates</Form.Label>
                             <BookStayCalendar

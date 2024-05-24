@@ -5,8 +5,6 @@ import ModalMain from "../layout/Modal";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-
-
 function ModalRegisterSuccess({ show, onHide, role, setShowModalLogin, setIsSignIn }) {
     const navigate = useNavigate();
 
@@ -40,7 +38,6 @@ function ModalRegisterSuccess({ show, onHide, role, setShowModalLogin, setIsSign
                     </Button>
                 </Modal.Footer>
             </Modal>
-            {/* <ModalMain show={showLoginModal} isSignIn={true} onHide={() => setShowModalLogin(false)} /> */}
         </>
     );
 }

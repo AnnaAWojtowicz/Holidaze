@@ -5,9 +5,7 @@ function CheckLoginModal({ show, handleClose, handleLogin }) {
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton className='modalHeader'>
-
                 <Modal.Title>You are not logged in.</Modal.Title>
-
             </Modal.Header>
             <Modal.Body>
                 <div className="mb-3 formGroup">You have to log in to book your stay.</div>

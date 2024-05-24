@@ -3,12 +3,8 @@ import { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-
-
-
 function DeleteVenueModalSuccess(props) {
     const { show, onHide } = props;
-
 
     return (
         <>
@@ -23,7 +19,6 @@ function DeleteVenueModalSuccess(props) {
                     <Button variant="btn btn-outline-success" onClick={onHide}>
                         Close
                     </Button>
-
                 </Modal.Footer>
             </Modal>
         </>

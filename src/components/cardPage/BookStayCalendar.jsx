@@ -4,8 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function BookStayCalendar({ data, excludeDates, startDate, endDate, onChange }) {
 
-
-
     return (
         <div className="availabilityCalendar">
             <DatePicker

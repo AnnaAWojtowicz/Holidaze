@@ -32,6 +32,5 @@ export async function updateUserProfile(avatar, bio, banner) {
         throw new Error(data.message)
     }
 
-
     return data;
 }

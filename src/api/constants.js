@@ -10,9 +10,6 @@ export const apiRegisterUserPath = apiRegisterUser.toString();
 const apiLoginUser = `${apiEntryPath}auth/login`;
 export const apiLoginUserPath = apiLoginUser.toString();
 
-
-
-
 // main API path - get all venues
 const apiUrl = new URL("https://v2.api.noroff.dev/holidaze");
 export const apiPath = apiUrl.toString();
@@ -29,10 +26,9 @@ export const apiVenueIdPath = apiVenueId.toString();
 const apiVenuesSearch = `${apiVenues}/search?q=`;
 export const apiVenuesSearchPath = apiVenuesSearch.toString();
 
-
 // API userProfile path
 const apiUserProfile = `${apiPath}/profiles`;
 export const apiUserProfilePath = apiUserProfile.toString();
 
-// API userProfile with id path
+
 

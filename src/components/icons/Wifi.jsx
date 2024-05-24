@@ -4,10 +4,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function Wifi() {
     return (
         <div className="wifi">
-            <p className="wifiDetails">Wifi</p>
-            <p className="material-symbols-rounded media">
+            <div className="wifiDetails">Wifi</div>
+            <div className="material-symbols-rounded media">
                 wifi
-            </p>
+            </div>
         </div>
     );
 }

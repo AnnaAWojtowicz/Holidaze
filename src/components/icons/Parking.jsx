@@ -4,10 +4,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function Parking() {
     return (
         <div className="parking">
-            <p className="parkingDetails">Free parking on premises</p>
-            <p className="material-symbols-rounded media">
+            <div className="parkingDetails">Free parking on premises</div>
+            <div className="material-symbols-rounded media">
                 local_parking
-            </p>
+            </div>
         </div>
     );
 }

@@ -2,14 +2,12 @@ import react from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { ListGroup } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getBookingDetails } from '../../api/bookingDetails';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
 function BookingModalDetails({ show, onHide, id }) {
-    // const { id } = useParams();
     const [booking, setBooking] = useState(null);
     const [customerName, setCustomerName] = useState(null);
 

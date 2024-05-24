@@ -1,9 +1,7 @@
-import BookStayModal from "../components/cardPage/BookStayModal";
 import { apiVenueIdPath } from "./constants";
 
 export async function bookStay({ dateFrom, dateTo, guests, venueId }) {
     const accessToken = localStorage.getItem('accessToken');
-
     const bodyObject = {
         dateFrom,
         dateTo,

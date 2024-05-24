@@ -1,9 +1,7 @@
-
 import Pagination from 'react-bootstrap/Pagination';
 
 function PaginationElement({ currentPage, setCurrentPage, totalPages }) {
     const paginationItems = [];
-
     for (let number = 1; number <= totalPages; number++) {
         paginationItems.push(
             <Pagination.Item key={number} active={number === currentPage} onClick={() => setCurrentPage(number)}>

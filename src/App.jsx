@@ -7,19 +7,13 @@ import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
-import NewVenueModal from './components/profile/NewAndUpdateVenueModal';
 import OwnerProperties from './components/profile/OwnerProperties';
 import UserBookings from './components/profile/UserBookings';
-
-
 
 function App() {
   const [inputValue, setInputValue] = useState('');
   const [avatar, setAvatar] = useState("");
   const [cardData, setCardData] = useState(null);
-  // const [showModalNewVenue, setShowModalNewVenue] = useState(false);
-  // const handleShowModalNewVenue = () => setShowModalNewVenue(true);
-  // const handleCloseModalNewVenue = () => setShowModalNewVenue(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
 
   const logOut = () => {
@@ -30,7 +24,6 @@ function App() {
 
   return (
     <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar, cardData, setCardData, isLoggedin, setIsLoggedin, logOut }}>
-      {/* <AvatarContext.Provider value={{ avatar, setAvatar }}> */}
       <BrowserRouter>
         <div className="background">
           <Layout>
@@ -42,11 +35,8 @@ function App() {
               <Route path="/yourbookings" element={<UserBookings />} />
             </Routes>
           </Layout>
-          {/* <NewVenueModal show={showModalNewVenue} onHide={handleCloseModalNewVenue} /> */}
         </div>
       </BrowserRouter>
-
-      {/* </AvatarContext.Provider> */}
     </HolidazeContext.Provider>
   );
 }
