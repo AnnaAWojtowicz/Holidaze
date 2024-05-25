@@ -9,7 +9,7 @@ import PaginationElement from './Pagination';
 
 function Home() {
     const [items, setData] = useState([]);
-    const { inputValue, setInputValue } = useContext(HolidazeContext);
+    const { inputValue, setInputValue, searchResults } = useContext(HolidazeContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -31,6 +31,8 @@ function Home() {
         fetchVenues();
     }, [inputValue, currentPage]);
 
+    const cardsToDisplay = searchResults.length > 0 ? searchResults : items;
+
     return (
         <div>
             <div>
@@ -38,7 +40,7 @@ function Home() {
             </div>
             {items.length === 0 && <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3rem 0' }}>Sorry, no results found</h1>}
             <Row xs={1} md={2} lg={3} className="g-4 my-5 mx-2">
-                {items.map((item, index) => {
+                {cardsToDisplay.map((item, index) => {
                     const img = item.media && item.media.length > 0 ? item.media[0].url : '';
                     const alt = item.media && item.media.length > 0 ? item.media[0].alt : '';
                     return (

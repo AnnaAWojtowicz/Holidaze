@@ -12,6 +12,7 @@ import UserBookings from './components/profile/UserBookings';
 
 function App() {
   const [inputValue, setInputValue] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [avatar, setAvatar] = useState("");
   const [cardData, setCardData] = useState(null);
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -23,7 +24,7 @@ function App() {
   };
 
   return (
-    <HolidazeContext.Provider value={{ inputValue, setInputValue, avatar, setAvatar, cardData, setCardData, isLoggedin, setIsLoggedin, logOut }}>
+    <HolidazeContext.Provider value={{ inputValue, setInputValue, searchResults, setSearchResults, avatar, setAvatar, cardData, setCardData, isLoggedin, setIsLoggedin, logOut }}>
       <BrowserRouter>
         <div className="background">
           <Layout>

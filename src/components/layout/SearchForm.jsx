@@ -2,18 +2,21 @@ import React, { useContext, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import SearchContext from "../HolidazeContext";
+import { searchVenues } from "../../api/search";
 
-function SearchForm({ setSearchLocation }) {
-    const { inputValue, setInputValue } = useContext(SearchContext);
+function SearchForm() {
+    const { inputValue, setInputValue, setSearchResults } = useContext(SearchContext);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (inputValue.trim() !== '') {
-            setSearchLocation(inputValue);
+
+            const results = await searchVenues(inputValue);
+            setSearchResults(results);
         }
     };
 
@@ -24,6 +27,7 @@ function SearchForm({ setSearchLocation }) {
                 placeholder="Search"
                 className="mr-sm-2 form-control-sm form-control whereForm"
                 aria-label="Search"
+                onChange={handleInputChange}
             />
             <Button type="submit" variant="outline-success" className="btnSearch">
                 <i className="bi bi-search magnifyingGlass"></i>
