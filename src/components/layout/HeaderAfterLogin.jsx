@@ -9,8 +9,9 @@ function HeaderAfterLogin({ img, alt }) {
     const { logOut } = useContext(HolidazeContext);
 
     return (
-        <div>
-            <NavDropdown title={<img src={img} alt={alt} width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem">
+
+        <div className="dropdown-center">
+            <NavDropdown title={<img src={img} alt={alt} width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem dropdown-toggle" data-bs-toggle="dropdown">
                 <div className="dropdownContainer">
                     <NavDropdown.Item as={Link} to={`/profilesite/${userName}`}>Your account</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/yourbookings">

@@ -74,42 +74,45 @@ function Header() {
     const handleCloseSignup = () => setShowModalSignup(false);
 
     return (
-        <Navbar collapseOnSelect expand="lg" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
+        <Navbar collapseOnSelect expand="md" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
             <Navbar.Brand href="/" className="logo">Holidaze</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <SearchForm />
-                <Nav className="ml-auto">
-                    {isLoggedin ?
-                        <HeaderAfterLogin
-                            venueManager={venueManager}
-                            img={avatar}
-                            alt={alt}
-                        /> :
-                        <HeaderStartPoint
-                            showModalLogin={showModalLogin}
-                            handleShowLogin={handleShowLogin}
-                            handleCloseLogin={handleCloseLogin}
-                            setEmail={setEmail}
-                            setPassword={setPassword}
-                            showModalSignup={showModalSignup}
-                            handleShowSignup={handleShowSignup}
-                            handleCloseSignup={handleCloseSignup}
-                            name={name}
-                            setName={setName}
-                            email={email}
-                            password={password}
-                            role={role}
-                            setRole={setRole}
-                            registerUser={registerUser}
-                            showSuccessModal={showSuccessModal}
-                            setIsSignIn={setIsSignIn}
-                            setShowModalLogin={setShowModalLogin}
-                            setShowSuccessModal={setShowSuccessModal}
-                            loginUser={loginUser}
-                        />}
-                </Nav>
-            </Navbar.Collapse>
+            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" /> */}
+            {/* <Navbar.Collapse id="responsive-navbar-nav" > */}
+            <SearchForm className="search-form" />
+            {/* </Navbar.Collapse> */}
+            <Nav className="ml-auto nav">
+                {isLoggedin ?
+                    <HeaderAfterLogin
+                        venueManager={venueManager}
+                        img={avatar}
+                        alt={alt}
+
+                    /> :
+                    <HeaderStartPoint
+                        showModalLogin={showModalLogin}
+                        handleShowLogin={handleShowLogin}
+                        handleCloseLogin={handleCloseLogin}
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        showModalSignup={showModalSignup}
+                        handleShowSignup={handleShowSignup}
+                        handleCloseSignup={handleCloseSignup}
+                        name={name}
+                        setName={setName}
+                        email={email}
+                        password={password}
+                        role={role}
+                        setRole={setRole}
+                        registerUser={registerUser}
+                        showSuccessModal={showSuccessModal}
+                        setIsSignIn={setIsSignIn}
+                        setShowModalLogin={setShowModalLogin}
+                        setShowSuccessModal={setShowSuccessModal}
+                        loginUser={loginUser}
+
+                    />}
+            </Nav>
+
         </Navbar>
     );
 }

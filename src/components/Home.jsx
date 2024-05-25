@@ -33,10 +33,8 @@ function Home() {
 
     return (
         <div>
-            <div style={{ height: '500px' }}>
-                <div style={{ width: '100%' }}>
-                    <CarouselHome />
-                </div>
+            <div>
+                <CarouselHome />
             </div>
             {items.length === 0 && <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3rem 0' }}>Sorry, no results found</h1>}
             <Row xs={1} md={2} lg={3} className="g-4 my-5 mx-2">

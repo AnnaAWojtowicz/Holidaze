@@ -16,8 +16,8 @@ function CarouselHome() {
                     <Carousel.Caption>
                         <Container className="lessonContainer">
                             <Row>
-                                <Col md={4} className="word">Sisu</Col>
-                                <Col md={7} className="line">
+                                <Col sm={12} md={4} className="word">Sisu</Col>
+                                <Col sm={12} md={7} className="line">
                                     <div className="phonetic">/ˈsiːsuː/</div>
                                     <div className="def">Sisu is a Finnish concept that embodies determination, resilience, and courage, empowering individuals to conquer challenges.</div>
                                     <div className="example">"I think staying in this cottage may strengthen my sisu."</div>

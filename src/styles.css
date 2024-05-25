@@ -65,8 +65,12 @@ body {
   margin: 0 !important;
 }
 
+.navbar-toggler {
+  border: none !important;
+}
+
 @media (min-width: 992px) {
-  .navbar-expand-lg {
+  .navbar-expand-md {
     flex-wrap: nowrap;
     justify-content: space-around !important;
   }
@@ -89,6 +93,7 @@ body {
 
 .whereForm {
   border-radius: 3px 0 0 3px !important;
+  border: 1px solid #1c1c1cff !important;
 }
 
 .btn {
@@ -109,36 +114,21 @@ body {
   --bs-btn-disabled-border-color: #a9a59a !important;
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .py-md {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
   }
+} */
+
+.form-control {
+  width: 300px;
+  font-size: 1rem !important;
 }
 
-@media (max-width: 992px) {
-  .form-control-sm {
-    max-width: 150px;
-  }
-  .btnSearch {
-    font-size: 0.6rem !important;
-    /* border-radius: 0 3px 3px 0 !important; */
-  }
-
-  .loop {
-    font-size: 0.7rem !important;
-  }
-}
-
-@media (min-width: 993px) {
-  .form-control {
-    max-width: 200px;
-    font-size: 1rem !important;
-  }
-  .btnSearch,
-  .loop {
-    font-size: 0.8rem !important;
-  }
+.btnSearch,
+.magnifyingGlass {
+  font-size: 0.85rem !important;
 }
 
 .btnSearch {
@@ -163,6 +153,11 @@ body {
   background: none !important;
   border: none !important;
   cursor: pointer !important;
+}
+
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* modals */
@@ -215,12 +210,51 @@ body {
   margin-left: 3.5rem !important;
 } */
 
-.dropdown-menu,
-.show {
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .search-form {
+    order: 3;
+  }
+  .nav {
+    order: 2;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar {
+    flex-direction: row;
+  }
+  .search-form {
+    order: 2;
+  }
+  .nav {
+    order: 3;
+  }
+}
+
+.navbar {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute !important;
+  /* right: 0 !important; */
   z-index: 10000 !important;
   border-radius: 0 !important;
   padding: 0.5rem !important;
   font-family: "Montserrat", sans-serif !important;
+}
+
+@media (max-width: 576px) {
+  .dropdown-menu {
+    margin: auto !important;
+  }
+}
+
+.show {
+  z-index: auto !important;
 }
 
 .dropdownContainer {
@@ -258,14 +292,14 @@ body {
 .containerCarouselHome {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: auto;
   margin: auto;
 }
 
 .carouselItemHome {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: auto;
   overflow: hidden;
   border: 1px solid #1c1c1cff;
   border-radius: 15px;
@@ -343,14 +377,61 @@ body {
 
 @media (max-width: 768px) {
   .phrase {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin: 0.15rem 0;
   }
   .word {
     font-size: 2rem;
     text-align: left;
     justify-content: start;
-    margin-left: 2rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+  }
+  .phonetic,
+  .def,
+  .example {
+    font-size: 0.9rem;
+    margin: 0 0.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-caption {
+    margin: 0.5rem 0rem !important;
+    position: absolute;
+    right: 5%;
+    bottom: 0.25rem;
+    left: 5%;
+  }
+
+  .phrase {
+    font-size: 1rem;
+    margin: 0.1rem 0;
+  }
+  .word {
+    font-size: 1.7rem;
+    text-align: left;
+    justify-content: start;
+    margin-left: 1.2rem;
+  }
+
+  .line {
+    margin: 0.3rem 0 0.3rem 1rem !important;
+  }
+
+  .phonetic,
+  .def,
+  .example {
+    font-size: 0.7rem;
+    margin-left: 0.1rem;
+  }
+  .lessonContainer {
+    width: 100% !important;
+  }
+  .carousel-control-prev,
+  .carousel-control-next,
+  .carousel-indicators {
+    display: none;
   }
 }
 
@@ -386,12 +467,6 @@ body {
 
 .imgCardBorder {
   border-radius: 10px 10px 0 0 !important;
-}
-
-@media (max-width: 992px) {
-  .imgCardBorder {
-    border-radius: 5px 5px 0 0 !important;
-  }
 }
 
 .imgContainer {
@@ -534,12 +609,6 @@ p {
 
 .footerCardBorder {
   border-radius: 0 0 10px 10px !important;
-}
-
-@media (max-width: 992px) {
-  .footerCardBorder {
-    border-radius: 0 0 5px 5px !important;
-  }
 }
 
 .cardPage {

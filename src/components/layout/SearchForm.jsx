@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Calendar from "./Calendar";
 import SearchContext from "../HolidazeContext";
 
 function SearchForm({ setSearchLocation }) {
@@ -21,22 +20,13 @@ function SearchForm({ setSearchLocation }) {
     return (<div className="mx-auto py-md">
         <Form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center">
             <Form.Control
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Where?"
-                className="mr-sm-2 form-control-sm form-control whereForm"
-                aria-label="Where?"
-            />
-            <Calendar />
-            <Form.Control
                 type="search"
-                placeholder="How many guests?"
+                placeholder="Search"
                 className="mr-sm-2 form-control-sm form-control whereForm"
-                aria-label="How many guests?"
+                aria-label="Search"
             />
             <Button type="submit" variant="outline-success" className="btnSearch">
-                <i className="bi bi-search loop"></i>
+                <i className="bi bi-search magnifyingGlass"></i>
             </Button>
         </Form>
     </div>
