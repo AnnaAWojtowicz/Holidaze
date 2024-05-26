@@ -1,4 +1,36 @@
+# Holidaze - a website offering homestays
+
+![screenshot of the landing site](src/img/Holidaze.png)
+
+## Desription:
+
+Holidaze is a project designed as a website offering homestays. The landing page displays 99 venues and allows users to search through them and check the details of each. However, only registered and logged-in users can book their stays at the chosen venue.
+
+In addition, users registered as managers can create new venues and check booking details directly within the venue's management section. This includes information such as the person who booked the venue, their email address, dates of stay, and number of guests. These details are sorted by today's date, allowing the owner to easily access future, ongoing, and past bookings.
+
+Moreover, the availability calendar, visible to everyone on a specific venue's page, is updated every time a booking is made.
+
+Every user, regardless of their registration status, has access to their profile page where they can update their contact information, avatar, banner, and personal details. Users can also view their bookings and properties. Visitors to a venue owner's profile page will see similar information but will not be able to view other users' bookings or edit their profiles.
+
+In addition to the profile page, there is a separate page for user bookings. Additionally, there is a page specifically for managers to manage their properties. Managers can create, edit, and delete their venues as easily as users can book their stays.
+
+Since Holidaze is a school project submitted within a certain deadline, there are still many improvements to be made in the future, such as adding a filter function or the ability to contact guests or managers.
+
+# Links:
+
+## Netlify:
+
+## Figma:
+
+## Trello:
+
+https://trello.com/invite/b/31TOiox6/ATTIc277a26594755dfc19b0766b34e952e3FA4F3185/holidaze
+
 # Sources:
+
+# Brief:
+
+Noroff (2024). _Project Exam 2 brief_ Retrieved 11.04.2024 from: https://content.noroff.dev/project-exam-2/brief.html
 
 l1ackerone (n.a.). _React Datepicker_. Retrieved 15.04.2024 from: https://reactdatepicker.com/
 

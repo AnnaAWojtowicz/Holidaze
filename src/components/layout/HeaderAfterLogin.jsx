@@ -10,7 +10,6 @@ function HeaderAfterLogin({ img, alt }) {
     const avatar = localStorage.getItem('avatar');
 
     useEffect(() => {
-        console.log('Avatar URL in HeaderAfterLogin:', img);
     }, [img]);
     return (
 

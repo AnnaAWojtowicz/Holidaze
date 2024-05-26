@@ -2,7 +2,6 @@ import react from "react";
 import { Modal, Button } from "react-bootstrap";
 
 function CheckLoginModal({ show, handleClose, handleLogin }) {
-    console.log('handleLogin:', handleLogin);
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton className='modalHeader'>
