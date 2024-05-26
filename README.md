@@ -2,7 +2,7 @@
 
 ![screenshot of the landing site](src/img/Holidaze.png)
 
-## Desription:
+## Description:
 
 Holidaze is a project designed as a website offering homestays. The landing page displays 99 venues and allows users to search through them and check the details of each. However, only registered and logged-in users can book their stays at the chosen venue.
 
@@ -21,7 +21,7 @@ Since Holidaze is a school project submitted within a certain deadline, there ar
 - HTML;
 - Bootstrap and CSS;
 - React and JS;
-- Bootstrap;
+- Jest
 
 ## How to run a project:
 
@@ -34,9 +34,15 @@ npm start
 
 ## Testing:
 
+```
+npm test
+```
+
 # Links:
 
 ## Netlify:
+
+https://cosmic-gumption-c753e6.netlify.app
 
 ## Figma: project and style guuide:
 
@@ -49,7 +55,7 @@ https://trello.com/invite/b/31TOiox6/ATTIc277a26594755dfc19b0766b34e952e3FA4F318
 
 # Sources:
 
-# Brief:
+## Brief:
 
 Noroff (2024). _Project Exam 2 brief_ Retrieved 11.04.2024 from: https://content.noroff.dev/project-exam-2/brief.html
 
