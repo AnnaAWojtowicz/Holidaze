@@ -11,7 +11,7 @@ function HeaderAfterLogin({ img, alt }) {
     return (
 
         <div className="dropdown-center">
-            <NavDropdown title={<img src={img} alt={alt} width="40" height="40" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem dropdown-toggle" data-bs-toggle="dropdown">
+            <NavDropdown title={<img src={img} alt={alt} width="60" height="60" className="rounded-circle" />} id="basic-nav-dropdown" className="dropdownItem dropdown-toggle" data-bs-toggle="dropdown">
                 <div className="dropdownContainer">
                     <NavDropdown.Item as={Link} to={`/profilesite/${userName}`}>Your account</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/yourbookings">

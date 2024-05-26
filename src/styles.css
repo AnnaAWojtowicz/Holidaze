@@ -130,7 +130,7 @@ body {
 } */
 
 .form-control {
-  width: 300px;
+  /* width: 300px; */
   font-size: 1rem !important;
 }
 
@@ -262,7 +262,7 @@ body {
 }
 
 .show {
-  z-index: auto !important;
+  z-index: 100000 !important;
 }
 
 .dropdownContainer {
