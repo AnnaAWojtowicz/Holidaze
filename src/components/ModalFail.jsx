@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
 function ModalFail({ show, onHide, onTryAgain, errorMessage }) {
-    // console.log('ModalFail errorMessage:', errorMessage);
     const navigate = useNavigate();
 
     const handleClose = () => {

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "react-datepicker/dist/react-datepicker.css";
-import ModalMain from "./Modal";
-import ButtonPrimary from "../Button";
 import SearchForm from "./SearchForm";
 import { register } from "../../api/register";
 import ModalRegisterSuccess from "../profile/ModalRegisterSuccess";
@@ -11,9 +9,9 @@ import { login } from "../../api/login";
 import HeaderStartPoint from "./HeaderStartPoint";
 import HeaderAfterLogin from "./HeaderAfterLogin";
 import HolidazeContext from "../HolidazeContext";
+import ModalFail from "../ModalFail";
 
 function Header() {
-
     const [showModalLogin, setShowModalLogin] = useState(false);
     const [showModalSignup, setShowModalSignup] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -24,8 +22,19 @@ function Header() {
     const [role, setRole] = useState('guest');
     const { avatar, setAvatar } = useContext(HolidazeContext);
     const { isLoggedin, setIsLoggedin } = useContext(HolidazeContext);
+    const [showFailModal, setShowFailModal] = useState(false);
+    const [showErrorMessage, setShowErrorMessage] = useState("");
+    const [show, setShow] = useState(false);
+    const onHide = () => setShow(false);
 
+    const handleHideFail = () => {
+        setShowFailModal(false);
+    };
 
+    const handleTryAgain = () => {
+        setShow(true);
+        setShowFailModal(false);
+    };
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
@@ -43,6 +52,8 @@ function Header() {
             return data;
         } catch (error) {
             console.error('Error:', error);
+            setShowFailModal(true);
+            setShowErrorMessage(error.message);
         }
     };
 
@@ -63,6 +74,8 @@ function Header() {
             return response;
         } catch (error) {
             console.error('Error:', error);
+            setShowFailModal(true);
+            setShowErrorMessage(error.message);
         }
     };
 
@@ -79,45 +92,43 @@ function Header() {
     const handleCloseSignup = () => setShowModalSignup(false);
 
     return (
-        <Navbar collapseOnSelect expand="md" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
-            <Navbar.Brand href="/" className="logo">Holidaze</Navbar.Brand>
-            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto" /> */}
-            {/* <Navbar.Collapse id="responsive-navbar-nav" > */}
-            <SearchForm className="search-form" />
-            {/* </Navbar.Collapse> */}
-            <Nav className="ml-auto nav">
-                {isLoggedin ?
-                    <HeaderAfterLogin
-                        venueManager={venueManager}
-                        img={avatar}
-                        alt={alt}
-
-                    /> :
-                    <HeaderStartPoint
-                        showModalLogin={showModalLogin}
-                        handleShowLogin={handleShowLogin}
-                        handleCloseLogin={handleCloseLogin}
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                        showModalSignup={showModalSignup}
-                        handleShowSignup={handleShowSignup}
-                        handleCloseSignup={handleCloseSignup}
-                        name={name}
-                        setName={setName}
-                        email={email}
-                        password={password}
-                        role={role}
-                        setRole={setRole}
-                        registerUser={registerUser}
-                        showSuccessModal={showSuccessModal}
-                        setIsSignIn={setIsSignIn}
-                        setShowModalLogin={setShowModalLogin}
-                        setShowSuccessModal={setShowSuccessModal}
-                        loginUser={loginUser}
-                    />}
-            </Nav>
-
-        </Navbar>
+        <>
+            <Navbar collapseOnSelect expand="md" className="navFont d-flex justify-content-between" style={{ padding: '1rem' }}>
+                <Navbar.Brand href="/" className="logo">Holidaze</Navbar.Brand>
+                <SearchForm className="search-form" />
+                <Nav className="ml-auto nav">
+                    {isLoggedin ?
+                        <HeaderAfterLogin
+                            venueManager={venueManager}
+                            img={avatar}
+                            alt={alt}
+                        /> :
+                        <HeaderStartPoint
+                            showModalLogin={showModalLogin}
+                            handleShowLogin={handleShowLogin}
+                            handleCloseLogin={handleCloseLogin}
+                            setEmail={setEmail}
+                            setPassword={setPassword}
+                            showModalSignup={showModalSignup}
+                            handleShowSignup={handleShowSignup}
+                            handleCloseSignup={handleCloseSignup}
+                            name={name}
+                            setName={setName}
+                            email={email}
+                            password={password}
+                            role={role}
+                            setRole={setRole}
+                            registerUser={registerUser}
+                            showSuccessModal={showSuccessModal}
+                            setIsSignIn={setIsSignIn}
+                            setShowModalLogin={setShowModalLogin}
+                            setShowSuccessModal={setShowSuccessModal}
+                            loginUser={loginUser}
+                        />}
+                </Nav>
+            </Navbar>
+            <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} errorMessage={showErrorMessage} />
+        </>
     );
 }
 

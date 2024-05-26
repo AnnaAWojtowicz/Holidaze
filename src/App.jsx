@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HolidazeContext from "./components/HolidazeContext";
 import 'bootstrap/dist/css/bootstrap.min.css';

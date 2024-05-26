@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import ButtonPrimary from '../Button';
 
 function ModalMain({ showModalLogin, showModalSignup, handleCloseLogin, handleCloseSignup, isSignIn, register, showModal, handleClose, name, setName, email, setEmail, password, setPassword, role, setRole, loginUser }) {
     const handleSubmit = async (event) => {

@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
-import ModalMain from "../layout/Modal";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 

@@ -16,11 +16,32 @@ In addition to the profile page, there is a separate page for user bookings. Add
 
 Since Holidaze is a school project submitted within a certain deadline, there are still many improvements to be made in the future, such as adding a filter function or the ability to contact guests or managers.
 
+## _Holidaze_ was built with:
+
+- HTML;
+- Bootstrap and CSS;
+- React and JS;
+- Bootstrap;
+
+## How to run a project:
+
+Clone and open repository: https://github.com/AnnaAWojtowicz/holidaze and run in Terminal:
+
+```
+npm install
+npm start
+```
+
+## Testing:
+
 # Links:
 
 ## Netlify:
 
-## Figma:
+## Figma: project and style guuide:
+
+https://www.figma.com/design/bWuyWBnoJeuNEPOA7wLMOy/Holidaze?node-id=223-47703&t=jcvs7i4CkgbhSHzF-1
+https://www.figma.com/design/bWuyWBnoJeuNEPOA7wLMOy/Holidaze?node-id=0-1&t=jcvs7i4CkgbhSHzF-1
 
 ## Trello:
 

@@ -27,7 +27,7 @@ function OwnerBookings({ redirectAfterDelate }) {
                 <div><h2>Your bookings:</h2></div>
             </div>
             {items.length === 0 && <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3rem 0' }}>Sorry, no results found</h1>}
-            <Row xs={1} md={2} lg={3} className="g-4 my-3 mx-2">
+            <Row xs={1} md={2} lg={3} className="g-4 my-3 mx-2 mx-sm-0">
                 {items.map((booking, index) => {
                     const img = booking.venue.media && booking.venue.media.length > 0 ? booking.venue.media[0].url : '';
                     const alt = booking.venue.media && booking.venue.media.length > 0 ? booking.venue.media[0].alt : '';

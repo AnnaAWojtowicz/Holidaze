@@ -1,5 +1,4 @@
 import React from "react";
-import CardPage from "../cardPage/CardPage";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";

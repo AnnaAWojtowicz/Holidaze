@@ -122,15 +122,7 @@ body {
   --bs-btn-disabled-border-color: #a9a59a !important;
 }
 
-/* @media (max-width: 992px) {
-  .py-md {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-  }
-} */
-
 .form-control {
-  /* width: 300px; */
   font-size: 1rem !important;
 }
 
@@ -214,10 +206,6 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(169, 165, 154, 0.25) !important;
 }
 
-/* .dropdownItem {
-  margin-left: 3.5rem !important;
-} */
-
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -248,7 +236,6 @@ body {
 
 .dropdown-menu {
   position: absolute !important;
-  /* right: 0 !important; */
   z-index: 10000 !important;
   border-radius: 0 !important;
   padding: 0.5rem !important;
@@ -473,7 +460,6 @@ body {
 }
 
 /* cardHome & cardPage */
-
 .card {
   --bs-card-border-color: none !important;
 }
@@ -563,12 +549,6 @@ body {
   min-width: 240px;
 }
 
-/* @media (max-width: 992px) {
-  .availabilityCalendar {
-    width: 100%;
-  }
-} */
-
 .addressDetails,
 .breakfastDetails,
 .locationDetails,
@@ -580,10 +560,6 @@ body {
 .bookingsDetails {
   margin: 0 1rem !important;
 }
-
-/* .availabilityDetails {
-  margin: 0.5rem 0rem !important;
-} */
 
 .hostDetails {
   text-align: left;
@@ -644,6 +620,10 @@ p {
 }
 
 @media (max-width: 992px) {
+  .cardPage {
+    max-width: 22rem;
+    min-width: 20rem;
+  }
   .cardWidth {
     max-width: 35rem;
     min-width: 20rem;
@@ -735,4 +715,10 @@ p {
 
 .ownerPropertiesContainer {
   width: 90vw !important;
+}
+
+@media (max-width: 992px) {
+  .ownerPropertiesContainer {
+    width: 95vw !important;
+  }
 }

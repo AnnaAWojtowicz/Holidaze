@@ -25,7 +25,6 @@ import ModalMain from "../layout/Modal";
 function CardPage({ card, redirectAfterDelete }) {
     const { id } = useParams();
     const [cardData, setCardData] = useState([]);
-    const [isExcludeDatesEmpty, setIsExcludeDatesEmpty] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [showNewAndUpdateVenueModal, setShowNewAndUpdateVenueModal] = useState(false);
     const [showDeleteVenueModal, setShowDeleteVenueModal] = useState(false);
@@ -35,7 +34,6 @@ function CardPage({ card, redirectAfterDelete }) {
     const [showModalMain, setShowModalMain] = useState(false);
     const [excludeDates, setExcludeDates] = useState([]);
     const currentUserName = localStorage.getItem('userName');
-    const isLoggedIn = Boolean(currentUserName);
     const [showCheckLoginModal, setShowCheckLoginModal] = useState(false);
     const [showBookStayModal, setShowBookStayModal] = useState(false);
     const [bookingsData, setBookingsData] = useState([]);
