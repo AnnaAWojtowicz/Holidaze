@@ -49,9 +49,10 @@ https://cosmic-gumption-c753e6.netlify.app
 https://www.figma.com/design/bWuyWBnoJeuNEPOA7wLMOy/Holidaze?node-id=223-47703&t=jcvs7i4CkgbhSHzF-1
 https://www.figma.com/design/bWuyWBnoJeuNEPOA7wLMOy/Holidaze?node-id=0-1&t=jcvs7i4CkgbhSHzF-1
 
-## Trello:
+## Trello and gantt chart:
 
 https://trello.com/invite/b/31TOiox6/ATTIc277a26594755dfc19b0766b34e952e3FA4F3185/holidaze
+[HolidazeGantt.pdf](https://github.com/AnnaAWojtowicz/holidaze/files/15448996/HolidazeGantt.pdf)
 
 # Sources:
 
