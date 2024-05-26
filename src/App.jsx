@@ -9,18 +9,41 @@ import CardPage from './components/cardPage/CardPage';
 import ProfileSite from './components/profile/ProfileSite';
 import OwnerProperties from './components/profile/OwnerProperties';
 import UserBookings from './components/profile/UserBookings';
+import ModalMain from './components/layout/Modal';
+import CheckLoginModal from './components/cardPage/CheckLoginModal';
 
 function App() {
+
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(null);
   const [cardData, setCardData] = useState(null);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [showModalMain, setShowModalMain] = useState(false);
+  const [showCheckLoginModal, setShowCheckLoginModal] = useState(false);
+
+  console.log('App rendered');
+  console.log('inputValue:', inputValue);
+  console.log('searchResults:', searchResults);
+  console.log('avatar:', avatar);
+  console.log('cardData:', cardData);
+  console.log('isLoggedin:', isLoggedin);
+  console.log('showModalMain:', showModalMain);
+  console.log('showCheckLoginModal:', showCheckLoginModal);
+
 
   const logOut = () => {
     localStorage.removeItem('userName');
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('avatar');
     setIsLoggedin(false);
+  };
+
+  const handleOpenLoginModal = () => {
+    console.log('handleOpenLoginModal called');
+    setShowCheckLoginModal(false);
+    setShowModalMain(true);
+    console.log('showModalMain:', showModalMain);
   };
 
   return (
@@ -36,6 +59,8 @@ function App() {
               <Route path="/yourbookings" element={<UserBookings />} />
             </Routes>
           </Layout>
+          <CheckLoginModal show={showCheckLoginModal} handleClose={() => setShowCheckLoginModal(false)} handleLogin={handleOpenLoginModal} />
+          <ModalMain show={showModalMain} handleClose={() => setShowModalMain(false)} isSignIn={true} />
         </div>
       </BrowserRouter>
     </HolidazeContext.Provider>

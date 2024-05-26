@@ -32,6 +32,7 @@ function EditModal({ show, onHide, onEdit, userData }) {
             await updateUserProfile(avatarTmp, bio, banner);
             onEdit(bio, avatarTmp, banner);
             setAvatar(avatarTmp);
+            localStorage.setItem('avatar', avatarTmp);
             setBio("");
             setAvatarTmp("");
             setBanner("");

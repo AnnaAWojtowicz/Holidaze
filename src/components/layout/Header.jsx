@@ -13,6 +13,7 @@ import HeaderAfterLogin from "./HeaderAfterLogin";
 import HolidazeContext from "../HolidazeContext";
 
 function Header() {
+
     const [showModalLogin, setShowModalLogin] = useState(false);
     const [showModalSignup, setShowModalSignup] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -23,6 +24,8 @@ function Header() {
     const [role, setRole] = useState('guest');
     const { avatar, setAvatar } = useContext(HolidazeContext);
     const { isLoggedin, setIsLoggedin } = useContext(HolidazeContext);
+
+
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
@@ -55,6 +58,8 @@ function Header() {
             setData(response)
             setAvatar(response.data.avatar.url);
             setAlt(response.data.avatar.alt);
+            localStorage.setItem('avatar', response.data.avatar.url);
+
             return response;
         } catch (error) {
             console.error('Error:', error);
@@ -109,7 +114,6 @@ function Header() {
                         setShowModalLogin={setShowModalLogin}
                         setShowSuccessModal={setShowSuccessModal}
                         loginUser={loginUser}
-
                     />}
             </Nav>
 

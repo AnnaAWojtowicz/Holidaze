@@ -36,7 +36,7 @@ function CardPage({ card, redirectAfterDelete }) {
     const [excludeDates, setExcludeDates] = useState([]);
     const currentUserName = localStorage.getItem('userName');
     const isLoggedIn = Boolean(currentUserName);
-    const [showCheckLoginModal, setShowCheckLoginModal] = useState(!isLoggedIn);
+    const [showCheckLoginModal, setShowCheckLoginModal] = useState(false);
     const [showBookStayModal, setShowBookStayModal] = useState(false);
     const [bookingsData, setBookingsData] = useState([]);
     const [refresh, setRefresh] = useState(false);
@@ -86,10 +86,10 @@ function CardPage({ card, redirectAfterDelete }) {
 
     const handleCheckLoginModal = () => {
         const currentUserName = localStorage.getItem('userName');
-        if (currentUserName) {
-            setShowBookStayModal(true);
-        } else {
+        if (!currentUserName) {
             setShowCheckLoginModal(true);
+        } else {
+            setShowBookStayModal(true);
         }
     };
 
