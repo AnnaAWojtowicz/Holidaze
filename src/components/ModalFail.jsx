@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-function ModalFail({ show, onHide, onTryAgain }) {
+function ModalFail({ show, onHide, onTryAgain, errorMessage }) {
     const navigate = useNavigate();
 
     const handleClose = () => {
@@ -24,6 +24,7 @@ function ModalFail({ show, onHide, onTryAgain }) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="mb-3 formGroup">Sorry, it looks like something went wrong.</div>
+                    <div className="mb-3 formGroup">{errorMessage}</div>
                     <div className="mb-3 formGroup">How about trying again?</div>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-center">

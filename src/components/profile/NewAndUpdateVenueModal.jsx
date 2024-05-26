@@ -26,6 +26,7 @@ function NewAndUpdateVenueModal(props) {
     const [countryVenue, setCountryVenue] = useState("");
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showFailModal, setShowFailModal] = useState(false);
+    const [showErrorMessage, setShowErrorMessage] = useState("");
     const isEditing = props.isEditing;
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
@@ -104,6 +105,7 @@ function NewAndUpdateVenueModal(props) {
                 console.error("Error occurred while adding new venue: ", error);
                 props.onHide();
                 setShowFailModal(true);
+                setShowErrorMessage(error.message);
             }
         } else {
             console.error('Data or data.name is undefined');
@@ -342,7 +344,7 @@ function NewAndUpdateVenueModal(props) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            {showFailModal && <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} />}
+            {showFailModal && <ModalFail show={showFailModal} onHide={handleHideFail} onTryAgain={handleTryAgain} errorMessage={showErrorMessage} />}
             {showSuccessModal && <NewAndUpdateVenueModalSuccess show={showSuccessModal} onHide={() => setShowSuccessModal(false)} />}
         </>
     );

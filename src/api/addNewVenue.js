@@ -51,7 +51,7 @@ export async function addNewVenue({
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message)
+        throw new Error(data.errors[0].message)
     }
 
     return data;
