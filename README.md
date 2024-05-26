@@ -44,7 +44,7 @@ npm test
 
 https://cosmic-gumption-c753e6.netlify.app
 
-## Figma: project and style guuide:
+## Figma: project and style guide:
 
 https://www.figma.com/design/bWuyWBnoJeuNEPOA7wLMOy/Holidaze?node-id=223-47703&t=jcvs7i4CkgbhSHzF-1
 
